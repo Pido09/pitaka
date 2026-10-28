@@ -340,6 +340,17 @@ input:focus,select:focus{outline:2px solid var(--focus);outline-offset:0;border-
 .toast.show{animation:toast-in .2s ease-out}
 @keyframes toast-in{from{transform:translate(-50%,10px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
 
+/* ---------- splash ---------- */
+#splash{position:fixed;inset:0;z-index:200;background:var(--bg);display:grid;place-items:center;transition:opacity .35s ease}
+#splash.hide{opacity:0;pointer-events:none}
+.sp-in{display:flex;flex-direction:column;align-items:center;gap:12px;animation:sp-pop .5s cubic-bezier(.2,.8,.2,1)}
+.sp-logo{width:88px;height:88px;filter:drop-shadow(0 10px 24px rgba(11,93,69,.25))}
+.sp-name{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:2rem;letter-spacing:-.03em;color:var(--text);line-height:1}
+.sp-by{font-size:.85rem;color:var(--text-2);letter-spacing:.02em}
+.sp-by b{color:var(--text);font-weight:700}
+@keyframes sp-pop{from{transform:scale(.92);opacity:0}to{transform:none;opacity:1}}
+.credit{text-align:center;font-size:.8rem;color:var(--text-2);margin:var(--s-6) 0 0}
+.credit b{color:var(--text)}
 /* ---------- greeting ---------- */
 .greet{margin:0 0 var(--s-5)}
 .greet h1{font-family:"Bricolage Grotesque",sans-serif;font-size:1.75rem;font-weight:800;letter-spacing:-.025em;line-height:1.15;margin:0}
@@ -398,6 +409,11 @@ input:focus,select:focus{outline:2px solid var(--focus);outline-offset:0;border-
 </style>
 </head>
 <body>
+<div id="splash" aria-hidden="true"><div class="sp-in">
+  <svg class="sp-logo" viewBox="0 0 88 88"><rect width="88" height="88" rx="20" fill="#0B5D45"/><rect x="20" y="25" width="40" height="8" rx="4" fill="#E3A01A"/><rect x="17" y="30" width="54" height="34" rx="8" fill="#fff"/><rect x="48" y="39" width="25" height="16" rx="6" fill="#F2F5F3"/><circle cx="57" cy="47" r="4.5" fill="#E3A01A"/></svg>
+  <div class="sp-name">pitaka</div>
+  <div class="sp-by">Developed by <b>CloudyBoi</b></div>
+</div></div>
 <div class="wrap">
   <header class="appbar">
     <div class="appbar-left"><button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><span id="menu-avatar">👛</span></button><div class="brand">pitaka</div></div>
@@ -606,6 +622,7 @@ input:focus,select:focus{outline:2px solid var(--focus);outline-offset:0;border-
       <div class="set-row"><div><div class="t">Restore</div><div class="s">Load a backup file</div></div><label class="btn" style="margin:0;color:var(--text);font-size:.9rem;display:inline-flex;align-items:center;cursor:pointer">Choose file<input type="file" id="st-import" accept="application/json,.json" class="sr"></label></div>
       <div class="set-row"><div><div class="t">Start over</div><div class="s">Erase all accounts and transactions</div></div><button type="button" class="btn danger" id="st-reset">Erase</button></div>
     </div></section>
+    <p class="credit">Pitaka · Developed by <b>CloudyBoi</b></p>
     <div class="sheet-foot"><button type="button" class="btn primary" data-close>Done</button></div>
   </div>
 </dialog>
@@ -2512,6 +2529,7 @@ openPrices = function(id){ _openPrices(id); syncSettingsUI(); };
 hydrateIcons();
 state = loadLocal(); if (!state) state = defaults(); state = migrate(state); saveLocal();
 applyPrefs(); render(); setSync("On this device", "ok"); if (state.prefs.startTab && state.prefs.startTab!=="home") go(state.prefs.startTab);
+setTimeout(() => { const sp = document.getElementById("splash"); if (!sp) return; sp.classList.add("hide"); setTimeout(() => sp.remove(), 400); }, Math.max(0, 1100 - performance.now()));
 setInterval(() => { if (todayStr() !== (calc?.history.at(-1)?.[0])) render(); }, 60000);
 pull().then(() => autoPrices());
 /* ---------- updates: "A new version is ready" with one-tap refresh ---------- */

@@ -1,7 +1,7 @@
 // Pitaka service worker: makes the app open instantly and work offline.
 // When you upload a new index.html, change VERSION (pitaka-v3, pitaka-v4, ...)
 // and the app will show "Update available" with a Refresh button.
-const VERSION = "pitaka-v2";
+const VERSION = "pitaka-v3";
 const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png"];
 
 self.addEventListener("install", e => {
