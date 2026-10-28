@@ -39,7 +39,8 @@
   --shadow-sheet:0 -8px 30px rgba(16,32,26,.12);
 
   /* scale */
-  --r-sm:10px; --r-md:16px; --r-lg:22px;
+  --r-sm:10px; --r-md:18px; --r-lg:24px;
+  --shadow-card:0 1px 2px rgba(16,32,26,.05), 0 8px 24px -8px rgba(16,32,26,.10);
   --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-8:32px;
 
   color-scheme:light;
@@ -340,6 +341,47 @@ input:focus,select:focus{outline:2px solid var(--focus);outline-offset:0;border-
 .toast.show{animation:toast-in .2s ease-out}
 @keyframes toast-in{from{transform:translate(-50%,10px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
 
+/* ---------- polish: soft elevation on cards (light mode) ---------- */
+.list,.kpis,.stat-strip,.chart-card,.gauge-card,.donut-wrap,.empty,.setup,.tpl:not(.add),.qa .ic,.bars6,.tbl-wrap,.brief{box-shadow:var(--shadow-card)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .list,:root:not([data-theme="light"]) .kpis,:root:not([data-theme="light"]) .stat-strip,:root:not([data-theme="light"]) .chart-card,:root:not([data-theme="light"]) .gauge-card,:root:not([data-theme="light"]) .donut-wrap,:root:not([data-theme="light"]) .empty,:root:not([data-theme="light"]) .setup,:root:not([data-theme="light"]) .tpl,:root:not([data-theme="light"]) .qa .ic,:root:not([data-theme="light"]) .bars6,:root:not([data-theme="light"]) .tbl-wrap,:root:not([data-theme="light"]) .brief{box-shadow:none}}
+:root[data-theme="dark"] .list,:root[data-theme="dark"] .kpis,:root[data-theme="dark"] .stat-strip,:root[data-theme="dark"] .chart-card,:root[data-theme="dark"] .gauge-card,:root[data-theme="dark"] .donut-wrap,:root[data-theme="dark"] .empty,:root[data-theme="dark"] .setup,:root[data-theme="dark"] .tpl,:root[data-theme="dark"] .qa .ic,:root[data-theme="dark"] .bars6,:root[data-theme="dark"] .tbl-wrap,:root[data-theme="dark"] .brief{box-shadow:none}
+.tile{margin-top:28px}
+.section-h h2{font-size:1.05rem}
+.row .chev{display:grid;place-items:center;color:var(--text-2);opacity:.45;margin-right:-6px}
+.row .chev svg{width:16px;height:16px}
+/* ---------- pulse line under the stats ---------- */
+.pulse{display:flex;gap:10px;align-items:flex-start;margin-top:var(--s-3);padding:10px 14px;border-radius:14px;font-size:.9rem;line-height:1.4;background:var(--brand-soft);color:var(--text)}
+.pulse .pi{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:var(--on-brand);font-size:.8rem;font-weight:800;margin-top:1px}
+.pulse.warn{background:var(--interest-soft)}
+.pulse.warn .pi{background:var(--interest);color:#1b1404}
+.pulse.flat{background:var(--surface-2)}
+.pulse.flat .pi{background:var(--text-2);color:var(--surface)}
+.pulse b{font-weight:700}
+/* ---------- weekly brief ---------- */
+.brief{background:var(--surface);border-radius:var(--r-md);overflow:hidden}
+.brief-top{padding:var(--s-4);background:linear-gradient(135deg,var(--brand-soft),transparent 70%)}
+.brief-top .k{font-size:.8rem;color:var(--text-2)}
+.brief-top .v{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.7rem;letter-spacing:-.02em;line-height:1.1}
+.brief-top .line{font-size:.9rem;margin-top:4px}
+.brief-sec{padding:var(--s-3) var(--s-4) var(--s-4);border-top:1px solid var(--line)}
+.brief-sec h3{margin:0 0 var(--s-2);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-2);font-weight:700}
+.brief-item{display:flex;gap:var(--s-3);align-items:flex-start;padding:6px 0}
+.brief-item+.brief-item{border-top:1px dashed var(--line);padding-top:10px;margin-top:4px}
+.brief-item .body{flex:1;min-width:0}
+.brief-item .t{font-weight:700}
+.brief-item .quip{font-size:.88rem;color:var(--text);margin:2px 0 4px;font-style:italic}
+.brief-item ul{margin:4px 0 0;padding-left:18px;font-size:.86rem;color:var(--text-2)}
+.brief-item li+li{margin-top:2px}
+/* ---------- swipe to delete ---------- */
+#tr-quick{flex-wrap:wrap;overflow:visible}
+.swipe{position:relative;overflow:hidden}
+.swipe+.swipe{border-top:1px solid var(--line)}
+.swipe>.row{position:relative;z-index:1;background:var(--surface);transition:transform .22s cubic-bezier(.2,.8,.2,1);touch-action:pan-y}
+.swipe.dragging>.row{transition:none}
+.swipe.open>.row{transform:translateX(-96px)}
+.swipe-del{position:absolute;top:0;right:0;bottom:0;width:96px;border:0;background:var(--neg);color:#fff;font-weight:700;font-size:.85rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.swipe-del svg{width:18px;height:18px}
+
 /* ---------- splash ---------- */
 #splash{position:fixed;inset:0;z-index:200;background:var(--bg);display:grid;place-items:center;transition:opacity .35s ease}
 #splash.hide{opacity:0;pointer-events:none}
@@ -516,8 +558,12 @@ input:focus,select:focus{outline:2px solid var(--focus);outline-offset:0;border-
     <div class="grabber" aria-hidden="true"></div>
     <div class="sheet-h"><h3 id="tr-title">Record a buy</h3><button type="button" class="x" data-close aria-label="Close"><span data-icon="x"></span></button></div>
     <div class="seg" role="group" aria-label="Buy or sell" id="tr-seg"><button type="button" data-side="buy" aria-pressed="true">Buy</button><button type="button" data-side="sell" aria-pressed="false">Sell</button></div>
-    <label for="tr-hold" style="margin-top:0">What</label>
+    <label for="tr-acct" style="margin-top:0">Where</label>
+    <select id="tr-acct"></select>
+    <p class="hint">One account can hold many coins or ETFs. Add a new place, like Maya Crypto, from Accounts.</p>
+    <label for="tr-hold">What</label>
     <select id="tr-hold"></select>
+    <div class="chips" id="tr-quick" style="margin:8px 0 0" role="group" aria-label="Popular picks"></div>
     <div id="tr-new" hidden>
       <div class="two">
         <div><label for="tr-sym">Symbol</label><input id="tr-sym" placeholder="e.g. VOO, BTC" maxlength="10" autocapitalize="characters"></div>
@@ -532,11 +578,12 @@ input:focus,select:focus{outline:2px solid var(--focus);outline-offset:0;border-
     </div>
     <div class="two">
       <div><label for="tr-fee">Fees (₱)</label><input id="tr-fee" inputmode="decimal" placeholder="0"></div>
-      <div><label for="tr-date">Date</label><input type="date" id="tr-date"></div>
+      <div><label for="tr-date" id="tr-date-label">Date bought</label><input type="date" id="tr-date"></div>
     </div>
     <p class="hint" id="tr-hint"></p>
     <div class="err" id="tr-err" role="alert"></div>
-    <div class="sheet-foot"><button type="submit" class="btn primary" id="tr-save">Save buy</button></div>
+    <p class="hint">Adding an old buy? Enter the date and price from that day. Pitaka uses them to work out your average cost.</p>
+    <div class="sheet-foot"><button type="submit" class="btn" id="tr-another">Add another</button><button type="submit" class="btn primary" id="tr-save">Save buy</button></div>
   </form>
 </dialog>
 
@@ -553,6 +600,21 @@ input:focus,select:focus{outline:2px solid var(--focus);outline-offset:0;border-
     <button type="button" class="btn" id="pr-fetch" style="margin-top:var(--s-3)" hidden>Get latest prices</button>
     <div class="err" id="pr-err" role="alert"></div>
     <div class="sheet-foot"><button type="submit" class="btn primary">Save prices</button></div>
+  </form>
+</dialog>
+
+<!-- Balance update edit -->
+<dialog id="d-adj" aria-labelledby="ad-title">
+  <form class="sheet" method="dialog" id="adj-form" novalidate>
+    <div class="grabber" aria-hidden="true"></div>
+    <div class="sheet-h"><h3 id="ad-title">Balance update</h3><button type="button" class="x" data-close aria-label="Close"><span data-icon="x"></span></button></div>
+    <p class="hint" id="ad-hint" style="margin-top:0"></p>
+    <div class="seg" role="group" aria-label="Direction" id="ad-seg"><button type="button" data-dir="1" aria-pressed="true">Added</button><button type="button" data-dir="-1" aria-pressed="false">Removed</button></div>
+    <label for="ad-amt" class="sr">Amount</label>
+    <div class="amount-field"><span aria-hidden="true">₱</span><input id="ad-amt" inputmode="decimal"></div>
+    <div class="two"><div><label for="ad-date">Date</label><input type="date" id="ad-date"></div><div><label for="ad-note">Note</label><input id="ad-note" placeholder="Optional"></div></div>
+    <div class="err" id="ad-err" role="alert"></div>
+    <div class="sheet-foot"><button type="button" class="btn danger" id="ad-del">Delete</button><button type="submit" class="btn primary">Save</button></div>
   </form>
 </dialog>
 
@@ -980,8 +1042,9 @@ const PRESETS = [
   {label:"Maya Savings", kind:"savings", name:"Maya Savings", rate:10, cap:100000, over:3},
   {label:"MP2", kind:"mp2", name:"Pag-IBIG MP2", rate:7},
   {label:"Time deposit", kind:"td", name:"Time deposit", rate:6, term:6},
-  {label:"GoTrade", kind:"invest", name:"GoTrade (VOO)", platform:"GoTrade"},
-  {label:"Coins.ph", kind:"invest", name:"Coins.ph (BTC)", platform:"Coins.ph"},
+  {label:"GoTrade", kind:"invest", name:"GoTrade", platform:"GoTrade"},
+  {label:"Coins.ph", kind:"invest", name:"Coins.ph", platform:"Coins.ph"},
+  {label:"Maya Crypto", kind:"invest", name:"Maya Crypto", platform:"Maya"},
   {label:"Credit card", kind:"credit", name:"Credit card", mrate:3},
   {label:"Maya credit card", kind:"credit", name:"Maya credit card", mrate:3},
   {label:"SPayLater", kind:"paylater", name:"SPayLater"},
@@ -997,8 +1060,8 @@ function defaults(){
   const maya = a("Maya Savings","savings",{rate:10,cap:100000,over:3,taxed:true},COLORS[0]);
   const mp2 = a("Pag-IBIG MP2","mp2",{rate:7,payout:"compound"},COLORS[1]);
   const biz = a("Business fund (Maya Goal)","savings",{rate:6,cap:100000,over:3,taxed:true},COLORS[2]);
-  const etf = a("GoTrade (VOO)","invest",{platform:"GoTrade"},COLORS[4]);
-  const crypto = a("Coins.ph (BTC)","invest",{platform:"Coins.ph"},COLORS[3]);
+  const etf = a("GoTrade","invest",{platform:"GoTrade"},COLORS[4]);
+  const crypto = a("Coins.ph","invest",{platform:"Coins.ph"},COLORS[3]);
   const cash = a("Cash","cash",{},COLORS[6]);
   return { v:3, accounts:[maya, mp2, biz, etf, crypto, cash], txns:[],
     plan:[
@@ -1035,10 +1098,12 @@ function migrate(s){
   }
   if (!s.name) s.name = "Piolo";
   if (!s.holdings) s.holdings = []; if (!s.trades) s.trades = [];
+  s.accounts.forEach(a => { if (a.name==="GoTrade (VOO)") a.name = "GoTrade"; if (a.name==="Coins.ph (BTC)") a.name = "Coins.ph"; });
   s.prefs = Object.assign({theme:"system", accent:"green", size:"default", hide:false, quips:true, handle:true, startTab:"home", defaultAcct:"", emoji:"👛"}, s.prefs||{});
   if (s.dashboard && !s.dashboard.some(d=>d.id==="bigbuys")){ const i = s.dashboard.findIndex(d=>d.id==="recent"); const on = i>=0 ? s.dashboard[i].on : true; if (i>=0) s.dashboard[i] = {id:"bigbuys", on}; else s.dashboard.push({id:"bigbuys", on}); s.dashboard.push({id:"recent", on:false}); }
   if (!s.dashboard) s.dashboard = DEFAULT_DASH.map(id=>({id, on: !DASH_OFF.includes(id)}));
   else {
+    if (!s.dashboard.some(d=>d.id==="weekly")){ const i = s.dashboard.findIndex(d=>d.id==="earning"); s.dashboard.splice(i>=0?i+1:0, 0, {id:"weekly", on:true}); }
     if (!s.dashboard.some(d=>d.id==="invest")){ const i = s.dashboard.findIndex(d=>d.id==="accounts"); s.dashboard.splice(i>=0?i+1:s.dashboard.length, 0, {id:"invest", on:true}); }
     if (!s.dashboard.some(d=>d.id==="budgets")){ const i = s.dashboard.findIndex(d=>d.id==="alerts"); s.dashboard.splice(i>=0?i+1:0, 0, {id:"budgets", on:true}); }
     DASH_TILES.forEach(t => { if (!s.dashboard.some(d=>d.id===t.id)) s.dashboard.push({id:t.id, on:false}); });
@@ -1049,6 +1114,7 @@ function migrate(s){
 /* ---------- dashboard tiles ---------- */
 const DASH_TILES = [
   {id:"earning", name:"Earning today", desc:"Interest your money earns each day, net worth, spending"},
+  {id:"weekly", name:"Last week’s brief", desc:"What changed last week, what to tone down, and tips"},
   {id:"quick", name:"Quick actions", desc:"Expense, income, transfer, update balance"},
   {id:"templates", name:"Templates", desc:"One-tap transactions you use often"},
   {id:"setup", name:"Setup checklist", desc:"Shows until you finish setting up"},
@@ -1070,7 +1136,7 @@ const DASH_TILES = [
   {id:"bigbuys", name:"Big purchases", desc:"Your largest spending in the last 30 days"},
   {id:"recent", name:"Recent records", desc:"Your last 5 transactions"}
 ];
-const DEFAULT_DASH = ["earning","quick","templates","setup","alerts","budgets","spending","pace","balance","accounts","invest","bigbuys","cattrends","structure","cashflow","cashtrend","compare","credit","loans","plan","recent"];
+const DEFAULT_DASH = ["earning","weekly","quick","templates","setup","alerts","budgets","spending","pace","balance","accounts","invest","bigbuys","cattrends","structure","cashflow","cashtrend","compare","credit","loans","plan","recent"];
 const DASH_OFF = ["structure","cashflow","cashtrend","compare","credit","loans","plan","recent"];
 
 /* ---------- storage: saved on the phone first, then synced to your Google Sheet ---------- */
@@ -1319,7 +1385,7 @@ const TILE = {
     const spent = monthExpenses(mk).total;
     return `<div class="hero"><p class="hero-lead">Your money is earning</p><p class="hero-num display">${esc(peso(ti))}<span class="unit">today</span></p>
       <p class="hero-sub">${ti>0?`That’s about <b>${esc(peso(ti*30))}</b> a month, or <b>${esc(peso(ti*365))}</b> a year at today’s balances, after tax.`:"Add your balances and Pitaka works out your interest every day."}</p>
-      <div class="stat-strip"><div class="stat"><div class="k">Net worth</div><div class="v">${esc(pesoShort(net))}</div></div><div class="stat"><div class="k">Interest, this month</div><div class="v gain">${esc(peso(mi))}</div></div><div class="stat"><div class="k">Spent, this month</div><div class="v">${esc(pesoShort(spent))}</div></div></div></div>`;
+      <div class="stat-strip"><div class="stat"><div class="k">Net worth</div><div class="v">${esc(pesoShort(net))}</div></div><div class="stat"><div class="k">Interest, this month</div><div class="v gain">${esc(peso(mi))}</div></div><div class="stat"><div class="k">Spent, this month</div><div class="v">${esc(pesoShort(spent))}</div></div></div>${pulseHtml()}</div>`;
   },
   quick(){ return `<div class="quick" role="group" aria-label="Quick add" style="margin-top:0">
       <button class="qa" data-quick="expense"><span class="ic">${icon("minus")}</span>Expense</button><button class="qa" data-quick="income"><span class="ic">${icon("plus")}</span>Income</button>
@@ -1393,7 +1459,9 @@ function greetHtml(){
   const spentToday = state.txns.filter(t=>t.type==="expense" && t.date===today).reduce((s,t)=>s+Number(t.amount),0);
   const over = state.categories.find(c=>c.type==="expense" && c.limit && (monthExpenses(today.slice(0,7)).by[c.name]||0) > c.limit);
   let quip;
-  if (over && h % 3 === 0) quip = `${over.name} is over its limit. Tough love.`;
+  const tq = trendQuip(h);
+  if (tq) quip = tq;
+  else if (over && h % 3 === 0) quip = `${over.name} is over its limit. Tough love.`;
   else if (part==="evening" && spentToday===0 && state.txns.length) quip = "No spending today. Your pitaka is proud of you.";
   else { const list = QUIPS[part], seed = Number(today.replace(/-/g,"")) + h; quip = list[seed % list.length]; }
   return `<h1>${hello}, <button class="name" data-editname aria-label="Change your name, currently ${esc(state.name)}">${esc(state.name)}</button></h1>${state.prefs.quips?`<p>${esc(quip)}</p>`:""}`;
@@ -1480,7 +1548,7 @@ function txRow(t, withDate){
   const inst = t.inst && t.inst.n>1 ? `<span class="tag">${t.inst.n} mo</span>` : "";
   return `<button class="row" data-tx="${t.id}"><span class="avatar" style="--c:${i.c}">${icon(i.ic)}</span>
     <span class="body"><span class="t" style="display:block">${esc(i.title)}${inst}</span><span class="s" style="display:block">${withDate?esc(fmtDate(t.date))+" · ":""}${esc(t.note||i.sub||"")}</span></span>
-    <span class="end"><span class="amt ${i.cls}">${i.sign}${esc(peso(Math.abs(Number(t.amount))))}</span></span></button>`;
+    <span class="end"><span class="amt ${i.cls}">${i.sign}${esc(peso(Math.abs(Number(t.amount))))}</span></span><span class="chev" aria-hidden="true">${icon("chevron")}</span></button>`;
 }
 function renderAccounts(){
   if (!state.accounts.length){ $("#acct-list").innerHTML = `<div class="empty">No accounts yet.</div>`; return; }
@@ -1505,8 +1573,8 @@ function renderActivity(){
   const days = []; list.forEach(t => { const last = days[days.length-1]; if (last && last.d===t.date) last.items.push(t); else days.push({d:t.date, items:[t]}); });
   $("#act-list").innerHTML = days.map(g => {
     const out = g.items.filter(t=>t.type==="expense").reduce((s,t)=>s+Number(t.amount),0);
-    return `<div class="day-label"><span>${esc(dayHeading(g.d))}</span><span>${out?"Spent "+esc(peso(out)):""}</span></div><div class="list">${g.items.map(t=>txRow(t,false)).join("")}</div>`;
-  }).join("");
+    return `<div class="day-label"><span>${esc(dayHeading(g.d))}</span><span>${out?"Spent "+esc(peso(out)):""}</span></div><div class="list">${g.items.map(t=>`<div class="swipe" data-swipe="${t.id}"><button class="swipe-del" data-swdel="${t.id}" tabindex="-1">${icon("x")}Delete</button>${txRow(t,false)}</div>`).join("")}</div>`;
+  }).join("") + `<p class="note" style="text-align:center">Tap a record to edit it. Swipe left to delete.</p>`;
 }
 $("#f-type").onclick = e => { const b = e.target.closest("[data-ft]"); if (!b) return; fType = b.dataset.ft; $$("#f-type .chip").forEach(c=>c.setAttribute("aria-pressed", String(c===b))); renderActivity(); };
 $("#f-acct").onchange = renderActivity; $("#f-q").oninput = renderActivity;
@@ -1730,7 +1798,7 @@ function openTxn(pre={}){
   if (!state.accounts.length){ go("accounts"); openAcct(null); return; }
   editingTx = pre.editId ? state.txns.find(t=>t.id===pre.editId) : null;
   const t = editingTx;
-  if (t && t.type==="adjust"){ return openBal(t.to, t); }
+  if (t && t.type==="adjust"){ return openAdjEdit(t); }
   const type = t ? t.type : (pre.type || "expense");
   $("#t-title").textContent = t ? "Edit transaction" : "New transaction";
   $("#t-del").hidden = !t;
@@ -2392,8 +2460,28 @@ function trSync(){
   if (trSide==="sell" && !isNew){ const row = calc.res[trAcct]?.holdings?.find(x=>x.h.id===$("#tr-hold").value); if (row) hint = `You hold ${unitsFmt(row.units)} units. ` + hint; }
   $("#tr-hint").textContent = hint;
 }
+const POPULAR = [["VOO","etf"],["QQQM","etf"],["VT","etf"],["VXUS","etf"],["BTC","crypto"],["ETH","crypto"],["SOL","crypto"],["BNB","crypto"],["XRP","crypto"],["XLM","crypto"],["USDT","crypto"]];
+function renderQuick(){
+  const hs = holdingsOf(trAcct), syms = [...new Set([...hs.map(h=>h.symbol), ...POPULAR.map(x=>x[0])])].slice(0,12);
+  const cur = $("#tr-hold").value==="__new" ? $("#tr-sym").value.trim().toUpperCase() : state.holdings.find(h=>h.id===$("#tr-hold").value)?.symbol;
+  $("#tr-quick").innerHTML = syms.map(sy=>`<button type="button" class="chip" data-qsym="${sy}" aria-pressed="${sy===cur}">${sy}</button>`).join("");
+}
+$("#tr-quick").onclick = e => {
+  const b = e.target.closest("[data-qsym]"); if (!b) return;
+  const sym = b.dataset.qsym, have = holdingsOf(trAcct).find(h=>h.symbol===sym);
+  if (have){ $("#tr-hold").value = have.id; $("#tr-price").value = have.price ?? ""; }
+  else {
+    $("#tr-hold").value = "__new"; $("#tr-sym").value = sym;
+    const type = (POPULAR.find(x=>x[0]===sym)||[0,"etf"])[1]; $("#tr-type").value = type;
+    const plat = (acctById(trAcct)?.platform||acctById(trAcct)?.name||"").toLowerCase();
+    $("#tr-cur").value = type==="crypto" && !/gotrade|ibkr|interactive/.test(plat) ? "PHP" : "USD"; $("#tr-price").value = "";
+  }
+  trSync(); $("#tr-units").focus();
+};
+$("#tr-acct").onchange = () => openTrade($("#tr-acct").value, null, trSide);
 function openTrade(acctId, holdId, side){
   trAcct = acctId; trSide = side || "buy";
+  $("#tr-acct").innerHTML = state.accounts.filter(a=>a.kind==="invest").map(a=>`<option value="${a.id}"${a.id===acctId?" selected":""}>${esc(a.name)}</option>`).join("");
   const hs = holdingsOf(acctId);
   $("#tr-hold").innerHTML = hs.map(h=>`<option value="${h.id}">${esc(h.symbol)}</option>`).join("") + `<option value="__new">New holding…</option>`;
   $("#tr-hold").value = holdId || hs[0]?.id || "__new";
@@ -2403,6 +2491,9 @@ function openTrade(acctId, holdId, side){
   const h = hs.find(x=>x.id===$("#tr-hold").value); $("#tr-price").value = h?.price ?? "";
   trSync(); openSheet($("#d-trade"), true); setTimeout(()=>($("#tr-hold").value==="__new" ? $("#tr-sym") : $("#tr-units")).focus(), 60);
 }
+const _trSync = trSync;
+trSync = function(){ _trSync(); renderQuick(); $("#tr-date-label").textContent = trSide==="buy" ? "Date bought" : "Date sold"; $("#tr-another").textContent = "Add another"; };
+$("#tr-sym").addEventListener("input", () => renderQuick());
 $$("#tr-seg button").forEach(b => b.onclick = () => { trSide = b.dataset.side; trSync(); });
 $("#tr-hold").onchange = () => { const h = state.holdings.find(x=>x.id===$("#tr-hold").value); $("#tr-price").value = h?.price ?? ""; trSync(); };
 ["#tr-units","#tr-price","#tr-fee"].forEach(id => $(id).oninput = trSync); $("#tr-cur").onchange = trSync;
@@ -2425,7 +2516,8 @@ $("#trade-form").onsubmit = e => {
   if (trSide==="sell"){ const row = calc.res[trAcct]?.holdings?.find(x=>x.h.id===h.id); if (!row || u > row.units + 1e-12) return err(`You only hold ${unitsFmt(row?.units||0)} units.`); }
   state.trades.push({id:uid(), ts:Date.now(), acct:trAcct, hold:h.id, side:trSide, units:u, price:pr, fx: h.cur==="USD" ? fxNow() : 1, fee, date});
   if (!h.priceDate || date >= h.priceDate){ h.price = pr; h.priceDate = date; }
-  save(); render(); $("#d-trade").close(); if ($("#d-detail").open) openDetail(trAcct);
+  save(); render(); const again = e.submitter?.id==="tr-another"; $("#d-trade").close(); if ($("#d-detail").open) openDetail(trAcct);
+  if (again) setTimeout(() => openTrade(trAcct, h.id, trSide), 60);
   toast(`${trSide==="buy"?"Bought":"Sold"} ${unitsFmt(u)} ${h.symbol}`, () => { restore(before, "Change undone"); if ($("#d-detail").open) openDetail(trAcct); });
 };
 
@@ -2483,6 +2575,157 @@ document.addEventListener("click", e => {
     toast(`${t.side==="buy"?"Buy":"Sale"} deleted`, () => { restore(before, "Restored"); openDetail(t.acct); });
   }
 });
+
+/* ---------- spending insights: week math ---------- */
+P.chevron = '<path d="M9 6l6 6-6 6"/>';
+const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate()+n); return x; };
+const weekStart = d => { const x = new Date(d); x.setHours(0,0,0,0); x.setDate(x.getDate() - ((x.getDay()+6)%7)); return x; };
+function rangeSpend(from, to){
+  const a = ymd(from), b = ymd(to), by = {}; let total = 0, count = 0, big = null;
+  for (const t of state.txns){ if (t.type!=="expense" || t.date<a || t.date>b) continue;
+    const c = t.category||"Other", v = Number(t.amount); by[c] = (by[c]||0)+v; total += v; count++; if (!big || v > Number(big.amount)) big = t; }
+  return {by, total, count, big};
+}
+function usualWeek(beforeStart, weeks=4){
+  // average weekly spend per category over the `weeks` full weeks before `beforeStart`, counting only weeks with any spending
+  const by = {}; let active = 0, total = 0;
+  for (let w=1; w<=weeks; w++){ const s0 = addDays(beforeStart, -7*w), r = rangeSpend(s0, addDays(s0,6)); if (r.count){ active++; total += r.total; for (const k in r.by) by[k] = (by[k]||0)+r.by[k]; } }
+  if (!active) return {by:{}, total:0, weeks:0};
+  for (const k in by) by[k] /= active;
+  return {by, total: total/active, weeks: active};
+}
+
+/* ---------- category personalities: funny lines + tips ---------- */
+const CAT_TALK = [
+  {m:/food|meal|grocer|resto|eat/i, up:["Food spending is up. Maybe a lutong-bahay week?","Your food budget called. It’s hungry too.","Slow down on the food trips, chef."], tips:["Plan 3–4 home-cooked meals for the week and buy only for those.","Bring baon at least twice a week.","Cap delivery apps to once a week, and order with a friend to split the fee."]},
+  {m:/shop|clothes|shopee|lazada|online/i, up:["Shopping is up. Do you really need it, or do you just want the box?","Add to cart is not a personality.","Impulse check: is this a want wearing a need costume?"], tips:["Use a 48-hour rule: leave it in the cart for two days before buying.","Turn off sale notifications from Shopee and Lazada.","Ask: would I buy this at full price? If not, skip the ‘sale’."]},
+  {m:/transport|fare|grab|ride|commute|gas|fuel/i, up:["Lots of rides lately. Your legs miss you.","Transport is up. Can some trips be combined?"], tips:["Group errands into one trip.","Leave 15 minutes earlier so you can take the jeep instead of a Grab.","Check if a weekly fuel budget would help you notice spikes."]},
+  {m:/fun|game|movie|bar|night|party|stream/i, up:["Fun is up. Fun is good. Broke is not.","Your social life is thriving. Your pitaka is nervous."], tips:["Pick one paid outing a week and keep the rest free (walks, potlucks, home movies).","Review subscriptions and cancel the ones you didn’t use last month."]},
+  {m:/coffee|kape|milk ?tea|cafe/i, up:["That’s a lot of kape. Does the barista know your name yet?","Milk tea count is climbing. Your wallet is not boba-proof."], tips:["Make coffee at home on weekdays and treat yourself on Fridays.","Set a weekly café allowance and pay for it with cash."]},
+  {m:/load|data|internet|phone/i, up:["Data spending is up. Is free Wi-Fi an option?"], tips:["Switch to a monthly promo instead of buying load in small amounts.","Download videos and music on Wi-Fi for your commute."]},
+  {m:/bill|electric|water|meralco/i, up:["Bills are up. Is the aircon working overtime?"], tips:["Unplug chargers and appliances on standby.","Set the aircon to 25°C and use a fan with it."]},
+  {m:/fee/i, up:["Fees are up. Those little charges add up."], tips:["Move money with free InstaPay transfers when you can.","Avoid e-wallet cash-in fees by funding from your bank."]},
+  {m:/health|medic|pharma/i, up:["Health costs went up. Take care of yourself."], tips:["Ask for generic medicines, which cost less for the same ingredient.","Check what your PhilHealth or HMO covers before paying cash."]},
+  {m:/family|parent|support/i, up:["You helped family more this week. That’s kind."], tips:["Agree on a fixed monthly amount so support doesn’t surprise your budget."]}
+];
+const GENERIC_TIPS = ["Set a weekly limit for this category and check it midweek.","Pay for it with cash for a week so you feel each peso leave."];
+const talkFor = name => CAT_TALK.find(x => x.m.test(name||"")) || {up:[`${name} is higher than usual. Worth a look.`], tips:GENERIC_TIPS};
+const pick = (arr, seed) => arr[Math.abs(seed) % arr.length];
+
+/* pulse: this week so far vs the same days last week */
+function pulseHtml(){
+  const now = new Date(), ws = weekStart(now), n = (now.getDay()+6)%7;
+  const cur = rangeSpend(ws, now), prev = rangeSpend(addDays(ws,-7), addDays(ws,-7+n));
+  if (!prev.count && !cur.count) return "";
+  const diff = cur.total - prev.total, pct = prev.total ? diff/prev.total : 0;
+  const day = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][(now.getDay()+6)%7];
+  if (!prev.count) return `<div class="pulse flat"><span class="pi">i</span><span>You’ve spent <b>${esc(peso(cur.total,0))}</b> this week so far. Next week Pitaka can compare it with this one.</span></div>`;
+  if (pct <= -0.05) return `<div class="pulse"><span class="pi">✓</span><span><b>Looking great!</b> You’ve spent ${esc(peso(-diff,0))} less than last week by ${day}.</span></div>`;
+  if (pct >= 0.05){
+    const driver = Object.keys(cur.by).map(k=>[k,(cur.by[k]||0)-(prev.by[k]||0)]).sort((a,b)=>b[1]-a[1])[0];
+    return `<div class="pulse warn"><span class="pi">!</span><span><b>Heads up:</b> ${esc(peso(diff,0))} more than last week by ${day}${driver&&driver[1]>0?`, mostly ${esc(driver[0])}`:""}.</span></div>`;
+  }
+  return `<div class="pulse flat"><span class="pi">=</span><span><b>Steady.</b> About the same as last week by ${day}.</span></div>`;
+}
+
+/* greeting line that reacts to spending trends */
+function trendQuip(h){
+  const now = new Date(), ws = weekStart(now), cur = rangeSpend(ws, now), usual = usualWeek(ws);
+  if (!usual.weeks) return null;
+  const hot = Object.keys(cur.by).map(k => ({k, v:cur.by[k], u:usual.by[k]||0})).filter(x => x.v >= 300 && x.v > (x.u||0)*1.0 && x.v > x.u + 200).sort((a,b)=> (b.v-b.u) - (a.v-a.u))[0];
+  const seed = Number(todayStr().replace(/-/g,"")) + h;
+  if (hot && h % 2 === 0) return pick(talkFor(hot.k).up, seed);
+  const n = (now.getDay()+6)%7, prev = rangeSpend(addDays(ws,-7), addDays(ws,-7+n));
+  if (prev.total && cur.total < prev.total*0.8 && h % 2 === 1) return pick(["Spending is down this week. Your pitaka is smiling.","Less spent than last week. Keep that energy.","Your future self just sent a thank-you note."], seed);
+  return null;
+}
+
+/* ---------- weekly brief tile ---------- */
+TILE.weekly = function(){
+  const ws = weekStart(new Date()), ls = addDays(ws,-7), le = addDays(ws,-1);
+  const last = rangeSpend(ls, le), before = rangeSpend(addDays(ls,-7), addDays(ls,-1)), usual = usualWeek(ls);
+  const label = `${fmtDate(ymd(ls))}–${fmtDate(ymd(le))}`;
+  if (!last.count) return tileH("Last week’s brief") + `<div class="empty">No spending recorded for ${esc(label)}. Your brief shows up every Monday once you log a week.</div>`;
+  const chg = before.total ? (last.total-before.total)/before.total : null;
+  const line = chg==null ? `${last.count} expense${last.count>1?"s":""} recorded.` :
+    chg <= -0.05 ? `<span class="pos">▼ ${Math.abs(chg*100).toFixed(0)}%</span> vs the week before (${esc(peso(before.total,0))}). Nice work.` :
+    chg >= 0.05 ? `<span class="neg">▲ ${(chg*100).toFixed(0)}%</span> vs the week before (${esc(peso(before.total,0))}).` : `About the same as the week before.`;
+  const base = usual.weeks ? usual.by : before.by;
+  const rows = Object.keys(last.by).map(k => ({k, v:last.by[k], u:base[k]||0, d:last.by[k]-(base[k]||0)}));
+  const tone = rows.filter(r => r.d > 150 && r.v > r.u*1.15).sort((a,b)=>b.d-a.d).slice(0,2);
+  const good = Object.keys(base).map(k => ({k, v:last.by[k]||0, u:base[k], d:(last.by[k]||0)-base[k]})).filter(r => r.u >= 200 && r.d < -100).sort((a,b)=>a.d-b.d).slice(0,2);
+  const seed = Number(ymd(ls).replace(/-/g,""));
+  const toneHtml = tone.length ? tone.map((r,i) => { const talk = talkFor(r.k);
+      return `<div class="brief-item">${catAvatar(r.k)}<div class="body"><div class="t">${esc(r.k)}: ${esc(peso(r.v,0))} <span class="neg" style="font-weight:600">(+${esc(peso(r.d,0))})</span></div><div class="quip">“${esc(pick(talk.up, seed+i))}”</div><ul>${talk.tips.slice(0,2).map(tp=>`<li>${esc(tp)}</li>`).join("")}</ul></div></div>`; }).join("")
+    : `<p class="hint" style="margin:0">Nothing jumped out. No category went much above your usual week.</p>`;
+  const goodHtml = good.length ? `<div class="brief-sec"><h3>Doing well</h3>${good.map(r=>`<div class="brief-item">${catAvatar(r.k)}<div class="body"><div class="t">${esc(r.k)}</div><div class="hint" style="margin:0">${esc(peso(-r.d,0))} less than your usual week</div></div></div>`).join("")}</div>` : "";
+  const big = last.big ? `<div class="brief-sec"><h3>Biggest expense</h3><div class="brief-item">${catAvatar(last.big.category)}<div class="body"><div class="t">${esc(last.big.note||last.big.category||"Expense")}</div><div class="hint" style="margin:0">${esc(fmtDate(last.big.date))} · ${esc(peso(last.big.amount))}</div></div></div></div>` : "";
+  return tileH("Last week’s brief") + `<div class="brief"><div class="brief-top"><div class="k">You spent, ${esc(label)}</div><div class="v">${esc(peso(last.total,0))}</div><div class="line">${line}</div></div>
+    <div class="brief-sec"><h3>Tone down</h3>${toneHtml}</div>${goodHtml}${big}</div>
+    ${usual.weeks<2?`<p class="note">Comparisons get sharper after a few weeks of records.</p>`:""}`;
+};
+
+/* ---------- activity: swipe left to delete, undo ---------- */
+function deleteTx(id){
+  const t = state.txns.find(x=>x.id===id); if (!t) return;
+  const before = snapshot();
+  state.txns = state.txns.filter(x=>x.id!==t.id && x.id!==t.inst?.feeTxn);
+  if (t.feeOf){ const p = state.txns.find(x=>x.id===t.feeOf); if (p?.inst){ p.inst.feeAmt = 0; p.inst.feeTxn = null; } }
+  save(); render();
+  toast("Record deleted", () => restore(before, "Record restored"));
+}
+(function swipeRows(){
+  const list = $("#act-list"); let sw = null, suppress = 0;
+  const closeAll = except => $$("#act-list .swipe.open").forEach(x => { if (x!==except) x.classList.remove("open"); });
+  list.addEventListener("touchstart", e => {
+    const wrap = e.target.closest(".swipe"); if (!wrap || e.target.closest(".swipe-del")) return;
+    const t = e.touches[0]; sw = {wrap, row: wrap.querySelector(".row"), x0:t.clientX, y0:t.clientY, open: wrap.classList.contains("open"), locked:false, dx:0};
+  }, {passive:true});
+  list.addEventListener("touchmove", e => {
+    if (!sw) return; const t = e.touches[0], dx = t.clientX - sw.x0, dy = t.clientY - sw.y0;
+    if (!sw.locked){ if (Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(dx)) { sw = null; return; } if (Math.abs(dx) > 8){ sw.locked = true; sw.wrap.classList.add("dragging"); closeAll(sw.wrap); } else return; }
+    e.cancelable && e.preventDefault();
+    sw.dx = Math.max(-140, Math.min(0, (sw.open ? -96 : 0) + dx));
+    sw.row.style.transform = `translateX(${sw.dx}px)`;
+  }, {passive:false});
+  list.addEventListener("touchend", () => {
+    if (!sw) return; const s0 = sw; sw = null;
+    s0.wrap.classList.remove("dragging"); s0.row.style.transform = "";
+    if (!s0.locked) return;
+    suppress = Date.now();
+    s0.wrap.classList.toggle("open", s0.dx < -48);
+  });
+  list.addEventListener("click", e => {
+    if (Date.now() - suppress < 350) { e.stopPropagation(); e.preventDefault(); return; }
+    const del = e.target.closest("[data-swdel]");
+    if (del){ e.stopPropagation(); deleteTx(del.dataset.swdel); return; }
+    const open = $("#act-list .swipe.open");
+    if (open){ e.stopPropagation(); e.preventDefault(); closeAll(); }
+  }, true);
+})();
+
+/* ---------- balance updates can be edited or deleted ---------- */
+let adjTx = null, adjDir = 1;
+$$("#ad-seg button").forEach(b => b.onclick = () => { adjDir = Number(b.dataset.dir); $$("#ad-seg button").forEach(x=>x.setAttribute("aria-pressed", String(x===b))); });
+function openAdjEdit(t){
+  adjTx = t; adjDir = Number(t.amount) >= 0 ? 1 : -1;
+  const a = acctById(t.to);
+  $("#ad-title").textContent = t.opening ? "Starting balance" : "Balance update";
+  $("#ad-hint").textContent = `${a?.name||"Account"}. This record adjusts the balance so it matches your app.`;
+  $$("#ad-seg button").forEach(x=>x.setAttribute("aria-pressed", String(Number(x.dataset.dir)===adjDir)));
+  $("#ad-amt").value = Math.abs(Number(t.amount)).toFixed(2); $("#ad-date").value = t.date; $("#ad-note").value = t.note||""; $("#ad-err").textContent = "";
+  openSheet($("#d-adj"));
+}
+$("#adj-form").onsubmit = e => {
+  e.preventDefault();
+  const v = num($("#ad-amt").value), d = $("#ad-date").value || todayStr();
+  if (!(v>0)) { $("#ad-err").textContent = "Enter an amount above ₱0, or delete this record."; return; }
+  if (d > todayStr()) { $("#ad-err").textContent = "Pick today or an earlier date."; return; }
+  const before = snapshot();
+  adjTx.amount = Math.round(v*adjDir*100)/100; adjTx.date = d; adjTx.note = $("#ad-note").value.trim();
+  save(); render(); $("#d-adj").close(); toast("Record updated", () => restore(before, "Change undone"));
+};
+$("#ad-del").onclick = () => { const id = adjTx?.id; $("#d-adj").close(); if (id) deleteTx(id); };
 
 /* ---------- Google Sheet sync settings ---------- */
 function syncSettingsUI(){
