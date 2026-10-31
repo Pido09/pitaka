@@ -14,7 +14,7 @@
 <title>Pitaka — money tracker</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    Pitaka design tokens
@@ -72,12 +72,12 @@
 *,*::before,*::after{box-sizing:inherit}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 html,body{margin:0;background:var(--bg);color:var(--text)}
-body{font:1rem/1.5 "Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+body{font:1rem/1.5 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
 button,input,select{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:8px}
-.display,.money{font-family:"Manrope","Figtree",system-ui,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.display,.money{font-family:"Plus Jakarta Sans","Plus Jakarta Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 [hidden]{display:none!important}
 
@@ -85,7 +85,7 @@ button{cursor:pointer}
 
 /* ---------- app bar ---------- */
 .appbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--s-4)}
-.brand{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.4rem;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.brand{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:1.4rem;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
 .brand-mark{width:26px;height:26px;border-radius:9px;background:var(--brand);display:grid;place-items:center}
 .brand-mark i{width:10px;height:10px;border-radius:50%;background:var(--interest)}
 :root[data-size="large"]{font-size:112.5%}
@@ -105,7 +105,7 @@ button{cursor:pointer}
 .drawer.open{transform:none}
 .drawer-head{display:flex;align-items:center;gap:var(--s-3);padding:0 var(--s-2) var(--s-4);border-bottom:1px solid var(--line)}
 .drawer-avatar{width:52px;height:52px;border-radius:18px;background:var(--brand-soft);display:grid;place-items:center;font-size:1.7rem;flex:none}
-.drawer-head .t{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:-.01em}
+.drawer-head .t{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:-.01em}
 .drawer-head .s{font-size:.82rem;color:var(--text-2)}
 .drawer nav{display:grid;gap:2px;padding:var(--s-3) 0}
 .drawer nav+nav{border-top:1px solid var(--line)}
@@ -124,7 +124,7 @@ button{cursor:pointer}
 /* ---------- settings ---------- */
 .set-group{margin-top:var(--s-6)}
 .set-group:first-of-type{margin-top:0}
-.set-group h4{font-family:"Manrope",sans-serif;font-size:1rem;margin:0 0 var(--s-2)}
+.set-group h4{font-family:"Plus Jakarta Sans",sans-serif;font-size:1rem;margin:0 0 var(--s-2)}
 .set-card{background:var(--bg);border-radius:var(--r-md);padding:var(--s-1) var(--s-4) var(--s-4)}
 .set-row{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);padding:var(--s-3) 0;min-height:52px}
 .set-row+.set-row{border-top:1px solid var(--line)}
@@ -143,10 +143,10 @@ button{cursor:pointer}
 .sync[data-state="ok"]::before{background:var(--brand)}
 .sync[data-state="busy"]::before{background:var(--interest)}
 
-.page-title{font-family:"Manrope",sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-.02em;margin:0 0 var(--s-4)}
+.page-title{font-family:"Plus Jakarta Sans",sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-.02em;margin:0 0 var(--s-4)}
 .section{margin-top:var(--s-8)}
 .section-h{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 var(--s-3)}
-.section-h h2{font-family:"Manrope",sans-serif;font-size:1.1rem;font-weight:700;margin:0;letter-spacing:-.01em}
+.section-h h2{font-family:"Plus Jakarta Sans",sans-serif;font-size:1.1rem;font-weight:700;margin:0;letter-spacing:-.01em}
 .link{background:none;border:0;padding:6px 0;color:var(--brand);font-weight:600;font-size:.9rem}
 
 /* ---------- hero (signature) ---------- */
@@ -160,7 +160,7 @@ button{cursor:pointer}
 .stat{padding:var(--s-3) var(--s-4)}
 .stat+.stat{border-left:1px solid var(--line)}
 .stat .k{font-size:.75rem;color:var(--text-2)}
-.stat .v{font-family:"Manrope",sans-serif;font-weight:700;font-size:1.1rem;font-variant-numeric:tabular-nums}
+.stat .v{font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;font-size:1.1rem;font-variant-numeric:tabular-nums}
 
 /* ---------- quick actions ---------- */
 .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-2);margin-top:var(--s-4)}
@@ -171,7 +171,7 @@ button{cursor:pointer}
 
 /* ---------- setup ---------- */
 .setup{background:var(--surface);border-radius:var(--r-md);padding:var(--s-4);margin-top:var(--s-4)}
-.setup h3{margin:0 0 var(--s-2);font-family:"Manrope",sans-serif;font-size:1.05rem}
+.setup h3{margin:0 0 var(--s-2);font-family:"Plus Jakarta Sans",sans-serif;font-size:1.05rem}
 .steps{list-style:none;margin:0;padding:0;counter-reset:s}
 .steps li{display:flex;gap:var(--s-3);align-items:center;padding:var(--s-2) 0;counter-increment:s}
 .steps li::before{content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;font-weight:700;background:var(--surface-2);color:var(--text-2)}
@@ -196,8 +196,8 @@ button.row:active{background:var(--surface-2)}
 .row .t{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row .s{font-size:.8rem;color:var(--text-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row .end{text-align:right;flex:none}
-.row .amt{font-family:"Manrope",sans-serif;font-weight:700;font-variant-numeric:tabular-nums}
-.row .end .s{font-family:"Figtree",sans-serif}
+.row .amt{font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;font-variant-numeric:tabular-nums}
+.row .end .s{font-family:"Plus Jakarta Sans",sans-serif}
 .avatar{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;background:color-mix(in srgb,var(--c,var(--brand)) 15%,var(--surface));color:var(--c,var(--brand))}
 .avatar svg{width:20px;height:20px}
 .pos{color:var(--pos)} .neg{color:var(--neg)} .gain{color:var(--interest-text)}
@@ -244,7 +244,7 @@ button.row:active{background:var(--surface-2)}
 .kpi:nth-child(even){border-left:1px solid var(--line)}
 .kpi:nth-child(n+3){border-top:1px solid var(--line)}
 .kpi .k{font-size:.8rem;color:var(--text-2)}
-.kpi .v{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.02em;line-height:1.15;font-variant-numeric:tabular-nums}
+.kpi .v{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.02em;line-height:1.15;font-variant-numeric:tabular-nums}
 .kpi .s{font-size:.78rem;color:var(--text-2)}
 .bars6{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--s-2);align-items:end;height:140px;background:var(--surface);border-radius:var(--r-md);padding:var(--s-4) var(--s-3) var(--s-2)}
 .bars6 .col{display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
@@ -261,7 +261,7 @@ button.row:active{background:var(--surface-2)}
 .bar-row .top{display:flex;justify-content:space-between;gap:var(--s-3)}
 .bar-row .t{font-weight:600}
 .bar-row .s{font-size:.8rem;color:var(--text-2)}
-.bar-row .amt{font-family:"Manrope",sans-serif;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar-row .amt{font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
 .tbl-wrap{overflow-x:auto;background:var(--surface);border-radius:var(--r-md)}
 table{border-collapse:collapse;width:100%;font-size:.88rem}
 th,td{padding:10px 12px;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
@@ -281,7 +281,7 @@ td.strong{font-weight:700}
 .fact{padding:var(--s-3)}
 .fact+.fact{border-left:1px solid var(--line)}
 .fact .k{font-size:.75rem;color:var(--text-2)}
-.fact .v{font-family:"Manrope",sans-serif;font-weight:700;font-variant-numeric:tabular-nums}
+.fact .v{font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;font-variant-numeric:tabular-nums}
 .callout{font-size:.85rem;color:var(--text-2);background:var(--surface-2);border-radius:var(--r-sm);padding:var(--s-3);margin:var(--s-3) 0}
 .callout.warn{background:var(--neg-soft);color:var(--text)}
 
@@ -303,7 +303,7 @@ dialog[open]{animation:sheet-in .22s cubic-bezier(.2,.8,.2,1)}
 .sheet{padding:var(--s-2) var(--s-5) calc(var(--s-5) + env(safe-area-inset-bottom,0px))}
 .grabber{width:40px;height:5px;border-radius:9px;background:var(--line);margin:var(--s-2) auto var(--s-3)}
 .sheet-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--s-4)}
-.sheet-h h3{font-family:"Manrope",sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-.02em;margin:0}
+.sheet-h h3{font-family:"Plus Jakarta Sans",sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-.02em;margin:0}
 .x{width:36px;height:36px;border-radius:50%;border:0;background:var(--surface-2);display:grid;place-items:center}
 .x svg{width:18px;height:18px}
 .seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;background:var(--surface-2);border-radius:14px;padding:4px;margin-bottom:var(--s-4)}
@@ -311,8 +311,8 @@ dialog[open]{animation:sheet-in .22s cubic-bezier(.2,.8,.2,1)}
 .seg button[aria-pressed="true"]{background:var(--surface);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .amount-field{display:flex;align-items:baseline;gap:4px;border-bottom:2px solid var(--line);padding-bottom:4px;margin-bottom:var(--s-2)}
 .amount-field:focus-within{border-color:var(--brand)}
-.amount-field span{font-family:"Manrope",sans-serif;font-size:2rem;font-weight:700;color:var(--text-2)}
-.amount-field input{border:0;background:none;padding:0;font-family:"Manrope",sans-serif;font-size:2.6rem;font-weight:800;letter-spacing:-.02em;width:100%;font-variant-numeric:tabular-nums}
+.amount-field span{font-family:"Plus Jakarta Sans",sans-serif;font-size:2rem;font-weight:700;color:var(--text-2)}
+.amount-field input{border:0;background:none;padding:0;font-family:"Plus Jakarta Sans",sans-serif;font-size:2.6rem;font-weight:800;letter-spacing:-.02em;width:100%;font-variant-numeric:tabular-nums}
 .amount-field input:focus{outline:none}
 label{display:block;font-size:.8rem;font-weight:600;color:var(--text-2);margin:var(--s-4) 0 6px}
 input,select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);min-height:46px}
@@ -361,7 +361,7 @@ input:focus,select:focus{outline:2px solid var(--focus);outline-offset:0;border-
 .brief{background:var(--surface);border-radius:var(--r-md);overflow:hidden}
 .brief-top{padding:var(--s-4);background:linear-gradient(135deg,var(--brand-soft),transparent 70%)}
 .brief-top .k{font-size:.8rem;color:var(--text-2)}
-.brief-top .v{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.7rem;letter-spacing:-.02em;line-height:1.1}
+.brief-top .v{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:1.7rem;letter-spacing:-.02em;line-height:1.1}
 .brief-top .line{font-size:.9rem;margin-top:4px}
 .brief-sec{padding:var(--s-3) var(--s-4) var(--s-4);border-top:1px solid var(--line)}
 .brief-sec h3{margin:0 0 var(--s-2);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-2);font-weight:700}
@@ -392,7 +392,7 @@ input:focus,select:focus{outline:2px solid var(--focus);outline-offset:0;border-
 /* ---------- plan cards ---------- */
 .plan-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;background:var(--surface);border-radius:var(--r-md);padding:var(--s-4);box-shadow:var(--shadow-card)}
 .plan-head .k{font-size:.8rem;color:var(--text-2)}
-.plan-head .v{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:-.02em;line-height:1.1}
+.plan-head .v{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:-.02em;line-height:1.1}
 .plan-head .s{font-size:.8rem;color:var(--text-2)}
 .ring{width:56px;height:56px;flex:none}
 .pl-item{display:flex;align-items:center;gap:var(--s-3);padding:var(--s-3) var(--s-4)}
@@ -402,7 +402,7 @@ input:focus,select:focus{outline:2px solid var(--focus);outline-offset:0;border-
 .pl-item .s{font-size:.8rem;color:var(--text-2)}
 .pl-item .bar{margin-top:6px}
 .pl-item .end{text-align:right;flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-.pl-item .amt{font-family:"Manrope",sans-serif;font-weight:700;font-variant-numeric:tabular-nums}
+.pl-item .amt{font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;font-variant-numeric:tabular-nums}
 .btn.sm{min-height:32px;padding:6px 12px;font-size:.8rem}
 .done-badge{display:inline-flex;align-items:center;gap:4px;font-size:.78rem;font-weight:700;color:var(--pos)}
 .done-badge svg{width:14px;height:14px}
@@ -423,7 +423,7 @@ input:focus,select:focus{outline:2px solid var(--focus);outline-offset:0;border-
 .goal .bar{height:8px;margin-top:8px}
 .hz{display:flex;gap:6px;margin-bottom:var(--s-3)}
 .proj-chart{background:var(--surface);border-radius:var(--r-md);padding:var(--s-4);box-shadow:var(--shadow-card);margin-bottom:var(--s-3)}
-.proj-big{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.8rem;letter-spacing:-.02em}
+.proj-big{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:1.8rem;letter-spacing:-.02em}
 .ret-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
 .ret-row+.ret-row{border-top:1px solid var(--line)}
 .ret-row input{width:90px;text-align:right}
@@ -445,7 +445,7 @@ input:focus,select:focus{outline:2px solid var(--focus);outline-offset:0;border-
 .cr-head{background:var(--surface-2);border-radius:var(--r-md);padding:var(--s-4);margin:var(--s-4) 0}
 .cr-head .row2{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
 .cr-head .k{font-size:.78rem;color:var(--text-2)}
-.cr-head .v{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.02em}
+.cr-head .v{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.02em}
 .sched{display:grid;gap:0}
 .sched-row{display:flex;justify-content:space-between;align-items:center;padding:10px var(--s-4);font-size:.9rem}
 .sched-row+.sched-row{border-top:1px solid var(--line)}
@@ -567,11 +567,11 @@ dialog.snap{transition:transform var(--d-med) var(--ease-out)}
 .dr-top{display:flex;align-items:center;justify-content:space-between}
 .dr-hero .drawer-avatar{width:54px;height:54px;border-radius:18px;border:0;cursor:pointer;font-size:1.7rem;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
 .dr-greet{font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:99px;background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
-.dr-hero .t{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.55rem;letter-spacing:-.02em;margin-top:14px;text-shadow:0 1px 12px rgba(0,0,0,.25)}
+.dr-hero .t{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:1.55rem;letter-spacing:-.02em;margin-top:14px;text-shadow:0 1px 12px rgba(0,0,0,.25)}
 .dr-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
 .dr-stats>div{background:rgba(255,255,255,.12);border-radius:12px;padding:8px 10px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);min-width:0}
 .dr-stats .k{display:block;font-size:.66rem;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dr-stats .v{display:block;font-family:"Manrope",sans-serif;font-weight:700;font-size:.95rem;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dr-stats .v{display:block;font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;font-size:.95rem;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .drawer nav{position:relative;padding:6px 10px;border-top:0!important}
 .d-label{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-2);padding:14px 22px 4px}
 .d-item{position:relative;z-index:1;gap:12px;padding:8px 12px;min-height:48px;border-radius:14px}
@@ -608,8 +608,8 @@ dialog.snap{transition:transform var(--d-med) var(--ease-out)}
 .sub-sum>div{padding:var(--s-4)}
 .sub-sum>div+div{border-left:1px solid var(--line)}
 .sub-sum .k{font-size:.8rem;color:var(--text-2)}
-.sub-sum .v{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.02em}
-.sub-logo{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none;font-family:"Manrope",sans-serif;font-weight:800;font-size:1rem;color:#fff;background:var(--c,#6B7280);letter-spacing:-.02em}
+.sub-sum .v{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.02em}
+.sub-logo{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none;font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:1rem;color:#fff;background:var(--c,#6B7280);letter-spacing:-.02em}
 .sub-chips{display:flex;flex-wrap:wrap;gap:6px}
 .sub-chips .chip{display:inline-flex;align-items:center;gap:6px}
 .sub-chips .dot{width:10px;height:10px;border-radius:50%;background:var(--c)}
@@ -617,7 +617,7 @@ dialog.snap{transition:transform var(--d-med) var(--ease-out)}
 .sub-next::-webkit-scrollbar{display:none}
 .sub-card{flex:none;width:132px;background:var(--surface);border-radius:16px;padding:12px;box-shadow:var(--shadow-card);border:0;text-align:left}
 .sub-card .n{font-weight:700;font-size:.9rem;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sub-card .a{font-family:"Manrope",sans-serif;font-weight:700}
+.sub-card .a{font-family:"Plus Jakarta Sans",sans-serif;font-weight:700}
 .sub-card .d{font-size:.75rem;color:var(--text-2)}
 /* ---------- dashboard polish ---------- */
 .tile{margin-top:24px}
@@ -631,7 +631,7 @@ dialog.snap{transition:transform var(--d-med) var(--ease-out)}
 #splash.hide{opacity:0;pointer-events:none}
 .sp-in{display:flex;flex-direction:column;align-items:center;gap:12px;animation:sp-pop .5s cubic-bezier(.2,.8,.2,1)}
 .sp-logo{width:88px;height:88px;filter:drop-shadow(0 10px 24px rgba(11,93,69,.25))}
-.sp-name{font-family:"Manrope",sans-serif;font-weight:800;font-size:2rem;letter-spacing:-.03em;color:var(--text);line-height:1}
+.sp-name{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:2rem;letter-spacing:-.03em;color:var(--text);line-height:1}
 .sp-by{font-size:.85rem;color:var(--text-2);letter-spacing:.02em}
 .sp-by b{color:var(--text);font-weight:700}
 @keyframes sp-pop{from{transform:scale(.92);opacity:0}to{transform:none;opacity:1}}
@@ -639,7 +639,7 @@ dialog.snap{transition:transform var(--d-med) var(--ease-out)}
 .credit b{color:var(--text)}
 /* ---------- greeting ---------- */
 .greet{margin:0 0 var(--s-5)}
-.greet h1{font-family:"Manrope",sans-serif;font-size:1.75rem;font-weight:800;letter-spacing:-.025em;line-height:1.15;margin:0}
+.greet h1{font-family:"Plus Jakarta Sans",sans-serif;font-size:1.75rem;font-weight:800;letter-spacing:-.025em;line-height:1.15;margin:0}
 .greet .name{background:none;border:0;padding:0;font:inherit;color:var(--brand);text-decoration:underline dotted 2px;text-underline-offset:5px;cursor:pointer}
 .greet p{margin:4px 0 0;color:var(--text-2);font-size:.95rem}
 /* ---------- dashboard tiles ---------- */
@@ -692,7 +692,7 @@ dialog.snap{transition:transform var(--d-med) var(--ease-out)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 /* =====================================================================
    Professional refinement: quieter color, hairline borders, tighter
-   radii, one display face (Manrope) for numbers and titles.
+   radii, one display face (Plus Jakarta Sans) for numbers and titles.
    ===================================================================== */
 :root{--r-md:14px;--r-lg:20px;--shadow-card:0 1px 2px rgba(16,32,26,.04);--hair:1px solid var(--line)}
 body{letter-spacing:-.003em}
@@ -701,20 +701,20 @@ body{letter-spacing:-.003em}
 .list,.kpis,.stat-strip,.chart-card,.gauge-card,.donut-wrap,.empty,.setup,.bars6,.tbl-wrap,.brief,.plan-head,.proj-chart,.sub-sum,.sub-card,.tpl:not(.add){border:var(--hair);box-shadow:var(--shadow-card)}
 .qa .ic{border:var(--hair);box-shadow:none}
 /* headings */
-.greet h1{font-family:"Manrope",sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-.025em}
+.greet h1{font-family:"Plus Jakarta Sans",sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:-.025em}
 .greet p{font-size:.9rem}
-.section-h h2,.page-title,.sheet-h h3{font-family:"Manrope",sans-serif;letter-spacing:-.015em}
+.section-h h2,.page-title,.sheet-h h3{font-family:"Plus Jakarta Sans",sans-serif;letter-spacing:-.015em}
 .section-h h2{font-size:1rem;font-weight:700}
 .page-title{font-size:1.5rem}
 /* hero: neutral figure, accent used only for meaning */
 .hero-lead{font-size:.85rem;font-weight:600;color:var(--text-2)}
-.hero-num{font-family:"Manrope",sans-serif!important;font-weight:800;letter-spacing:-.04em;color:var(--text);font-size:clamp(2.8rem,13vw,3.9rem)}
+.hero-num{font-family:"Plus Jakarta Sans",sans-serif!important;font-weight:800;letter-spacing:-.04em;color:var(--text);font-size:clamp(2.8rem,13vw,3.9rem)}
 .hero-num .unit{font-size:.3em;font-weight:600;color:var(--text-2);margin-left:.25em}
 .hero-sub{font-size:.88rem}
 .stat-strip{background:var(--surface)}
 .stat{background:none;border:0;text-align:left;font:inherit;color:inherit;padding:12px 14px;cursor:pointer}
 .stat .k{font-size:.72rem;font-weight:600;letter-spacing:.01em}
-.stat .v{font-family:"Manrope",sans-serif;font-size:1.05rem;font-weight:800;letter-spacing:-.02em}
+.stat .v{font-family:"Plus Jakarta Sans",sans-serif;font-size:1.05rem;font-weight:800;letter-spacing:-.02em}
 .stat:active{background:var(--surface-2)}
 .stat .v.gain{color:var(--interest-text)}
 /* pulse: neutral card, colored marker */
@@ -722,7 +722,7 @@ body{letter-spacing:-.003em}
 .pulse.warn,.pulse.flat{background:var(--surface)}
 .pulse .pi{width:20px;height:20px;font-size:.72rem}
 /* numbers everywhere use the display face, tabular */
-.amt,.kpi .v,.v,.detail-bal,.proj-big,.sub-sum .v,.plan-head .v,.brief-top .v{font-family:"Manrope",sans-serif!important;font-variant-numeric:tabular-nums}
+.amt,.kpi .v,.v,.detail-bal,.proj-big,.sub-sum .v,.plan-head .v,.brief-top .v{font-family:"Plus Jakarta Sans",sans-serif!important;font-variant-numeric:tabular-nums}
 .kpi .v{font-weight:800;font-size:1.35rem}
 .detail-bal{font-weight:800;letter-spacing:-.035em}
 /* buttons: squarer, calmer */
@@ -752,7 +752,7 @@ input,select{border-radius:10px}
 .calc-btn[aria-expanded="true"]{background:var(--brand);color:var(--on-brand);border-color:var(--brand)}
 .calc-result{min-height:1.2em;font-size:.85rem;color:var(--text-2);font-weight:600;margin:2px 0 4px}
 .calc-pad{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:6px 0 4px;padding:8px;background:var(--surface-2);border-radius:14px}
-.calc-pad button{height:46px;border:0;border-radius:10px;background:var(--surface);font-family:"Manrope",sans-serif;font-size:1.15rem;font-weight:700;color:var(--text);box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.calc-pad button{height:46px;border:0;border-radius:10px;background:var(--surface);font-family:"Plus Jakarta Sans",sans-serif;font-size:1.15rem;font-weight:700;color:var(--text);box-shadow:0 1px 0 rgba(0,0,0,.05)}
 .calc-pad button.op{background:color-mix(in srgb,var(--brand) 12%,var(--surface));color:var(--brand)}
 .calc-pad button.eq{background:var(--brand);color:var(--on-brand)}
 .calc-pad button.fn{color:var(--text-2);font-size:.95rem}
@@ -760,7 +760,7 @@ input,select{border-radius:10px}
 /* plan item sheet */
 .pp-status{background:var(--surface-2);border-radius:var(--r-md);padding:12px 14px}
 .pp-status .row2{display:flex;justify-content:space-between;font-size:.85rem;color:var(--text-2)}
-.pp-status .big{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.3rem;color:var(--text)}
+.pp-status .big{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:1.3rem;color:var(--text)}
 .pp-to{display:flex;align-items:center;gap:10px;padding:10px 12px;border:var(--hair);border-radius:10px;font-weight:600}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .list,:root:not([data-theme="light"]) .kpis,:root:not([data-theme="light"]) .stat-strip,:root:not([data-theme="light"]) .chart-card,:root:not([data-theme="light"]) .empty,:root:not([data-theme="light"]) .brief,:root:not([data-theme="light"]) .gauge-card{box-shadow:none}}
 
@@ -886,7 +886,7 @@ button.plan-head{width:100%;text-align:left;font:inherit;color:inherit;cursor:po
 /* ---------- pay a debt now or little by little ---------- */
 .pc-status{background:var(--surface-2);border-radius:var(--r-md);padding:12px 14px;margin-bottom:var(--s-4)}
 .pc-status .row2{display:flex;justify-content:space-between;gap:12px;font-size:.82rem;color:var(--text-2)}
-.pc-status .big{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.35rem;color:var(--text);font-variant-numeric:tabular-nums}
+.pc-status .big{font-family:"Plus Jakarta Sans",sans-serif;font-weight:800;font-size:1.35rem;color:var(--text);font-variant-numeric:tabular-nums}
 .pc-status .bar{height:8px;margin-top:8px}
 .pc-status .foot{font-size:.8rem;color:var(--text-2);margin-top:6px}
 .pc-preview{margin-top:var(--s-4);background:var(--surface);border:var(--hair);border-radius:var(--r-md);overflow:hidden}
@@ -914,6 +914,120 @@ button.plan-head{width:100%;text-align:left;font:inherit;color:inherit;cursor:po
 .hero .hero-switch::before{content:"";position:absolute;inset:-6px}   /* bigger tap area */
 .hero .hero-lead{padding-right:110px}
 @media (prefers-reduced-motion:reduce){.hero .hero-switch:hover svg{transform:none}}
+/* =====================================================================
+   Friendly, yet professional.
+   Professional: one typeface, a strict type scale, solid buttons, calm
+   neutrals, aligned numbers. Friendly: rounder corners, soft tinted
+   icons, pill tabs, warm empty states with a small illustration.
+   ===================================================================== */
+:root{
+  /* neutrals with a hint of green so the palette feels like one family */
+  --g-50:#F5F8F6; --g-100:#ECF1EE; --g-200:#E0E8E3; --g-500:#5A6A64; --g-900:#0F1D18;
+  --bg:var(--g-50); --surface:#FFFFFF; --surface-2:var(--g-100); --line:var(--g-200); --text:var(--g-900); --text-2:var(--g-500);
+  /* type scale (1.2 ratio) */
+  --fs-xs:.75rem; --fs-sm:.8125rem; --fs-md:.9375rem; --fs-lg:1.0625rem; --fs-xl:1.375rem; --fs-2xl:1.75rem;
+  --r-sm:10px; --r-md:16px; --r-lg:22px;
+  --hair:1px solid var(--line);
+  --sh-1:0 1px 2px rgba(15,29,24,.05),0 1px 3px rgba(15,29,24,.04);
+  --sh-2:0 2px 4px rgba(15,29,24,.04),0 10px 24px -8px rgba(15,29,24,.14);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0D1612;--surface:#15211C;--surface-2:#1C2A24;--line:#26362F;--text:#E7F0EB;--text-2:#9DB0A7}}
+:root[data-theme="dark"]{--bg:#0D1612;--surface:#15211C;--surface-2:#1C2A24;--line:#26362F;--text:#E7F0EB;--text-2:#9DB0A7}
+
+body{font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:var(--fs-md);letter-spacing:-.005em;font-feature-settings:"tnum" 1,"cv11" 1}
+.amt,.v,.kpi .v,.stat .v,.detail-bal,.hero-num,.proj-big,.plan-head .v,.sub-sum .v,.pc-status .big{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+
+/* ---- type hierarchy ---- */
+.greet h1{font-size:var(--fs-xl);font-weight:700;letter-spacing:-.02em}
+.greet p{font-size:var(--fs-sm);margin-top:2px}
+.page-title{font-size:var(--fs-2xl);font-weight:800;letter-spacing:-.025em}
+.section-h h2{font-size:var(--fs-md);font-weight:700;letter-spacing:-.01em}
+.sheet-h h3{font-size:var(--fs-xl);font-weight:700;letter-spacing:-.02em}
+.row .t,.bar-row .t,.pl-main .t,.due-item .t{font-size:var(--fs-md);font-weight:600}
+.row .s,.bar-row .s,.pl-main .s,.due-item .s,.hint,.note{font-size:var(--fs-sm)}
+.kpi .k,.stat .k,.fact .k,.hero-lead{font-size:var(--fs-xs);font-weight:600;letter-spacing:.01em;text-transform:none}
+.kpi .v{font-size:var(--fs-xl);font-weight:700;letter-spacing:-.02em}
+.hero-num{font-weight:800;letter-spacing:-.035em}
+.detail-bal{font-weight:800}
+label{font-size:var(--fs-xs);font-weight:600;letter-spacing:.01em}
+.group-label,.day-label{text-transform:none;letter-spacing:0;font-size:var(--fs-sm);font-weight:700;color:var(--text-2)}
+
+/* ---- surfaces: one card recipe ---- */
+.list,.kpis,.stat-strip,.chart-card,.gauge-card,.donut-wrap,.setup,.bars6,.tbl-wrap,.brief,.plan-head,.proj-chart,.sub-sum,.sub-card,.tpl:not(.add),.alert,.parts-card{border:var(--hair);border-radius:var(--r-md);box-shadow:var(--sh-1)}
+.tile[data-tile="earning"] .hero{border-radius:var(--r-lg);box-shadow:var(--sh-2)}
+.alert{background:var(--surface);border-left:4px solid var(--interest)}
+.alert.late{border-left-color:var(--neg);background:color-mix(in srgb,var(--neg) 6%,var(--surface))}
+.pulse{border-radius:12px}
+
+/* ---- friendly icons: soft round tiles ---- */
+.avatar{border-radius:12px}
+.qa .ic{border-radius:16px;width:52px;height:52px;background:color-mix(in srgb,var(--brand) 8%,var(--surface));color:var(--brand);box-shadow:none;border:1px solid color-mix(in srgb,var(--brand) 14%,transparent)}
+.qa{font-size:var(--fs-sm);font-weight:600}
+
+/* ---- buttons: solid and clear; one primary per screen ---- */
+.btn{min-height:44px;padding:10px 16px;border-radius:12px;font-weight:600;font-size:var(--fs-sm)}
+.btn.primary{background:var(--brand);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.btn.primary:hover{filter:brightness(1.06)}
+.btn:not(.primary):not(.danger){background:var(--surface);border:var(--hair);box-shadow:none}
+.btn.sm{min-height:34px;padding:6px 12px;border-radius:10px;font-size:var(--fs-xs)}
+.link{font-size:var(--fs-sm);font-weight:600}
+/* pill tabs and filters feel friendlier */
+.chip{border-radius:999px;font-size:var(--fs-sm);font-weight:600;padding:8px 14px}
+.seg{border-radius:14px;padding:4px}.seg button{border-radius:10px;font-size:var(--fs-sm);font-weight:600;min-height:38px}
+
+/* ---- inputs: calm, clearly focusable ---- */
+input,select{border-radius:12px;font-size:var(--fs-md);background:var(--surface);border:var(--hair)}
+input:focus,select:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 22%,transparent)}
+.amount-field input{font-weight:800;letter-spacing:-.025em}
+
+/* ---- bottom bar: active tab gets a soft pill ---- */
+.nav button{font-size:var(--fs-xs);font-weight:600;position:relative}
+.nav button[data-go] svg{padding:4px 14px;box-sizing:content-box;border-radius:999px;transition:background-color var(--d-med) var(--ease-out)}
+.nav button[aria-current="page"] svg{background:color-mix(in srgb,var(--brand) 14%,transparent)}
+.nav button[data-go]{gap:2px}
+
+/* ---- empty states: a small illustration and a gentle line ---- */
+.empty{display:flex;flex-direction:column;align-items:center;gap:6px;padding:22px 18px;font-size:var(--fs-sm);line-height:1.5;color:var(--text-2);background:var(--surface)}
+.empty{position:relative}
+.empty::before{content:"";width:48px;height:48px;border-radius:16px;flex:none;margin-bottom:4px;background:color-mix(in srgb,var(--brand) 11%,var(--surface))}
+.empty::after{content:"";position:absolute;top:34px;left:50%;width:24px;height:24px;transform:translateX(-50%);background:var(--brand);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z'/%3E%3C/svg%3E") center/contain no-repeat}
+.empty .btns{margin-top:6px}
+
+/* ---- hero: quieter decoration ---- */
+.tile[data-tile="earning"] .hero::before{opacity:.55}
+.hero-sub{font-size:var(--fs-sm);line-height:1.5}
+
+/* ---- checklist items from the design review ---- */
+button,[role="button"],[data-open],[data-insight],[data-cat-open],label[for]{cursor:pointer}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+@media (hover:hover){button.row:hover,.bar-row[data-open]:hover{background:color-mix(in srgb,var(--surface-2) 55%,var(--surface))}}
+@media (min-width:768px){.wrap{padding-left:24px;padding-right:24px}}
+/* the big amount field stays an underline, not a box */
+.amount-field input,.amount-field input:focus{border:0;background:none;box-shadow:none;border-radius:0;padding:0;min-height:0}
+.amount-field{border-bottom-width:2px}
+.amount-field:focus-within{border-color:var(--brand);box-shadow:0 2px 0 0 color-mix(in srgb,var(--brand) 25%,transparent)}
+/* ---------- soft moving gradient behind everything ---------- */
+.bg-blobs{position:absolute;inset:0;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.85) 40%,transparent 88%);mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.85) 40%,transparent 88%)}
+.bg-blobs i{position:absolute;display:block;width:80vmax;height:80vmax;border-radius:50%;will-change:transform;opacity:.9;
+  animation-timing-function:ease-in-out;animation-iteration-count:infinite;animation-direction:alternate}
+.bg-blobs .b1{top:-42vmax;left:-30vmax;background:radial-gradient(circle,color-mix(in srgb,var(--brand) 26%,transparent) 0%,transparent 62%);animation-name:drift-a;animation-duration:48s}
+.bg-blobs .b2{top:-40vmax;right:-38vmax;background:radial-gradient(circle,color-mix(in srgb,var(--interest) 20%,transparent) 0%,transparent 60%);animation-name:drift-b;animation-duration:60s}
+.bg-blobs .b3{top:2vh;left:-10vmax;width:70vmax;height:70vmax;background:radial-gradient(circle,color-mix(in srgb,#3B82F6 12%,transparent) 0%,transparent 60%);animation-name:drift-c;animation-duration:54s}
+@keyframes drift-a{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(14vmax,6vmax,0) scale(1.12)}100%{transform:translate3d(4vmax,14vmax,0) scale(.95)}}
+@keyframes drift-b{0%{transform:translate3d(0,0,0) scale(1.05)}50%{transform:translate3d(-12vmax,10vmax,0) scale(.92)}100%{transform:translate3d(-4vmax,2vmax,0) scale(1.1)}}
+@keyframes drift-c{0%{transform:translate3d(0,0,0) scale(.9)}50%{transform:translate3d(18vmax,-6vmax,0) scale(1.08)}100%{transform:translate3d(30vmax,4vmax,0) scale(1)}}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bg-blobs i{opacity:.7}}
+:root[data-theme="dark"] .bg-blobs i{opacity:.7}
+/* the old static glow steps aside when the moving one is on */
+.bg-art.has-blobs::before{display:none}
+/* paused in the background, still when switched off, hidden in Calm, still under Reduce motion */
+.bg-art.paused .bg-blobs i,:root[data-bgmotion="off"] .bg-blobs i{animation-play-state:paused}
+:root[data-fx="calm"] .bg-blobs{display:none}
+:root[data-fx="calm"] .bg-art.has-blobs::before{display:none}
+@media (prefers-reduced-motion:reduce){.bg-blobs i{animation:none!important}}
 </style>
 </head>
 <body>
@@ -1332,6 +1446,7 @@ button.plan-head{width:100%;text-align:left;font:inherit;color:inherit;cursor:po
       <div class="set-row" style="display:block"><div class="t" id="st-accent-label" style="margin-bottom:8px">Accent color</div><div class="swatches" id="st-accent" role="group" aria-labelledby="st-accent-label"></div></div>
       <div class="set-row"><div><div class="t">Big number on Home</div><div class="s">What the large figure at the top shows</div></div><select id="st-hero" aria-label="Big number on Home"><option value="interest">Earning today</option><option value="networth">Net worth</option><option value="spent">Spent this month</option><option value="left">Left to spend</option><option value="cash">Cash on hand</option></select></div>
       <div class="set-row"><div><div class="t">Visual effects</div><div class="s">Calm removes the background pattern, glows and moving menu art</div></div><select id="st-fx" aria-label="Visual effects"><option value="full">Full</option><option value="calm">Calm</option></select></div>
+      <div class="set-row"><div><div class="t">Moving background</div><div class="s">A slow, soft gradient behind the app. Pauses when the app is in the background.</div></div><button class="set-switch" role="switch" id="st-bgmotion" aria-checked="true" aria-label="Moving background"><span class="switch"></span></button></div>
       <div class="set-row"><div><div class="t">Text size</div></div><div class="seg compact" role="group" aria-label="Text size" id="st-size"><button type="button" data-v="default">Default</button><button type="button" data-v="large">Large</button></div></div>
     </div></section>
 
@@ -2103,7 +2218,7 @@ function donutSvg(entries, total){
     const [x0,y0]=p(a0,R),[x1,y1]=p(a1-0.0001,R),[x2,y2]=p(a1-0.0001,r),[x3,y3]=p(a0,r);
     const d = `M${x0},${y0} A${R},${R} 0 ${large} 1 ${x1},${y1} L${x2},${y2} A${r},${r} 0 ${large} 0 ${x3},${y3}Z`; a0 = a1;
     return `<path d="${d}" fill="${catColor(name)}" stroke="var(--surface)" stroke-width="1.5"/>`; }).join("");
-  return `<svg class="donut" viewBox="0 0 120 120" role="img" aria-label="Spending by category">${segs}<text x="60" y="57" text-anchor="middle" font-size="9" fill="var(--text-2)" font-family="Figtree">Spent</text><text x="60" y="71" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text)" font-family="Manrope">${esc(pesoShort(total))}</text></svg>`;
+  return `<svg class="donut" viewBox="0 0 120 120" role="img" aria-label="Spending by category">${segs}<text x="60" y="57" text-anchor="middle" font-size="9" fill="var(--text-2)" font-family="Plus Jakarta Sans">Spent</text><text x="60" y="71" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text)" font-family="Plus Jakarta Sans">${esc(pesoShort(total))}</text></svg>`;
 }
 const tileH = (title, action) => `<div class="section-h"><h2>${esc(title)}</h2>${action||""}</div>`;
 const TILE = {
@@ -2434,7 +2549,7 @@ function openDetail(id){
     primary = `<button class="btn primary" data-addto="${a.id}">Add money</button>`;
   } else if (a.kind==="invest"){
     const gain = r.value - r.invested, pct = r.invested>0 ? gain/r.invested*100 : null;
-    facts = `<div class="fact"><div class="k">Put in</div><div class="v">${esc(pesoShort(r.invested))}</div></div><div class="fact"><div class="k">Value</div><div class="v">${esc(pesoShort(r.value))}</div></div><div class="fact"><div class="k">Gain or loss</div><div class="v ${gain>=0?"pos":"neg"}">${gain>=0?"+":""}${esc(pesoShort(gain))}${pct!=null?`<div class="s" style="font-family:Figtree;font-weight:500;font-size:.75rem">${pct.toFixed(1)}%</div>`:""}</div></div>`;
+    facts = `<div class="fact"><div class="k">Put in</div><div class="v">${esc(pesoShort(r.invested))}</div></div><div class="fact"><div class="k">Value</div><div class="v">${esc(pesoShort(r.value))}</div></div><div class="fact"><div class="k">Gain or loss</div><div class="v ${gain>=0?"pos":"neg"}">${gain>=0?"+":""}${esc(pesoShort(gain))}${pct!=null?`<div class="s" style="font-family:Plus Jakarta Sans;font-weight:500;font-size:.75rem">${pct.toFixed(1)}%</div>`:""}</div></div>`;
     callout = "Update prices about once a month. Checking more often tends to lead to buying and selling at the wrong time.";
     primary = `<button class="btn primary" data-trade="${a.id}">Record a buy</button>${r.holdings?`<button class="btn" data-prices="${a.id}">Update prices</button>`:""}`;
     extra = holdingsHtml(a);
@@ -3689,7 +3804,7 @@ function creditExtraHtml(a){
     <div class="bar" style="height:8px;margin-top:10px"><i style="width:${charged>0?Math.min(100,paid/(paid+o||1)*100):0}%"></i></div>
     <div class="hint" style="margin-top:6px">${o>0&&rows.length?`Paid off by ${esc(parseYmd(rows[rows.length-1].d).toLocaleDateString("en-PH",{month:"long",year:"numeric"}))} if you pay each due on time.`:o>0?"Set a due day in Settings to see your schedule.":"All paid. Nice."}</div></div>`;
   const toggle = `<div class="toggle-row"><div><div class="t">Autopay</div><div class="s">${auto?`Pays the full amount due from ${esc(acctById(auto.from)?.name||"your account")} every ${ord(a.dueDay||1)}`:`Pay the amount due automatically on the ${a.dueDay?ord(a.dueDay):"due day"}`}</div></div><button type="button" class="set-switch" role="switch" data-autopay="${a.id}" aria-checked="${!!auto}" aria-label="Autopay"><span class="switch"></span></button></div>`;
-  const sched = rows.length ? `<div class="section" style="margin-top:var(--s-5)"><div class="section-h"><h2>Payment schedule</h2></div><div class="list sched">${rows.slice(0,8).map((x,i)=>`<div class="sched-row"><div><div class="m">${esc(fmtDate(x.d,true))}${i===0?` ${whenChip(x.d)}`:""}</div><div class="left">${x.left>0.5?`${esc(peso(x.left,0))} left after`:"Last payment"}</div></div><div class="amt" style="font-family:'Manrope',Figtree,sans-serif;font-weight:700">${esc(peso(x.amt))}</div></div>`).join("")}${rows.length>8?`<div class="sched-row"><div class="left">and ${rows.length-8} more</div></div>`:""}</div></div>` : "";
+  const sched = rows.length ? `<div class="section" style="margin-top:var(--s-5)"><div class="section-h"><h2>Payment schedule</h2></div><div class="list sched">${rows.slice(0,8).map((x,i)=>`<div class="sched-row"><div><div class="m">${esc(fmtDate(x.d,true))}${i===0?` ${whenChip(x.d)}`:""}</div><div class="left">${x.left>0.5?`${esc(peso(x.left,0))} left after`:"Last payment"}</div></div><div class="amt" style="font-family:'Plus Jakarta Sans',Plus Jakarta Sans,sans-serif;font-weight:700">${esc(peso(x.amt))}</div></div>`).join("")}${rows.length>8?`<div class="sched-row"><div class="left">and ${rows.length-8} more</div></div>`:""}</div></div>` : "";
   return head + toggle + sched;
 }
 function toggleAutopay(acctId){
@@ -3807,7 +3922,7 @@ planHtml = function(mk){
   const rows = planProgress(mk), total = rows.reduce((s,x)=>s+x.p.amount,0), done = rows.reduce((s,x)=>s+Math.min(x.done,x.p.amount),0), inc = avgIncome();
   const pct = total ? done/total : 0, R = 22, C = 2*Math.PI*R;
   const head = `<div class="plan-head"><div><div class="k">Planned each month</div><div class="v">${esc(peso(total,0))}</div><div class="s">${inc>0?(total<=inc?`${esc(peso(inc-total,0))} of your usual ${esc(peso(inc,0))} income is unplanned`:`${esc(peso(total-inc,0))} more than your usual income`):"Record income to compare"}</div></div>
-    <svg class="ring" viewBox="0 0 56 56" role="img" aria-label="${(pct*100).toFixed(0)}% of this month’s plan done"><circle cx="28" cy="28" r="${R}" fill="none" stroke="var(--surface-2)" stroke-width="6"/><circle cx="28" cy="28" r="${R}" fill="none" stroke="var(--brand)" stroke-width="6" stroke-linecap="round" stroke-dasharray="${C*pct} ${C}" transform="rotate(-90 28 28)"/><text x="28" y="32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text)" font-family="Figtree">${(pct*100).toFixed(0)}%</text></svg></div>`;
+    <svg class="ring" viewBox="0 0 56 56" role="img" aria-label="${(pct*100).toFixed(0)}% of this month’s plan done"><circle cx="28" cy="28" r="${R}" fill="none" stroke="var(--surface-2)" stroke-width="6"/><circle cx="28" cy="28" r="${R}" fill="none" stroke="var(--brand)" stroke-width="6" stroke-linecap="round" stroke-dasharray="${C*pct} ${C}" transform="rotate(-90 28 28)"/><text x="28" y="32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text)" font-family="Plus Jakarta Sans">${(pct*100).toFixed(0)}%</text></svg></div>`;
   const items = rows.map(({p,a,done,left}) => { const K = PLAN_KINDS[p.kind]||PLAN_KINDS.other, isDone = done >= p.amount - 0.5;
     return `<div class="pl-item" data-planitem="${p.id}" role="button" tabindex="0" aria-label="${esc(p.label)}, ${esc(pesoShort(done))} of ${esc(pesoShort(p.amount))}"><span class="avatar" style="--c:${K.c}">${icon(K.icon)}</span><div class="body"><div class="t">${esc(p.label)}</div><div class="s"><span class="kind-pill">${esc(K.label)}</span> ${a?`Goes to ${esc(a.name)}`:"Paid as an expense"}</div>
       <div class="bar"><i class="${isDone?"done":""}" style="width:${Math.min(100,done/p.amount*100)}%"></i></div></div>
@@ -4669,7 +4784,7 @@ planHtml = function(mk){
   const rows = planProgress(mk), total = rows.reduce((s,x)=>s+x.p.amount,0), done = rows.reduce((s,x)=>s+Math.min(x.done,x.p.amount),0), inc = avgIncome();
   const pct = total ? done/total : 0, R = 22, C = 2*Math.PI*R, isCur = mk===todayStr().slice(0,7);
   const head = `<button class="plan-head" data-fplan aria-label="Open your financial plan"><div><div class="k">Planned each month</div><div class="v">${esc(peso(total,0))}</div><div class="s">${inc>0?(total<=inc?`${esc(peso(inc-total,0))} of your usual ${esc(peso(inc,0))} income is unplanned`:`${esc(peso(total-inc,0))} more than your usual income`):"Record income to compare"}</div></div>
-    <svg class="ring" viewBox="0 0 56 56" role="img" aria-label="${(pct*100).toFixed(0)}% of this month’s plan done"><circle cx="28" cy="28" r="${R}" fill="none" stroke="var(--surface-2)" stroke-width="6"/><circle cx="28" cy="28" r="${R}" fill="none" stroke="var(--brand)" stroke-width="6" stroke-linecap="round" stroke-dasharray="${C*pct} ${C}" transform="rotate(-90 28 28)"/><text x="28" y="32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text)" font-family="Figtree">${(pct*100).toFixed(0)}%</text></svg></button>`;
+    <svg class="ring" viewBox="0 0 56 56" role="img" aria-label="${(pct*100).toFixed(0)}% of this month’s plan done"><circle cx="28" cy="28" r="${R}" fill="none" stroke="var(--surface-2)" stroke-width="6"/><circle cx="28" cy="28" r="${R}" fill="none" stroke="var(--brand)" stroke-width="6" stroke-linecap="round" stroke-dasharray="${C*pct} ${C}" transform="rotate(-90 28 28)"/><text x="28" y="32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text)" font-family="Plus Jakarta Sans">${(pct*100).toFixed(0)}%</text></svg></button>`;
   const items = rows.map(({p,a,done,left}) => {
     const K = PLAN_KINDS[p.kind]||PLAN_KINDS.other, isDone = done >= p.amount - 0.5, ri = planRecInfo(p);
     let action;
@@ -5116,6 +5231,20 @@ document.addEventListener("click", e => {
     back.onfinish = back.oncancel = () => { heroFlipping = false; };
   };
 }, true);   // capture: runs before the older Switch handler
+/* ---------- soft moving gradient: three slow, blurred light pools ---------- */
+(function movingGradient(){
+  const art = document.querySelector(".bg-art"); if (!art) return;
+  art.insertAdjacentHTML("afterbegin", '<div class="bg-blobs" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>');
+  art.classList.add("has-blobs");
+  // stop the animation while the app isn't visible (saves battery)
+  const vis = () => art.classList.toggle("paused", document.hidden);
+  document.addEventListener("visibilitychange", vis); vis();
+})();
+const _apply777 = applyPrefs;
+applyPrefs = function(){ _apply777(); document.documentElement.dataset.bgmotion = state.prefs.bgMotion === false ? "off" : "on"; };
+const _rs777 = renderSettings;
+renderSettings = function(){ _rs777(); $("#st-bgmotion").setAttribute("aria-checked", String(state.prefs.bgMotion !== false)); };
+$("#st-bgmotion").onclick = () => setPref("bgMotion", state.prefs.bgMotion === false);
 /* ---------- boot ---------- */
 hydrateIcons();
 state = loadLocal(); if (!state) state = defaults(); state = migrate(state); saveLocal();
