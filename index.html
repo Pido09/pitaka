@@ -689,8 +689,6 @@ dialog.snap{transition:transform var(--d-med) var(--ease-out)}
 .tpl-strip{margin:-4px 0 var(--s-4)}
 .tpl-strip .tpl{background:var(--bg);min-height:48px;padding:8px 12px 8px 8px}
 .tpl-strip .tpl .avatar{width:30px;height:30px}
-.update-bar{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom,0px));max-width:576px;margin:0 auto;z-index:41;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:10px 10px 10px 16px;display:flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem}
-.update-bar span{flex:1}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 /* =====================================================================
    Professional refinement: quieter color, hairline borders, tighter
@@ -869,6 +867,53 @@ dialog{box-shadow:var(--sh-3)}
 .group-label{font-size:.78rem;letter-spacing:.04em;text-transform:uppercase}
 .day-label{font-size:.76rem;letter-spacing:.03em;text-transform:uppercase}
 
+/* ---------- patch 17: plan rows without nested controls, plan tab, calm effects ---------- */
+button.plan-head{width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;display:flex}
+.pl-main{display:flex;align-items:center;gap:var(--s-3);flex:1;min-width:0;background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;text-align:left;cursor:pointer;border-radius:10px}
+.pl-main .body{display:block;flex:1;min-width:0}
+.pl-main .t,.pl-main .s,.pl-main .bar{display:block}
+.pl-main .t{font-weight:700}
+.pl-main:focus-visible{outline:2px solid var(--focus);outline-offset:4px}
+#pl-tabs{margin-bottom:var(--s-5)}
+#v-plan .section:first-child{margin-top:0}
+:root[data-fx="calm"] .bg-art::before,:root[data-fx="calm"] .bg-art::after,:root[data-fx="calm"] .tile[data-tile="earning"] .hero::before{display:none}
+:root[data-fx="calm"] .tile[data-tile="earning"] .hero{background:var(--surface)}
+:root[data-fx="calm"] #dr-shader{display:none}
+:root[data-fx="calm"] .edge-handle span{animation:none}
+
+.update-bar{position:fixed;left:12px;right:12px;bottom:calc(96px + env(safe-area-inset-bottom,0px));max-width:576px;margin:0 auto;z-index:41;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:10px 10px 10px 16px;display:flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem}
+.update-bar span{flex:1}
+/* ---------- pay a debt now or little by little ---------- */
+.pc-status{background:var(--surface-2);border-radius:var(--r-md);padding:12px 14px;margin-bottom:var(--s-4)}
+.pc-status .row2{display:flex;justify-content:space-between;gap:12px;font-size:.82rem;color:var(--text-2)}
+.pc-status .big{font-family:"Manrope",sans-serif;font-weight:800;font-size:1.35rem;color:var(--text);font-variant-numeric:tabular-nums}
+.pc-status .bar{height:8px;margin-top:8px}
+.pc-status .foot{font-size:.8rem;color:var(--text-2);margin-top:6px}
+.pc-preview{margin-top:var(--s-4);background:var(--surface);border:var(--hair);border-radius:var(--r-md);overflow:hidden}
+.pc-preview .ph{padding:10px 14px;font-weight:700;border-bottom:var(--hair);display:flex;justify-content:space-between;gap:8px}
+.pc-preview .ph span{font-weight:600;color:var(--text-2);font-size:.85rem}
+.pc-preview .pr{display:flex;justify-content:space-between;padding:8px 14px;font-size:.9rem;font-variant-numeric:tabular-nums}
+.pc-preview .pr+.pr{border-top:1px solid var(--line)}
+.pc-preview .pr .d{color:var(--text-2)}
+.pc-preview .warn{padding:10px 14px;color:var(--neg);font-size:.85rem;font-weight:600}
+.parts-card{margin-top:var(--s-4);border:var(--hair);border-radius:var(--r-md);padding:14px;background:var(--surface);box-shadow:var(--sh-1)}
+.parts-card .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.parts-card .t{font-weight:700}
+.parts-card .s{font-size:.82rem;color:var(--text-2)}
+.parts-dots{display:flex;gap:6px;margin:10px 0 4px;flex-wrap:wrap}
+.parts-dots i{width:22px;height:8px;border-radius:99px;background:var(--surface-2)}
+.parts-dots i.paid{background:var(--brand)}
+.parts-dots i.next{background:var(--interest)}
+/* ---------- hero card: Switch sits top-right and flips the card ---------- */
+.tile[data-tile="earning"] .hero{transform-style:preserve-3d;will-change:transform}
+.tile[data-tile="earning"] .hero > .hero-switch, .hero .hero-switch{position:absolute;top:12px;right:12px;z-index:2;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 12px 6px 10px;margin:0;
+  border-radius:12px;border:1px solid color-mix(in srgb,var(--brand) 30%,transparent);background:color-mix(in srgb,var(--brand) 10%,var(--surface));
+  color:var(--brand);font-size:.8rem;font-weight:700;box-shadow:var(--sh-1);cursor:pointer}
+.hero .hero-switch svg{width:16px;height:16px;transition:transform var(--d-med) var(--ease-out)}
+.hero .hero-switch:hover svg{transform:rotate(180deg)}
+.hero .hero-switch::before{content:"";position:absolute;inset:-6px}   /* bigger tap area */
+.hero .hero-lead{padding-right:110px}
+@media (prefers-reduced-motion:reduce){.hero .hero-switch:hover svg{transform:none}}
 </style>
 </head>
 <body>
@@ -888,7 +933,7 @@ dialog{box-shadow:var(--sh-3)}
   <section id="v-home" aria-label="Home">
     <div class="greet" id="greet"></div>
     <div id="dash"></div>
-    <div class="customize-wrap"><button class="btn" id="dash-edit">Customize dashboard</button></div>
+    <div class="customize-wrap" style="gap:8px;flex-wrap:wrap"><button class="btn" data-go="summary">Monthly summary</button><button class="btn" id="dash-edit">Customize dashboard</button></div>
   </section>
 
   <!-- ACCOUNTS -->
@@ -932,16 +977,22 @@ dialog{box-shadow:var(--sh-3)}
       <div class="tbl-wrap"><table id="proj"></table></div>
       <p class="note">Uses your financial plan: monthly amounts, interest rates, and the returns you expect from investments. Tap Edit plan to change them.</p></div>
   </section>
+  <!-- PLAN -->
+  <section id="v-plan" hidden aria-label="Plan">
+    <h1 class="page-title">Plan</h1>
+    <div class="seg" id="pl-tabs" role="group" aria-label="Plan sections"><button type="button" data-ptab="month" aria-pressed="true">Month</button><button type="button" data-ptab="bills" aria-pressed="false">Bills</button><button type="button" data-ptab="goals" aria-pressed="false">Goals</button></div>
+    <div id="pl-body"></div>
+  </section>
   </main>
 </div>
 
 <nav class="nav" aria-label="Main">
   <div class="nav-in">
     <button data-go="home" aria-current="page"><span data-icon="home" aria-hidden="true"></span>Home</button>
-    <button data-go="accounts"><span data-icon="wallet" aria-hidden="true"></span>Accounts</button>
-    <button class="fab" id="fab" aria-label="Add transaction"><span data-icon="plus" aria-hidden="true"></span></button>
     <button data-go="activity"><span data-icon="list" aria-hidden="true"></span>Activity</button>
-    <button data-go="summary"><span data-icon="chart" aria-hidden="true"></span>Summary</button>
+    <button class="fab" id="fab" aria-label="Add transaction"><span data-icon="plus" aria-hidden="true"></span></button>
+    <button data-go="plan"><span data-icon="target" aria-hidden="true"></span>Plan</button>
+    <button data-go="accounts"><span data-icon="wallet" aria-hidden="true"></span>Accounts</button>
   </div>
 </nav>
 
@@ -964,7 +1015,8 @@ dialog{box-shadow:var(--sh-3)}
     <button class="d-item" data-go="home"><span data-icon="home"></span>Home</button>
     <button class="d-item" data-go="accounts"><span data-icon="wallet"></span>Accounts</button>
     <button class="d-item" data-go="activity"><span data-icon="list"></span>Activity</button>
-    <button class="d-item" data-go="summary"><span data-icon="chart"></span>Summary</button>
+    <button class="d-item" data-go="plan"><span data-icon="target"></span>Plan</button>
+    <button class="d-item" data-go="summary"><span data-icon="chart"></span>Monthly summary</button>
   </nav>
   <nav aria-label="Tools">
     <button class="d-item" data-dr="cats"><span data-icon="tag"></span>Categories</button>
@@ -1005,7 +1057,7 @@ dialog{box-shadow:var(--sh-3)}
       <select id="tr-cur"><option value="USD">US dollars (GoTrade, US stocks)</option><option value="PHP">Pesos (Coins.ph, PSE)</option></select>
     </div>
     <div class="two">
-      <div><label for="tr-units">Units</label><input id="tr-units" inputmode="decimal" placeholder="e.g. 0.0215"></div>
+      <div><label for="tr-units">Units</label><input id="tr-units" inputmode="decimal" data-noformat placeholder="e.g. 0.0215"></div>
       <div><label for="tr-price" id="tr-price-label">Price per unit</label><input id="tr-price" inputmode="decimal" placeholder="0.00"></div>
     </div>
     <div class="two">
@@ -1187,6 +1239,58 @@ dialog{box-shadow:var(--sh-3)}
   </div>
 </dialog>
 
+<!-- Sync conflict -->
+<dialog id="d-conflict" aria-labelledby="cf-title">
+  <div class="sheet">
+    <div class="grabber" aria-hidden="true"></div>
+    <div class="sheet-h"><h3 id="cf-title">Two versions found</h3><button type="button" class="x" data-close aria-label="Close"><span data-icon="x"></span></button></div>
+    <p class="hint" style="margin-top:0">Your data changed on this phone and on another device since the last sync. Pick which one to keep so nothing is overwritten by accident.</p>
+    <div class="list" style="margin-top:var(--s-3)"><div class="row"><span class="body"><span class="t" style="display:block">This phone</span><span class="s" style="display:block;white-space:normal" id="cf-phone"></span></span></div><div class="row"><span class="body"><span class="t" style="display:block">Google Sheet</span><span class="s" style="display:block;white-space:normal" id="cf-sheet"></span></span></div></div>
+    <div class="btns" style="margin-top:var(--s-4)"><button type="button" class="btn" id="cf-backup">Save a backup of this phone first</button></div>
+    <div class="sheet-foot"><button type="button" class="btn" id="cf-use">Use the Sheet’s version</button><button type="button" class="btn primary" id="cf-keep">Keep this phone’s</button></div>
+  </div>
+</dialog>
+<!-- Pay a card, PayLater or loan: all at once or little by little -->
+<dialog id="d-paycard" aria-labelledby="pc-title">
+  <form class="sheet" method="dialog" id="pc-form" novalidate>
+    <div class="grabber" aria-hidden="true"></div>
+    <div class="sheet-h"><h3 id="pc-title">Pay card</h3><button type="button" class="x" data-close aria-label="Close"><span data-icon="x"></span></button></div>
+    <div class="pc-status" id="pc-status"></div>
+    <div class="seg" role="group" aria-label="How to pay" id="pc-mode"><button type="button" data-pcmode="now" aria-pressed="true">Pay now</button><button type="button" data-pcmode="parts" aria-pressed="false">Little by little</button></div>
+
+    <div id="pc-now">
+      <label id="pc-quick-label" style="margin-top:0">How much</label>
+      <div class="chips" id="pc-quick" role="group" aria-labelledby="pc-quick-label" style="flex-wrap:wrap"></div>
+      <div class="amount-field"><span aria-hidden="true">₱</span><input id="pc-amt" inputmode="decimal" autocomplete="off" aria-label="Payment amount"><button type="button" class="calc-btn" data-calc="pc-amt" aria-label="Calculator" aria-expanded="false"></button></div>
+      <div class="calc-result" id="pc-amt-res" aria-live="polite"></div>
+      <div class="calc-pad" id="pc-amt-pad" hidden></div>
+      <div class="two">
+        <div><label for="pc-from">Pay from</label><select id="pc-from"></select></div>
+        <div><label for="pc-date">Date</label><input type="date" id="pc-date"></div>
+      </div>
+      <p class="hint" id="pc-now-hint"></p>
+    </div>
+
+    <div id="pc-parts" hidden>
+      <p class="hint" style="margin-top:0">Split what you owe into smaller payments before the due date. Pitaka reminds you each time, or pays it for you.</p>
+      <label id="pc-cover-label">Cover</label>
+      <div class="chips" id="pc-cover" role="group" aria-labelledby="pc-cover-label"></div>
+      <div class="two">
+        <div><label for="pc-freq">Pay</label><select id="pc-freq"><option value="weekly">Every week</option><option value="semimonthly">Every payday (15th and 30th)</option><option value="monthly">Every month</option></select></div>
+        <div><label for="pc-pfrom">From</label><select id="pc-pfrom"></select></div>
+      </div>
+      <div class="two">
+        <div><label for="pc-start">First payment</label><input type="date" id="pc-start"></div>
+        <div><label for="pc-end">Finish by</label><input type="date" id="pc-end"></div>
+      </div>
+      <div class="pc-preview" id="pc-preview" aria-live="polite"></div>
+      <div class="toggle-row"><div><div class="t">Pay automatically</div><div class="s">Off: Pitaka reminds you and you tap Paid</div></div><button type="button" class="set-switch" role="switch" id="pc-auto" aria-checked="false" aria-label="Pay automatically"><span class="switch"></span></button></div>
+    </div>
+    <div class="err" id="pc-err" role="alert"></div>
+    <div class="sheet-foot"><button type="submit" class="btn primary" id="pc-save">Record payment</button></div>
+  </form>
+</dialog>
+
 <!-- Budgets -->
 <dialog id="d-budgets" aria-labelledby="bg-title">
   <div class="sheet">
@@ -1227,6 +1331,7 @@ dialog{box-shadow:var(--sh-3)}
       <div class="set-row"><div><div class="t">Theme</div></div><div class="seg compact" role="group" aria-label="Theme" id="st-theme"><button type="button" data-v="system">System</button><button type="button" data-v="light">Light</button><button type="button" data-v="dark">Dark</button></div></div>
       <div class="set-row" style="display:block"><div class="t" id="st-accent-label" style="margin-bottom:8px">Accent color</div><div class="swatches" id="st-accent" role="group" aria-labelledby="st-accent-label"></div></div>
       <div class="set-row"><div><div class="t">Big number on Home</div><div class="s">What the large figure at the top shows</div></div><select id="st-hero" aria-label="Big number on Home"><option value="interest">Earning today</option><option value="networth">Net worth</option><option value="spent">Spent this month</option><option value="left">Left to spend</option><option value="cash">Cash on hand</option></select></div>
+      <div class="set-row"><div><div class="t">Visual effects</div><div class="s">Calm removes the background pattern, glows and moving menu art</div></div><select id="st-fx" aria-label="Visual effects"><option value="full">Full</option><option value="calm">Calm</option></select></div>
       <div class="set-row"><div><div class="t">Text size</div></div><div class="seg compact" role="group" aria-label="Text size" id="st-size"><button type="button" data-v="default">Default</button><button type="button" data-v="large">Large</button></div></div>
     </div></section>
 
@@ -1248,7 +1353,6 @@ dialog{box-shadow:var(--sh-3)}
       <div class="btns" style="margin-top:var(--s-3)"><button type="button" class="btn primary" id="sy-connect">Connect</button><button type="button" class="btn" id="sy-now">Sync now</button><button type="button" class="btn danger" id="sy-off">Disconnect</button></div>
       <div class="set-row" style="margin-top:var(--s-2)"><div><div class="t">Update prices daily</div><div class="s">Fetch VOO, crypto and the dollar rate once a day when you open the app</div></div><button class="set-switch" role="switch" id="sy-autoprice" aria-checked="true" aria-label="Update prices daily"><span class="switch"></span></button></div>
     </div></section>
-
     <section class="set-group" aria-labelledby="sg-data"><h4 id="sg-data">Your data</h4><div class="set-card">
       <div class="set-row"><div><div class="t">Back up</div><div class="s">Save everything as a file</div></div><button type="button" class="btn" id="st-export">Save backup</button></div>
       <div class="set-row"><div><div class="t">Restore</div><div class="s">Load a backup file</div></div><label class="btn" style="margin:0;color:var(--text);font-size:.9rem;display:inline-flex;align-items:center;cursor:pointer">Choose file<input type="file" id="st-import" accept="application/json,.json" class="sr"></label></div>
@@ -1671,7 +1775,7 @@ function migrate(s){
   if (!s.name) s.name = "Piolo";
   if (!s.holdings) s.holdings = []; if (!s.trades) s.trades = [];
   s.accounts.forEach(a => { if (a.name==="GoTrade (VOO)") a.name = "GoTrade"; if (a.name==="Coins.ph (BTC)") a.name = "Coins.ph"; });
-  s.prefs = Object.assign({theme:"system", accent:"green", size:"default", hide:false, quips:true, handle:true, startTab:"home", defaultAcct:"", emoji:"👛"}, s.prefs||{});
+  s.prefs = Object.assign({theme:"system", accent:"green", size:"default", hide:false, quips:false, handle:true, startTab:"home", defaultAcct:"", emoji:"👛"}, s.prefs||{});
   if (s.dashboard && !s.dashboard.some(d=>d.id==="bigbuys")){ const i = s.dashboard.findIndex(d=>d.id==="recent"); const on = i>=0 ? s.dashboard[i].on : true; if (i>=0) s.dashboard[i] = {id:"bigbuys", on}; else s.dashboard.push({id:"bigbuys", on}); s.dashboard.push({id:"recent", on:false}); }
   if (!s.dashboard) s.dashboard = DEFAULT_DASH.map(id=>({id, on: !DASH_OFF.includes(id)}));
   else {
@@ -1711,6 +1815,7 @@ const DASH_TILES = [
 const DEFAULT_DASH = ["earning","alerts","weekly","quick","templates","setup","budgets","spending","pace","balance","accounts","invest","bigbuys","cattrends","structure","cashflow","cashtrend","compare","credit","loans","plan","recent"];
 const DASH_OFF = ["structure","cashflow","cashtrend","compare","credit","loans","plan","recent"];
 
+/* ---------- storage ---------- */
 /* ---------- storage: saved on the phone first, then synced to your Google Sheet ---------- */
 let state = null, saveTimer = null;
 const LS_KEY = "pitaka-state-v1", SYNC_KEY = "pitaka-sync";
@@ -1735,14 +1840,26 @@ function sheetView(){
     txns: [...state.txns].sort((a,b)=>b.date.localeCompare(a.date)).map(t => ({date:t.date, type:t.type, amount:t.amount, category:t.category, from:nm(t.from), to:nm(t.to), note:t.note}))
   };
 }
-async function push(){
+/* All sync calls are POST, so your token never appears in a web address. */
+async function api(action, extra, cfg){
+  const c = cfg || sync;
+  const r = await fetch(c.url, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body: JSON.stringify({action, token:c.token, ...(extra||{})})});
+  const j = await r.json();
+  if (!j.ok && j.error==="unknown_action" && action!=="save"){ // older Code.gs: fall back once
+    const q = new URLSearchParams({action, token:c.token}); if (extra?.symbols) q.set("symbols", extra.symbols);
+    return (await fetch(`${c.url}?${q}`)).json();
+  }
+  return j;
+}
+let conflictOpen = false;
+async function push(force){
   if (!syncOn()) return;
   if (!state.updated){ state.updated = Date.now(); saveLocal(); }
   try {
-    const r = await fetch(sync.url, {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"},
-      body: JSON.stringify({action:"save", token:sync.token, updated:state.updated, state, view:sheetView()})});
-    const j = await r.json(); if (!j.ok) throw new Error(j.error);
-    sync.dirty = false; sync.last = Date.now(); saveSync(); setSync("Synced", "ok");
+    const j = await api("save", {updated:state.updated, base:sync.base||0, force:!!force, state, view:sheetView()});
+    if (!j.ok && j.error==="conflict") { showConflict(j.updated); return; }
+    if (!j.ok) throw new Error(j.error);
+    sync.dirty = false; sync.base = state.updated; sync.last = Date.now(); saveSync(); setSync("Synced", "ok");
   } catch(e){ setSync(navigator.onLine ? "Sync failed, saved" : "Offline, saved", ""); }
   if (typeof syncSettingsUI === "function") syncSettingsUI();
 }
@@ -1751,16 +1868,36 @@ async function pull(){
   if (!navigator.onLine) { setSync("Offline, saved", ""); return; }
   setSync("Syncing", "busy");
   try {
-    const r = await fetch(`${sync.url}?action=load&token=${encodeURIComponent(sync.token)}`);
-    const j = await r.json(); if (!j.ok) throw new Error(j.error);
-    if (j.state && j.updated > (state.updated||0) && !sync.dirty){
+    const j = await api("load"); if (!j.ok) throw new Error(j.error);
+    const remoteNewer = j.state && j.updated > (sync.base||0);
+    if (remoteNewer && sync.dirty && sync.base) { showConflict(j.updated); return; }
+    if (remoteNewer && (!sync.dirty || !sync.base) && j.updated >= (state.updated||0)) {
       state = migrate(j.state); saveLocal(); applyPrefs(); render();
-      sync.last = Date.now(); saveSync(); setSync("Synced", "ok");
-    } else if (!j.state || sync.dirty || (state.updated||0) > j.updated) { await push(); return; }
-    else { sync.last = Date.now(); saveSync(); setSync("Synced", "ok"); }
+      sync.base = j.updated; sync.dirty = false; sync.last = Date.now(); saveSync(); setSync("Synced", "ok");
+    } else if (!j.state || sync.dirty || (state.updated||0) > (j.updated||0)) { if (!sync.base) sync.base = j.updated||0; await push(); return; }
+    else { sync.base = j.updated; sync.last = Date.now(); saveSync(); setSync("Synced", "ok"); }
   } catch(e){ setSync(String(e.message)==="bad_token" ? "Wrong token" : "Sync failed, saved", ""); }
   if (typeof syncSettingsUI === "function") syncSettingsUI();
 }
+/* two versions changed since the last sync: ask, never overwrite silently */
+function showConflict(remoteUpdated){
+  if (conflictOpen) return; conflictOpen = true;
+  setTimeout(() => setSync("Needs your choice", ""), 50);
+  const fmt = t => t ? new Date(t).toLocaleString("en-PH",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}) : "unknown";
+  $("#cf-phone").textContent = `Last change ${fmt(state.updated)} · ${state.txns.length} records`;
+  $("#cf-sheet").textContent = `Last change ${fmt(remoteUpdated)}, from another device`;
+  openSheet($("#d-conflict"));
+}
+$("#cf-keep").onclick = async () => { $("#d-conflict").close(); conflictOpen = false; await push(true); toast("This phone’s version was saved to your Sheet"); };
+$("#cf-use").onclick = async () => {
+  try { const j = await api("load"); if (!j.ok || !j.state) throw 0;
+    const before = snapshot(); state = migrate(j.state); saveLocal(); applyPrefs(); render();
+    sync.base = j.updated; sync.dirty = false; saveSync(); setSync("Synced", "ok"); $("#d-conflict").close(); conflictOpen = false;
+    toast("Using your Sheet’s version", () => { restore(before, "This phone’s version is back"); });
+  } catch { toast("Couldn’t reach your Sheet. Try again when online."); }
+};
+$("#cf-backup").onclick = () => $("#st-export").click();
+$("#d-conflict").addEventListener("close", () => { conflictOpen = false; });
 window.addEventListener("online", () => pull());
 window.addEventListener("offline", () => setSync("Offline, saved", ""));
 document.addEventListener("visibilitychange", () => { if (document.visibilityState==="visible") pull(); });
@@ -1770,8 +1907,7 @@ async function fetchPrices(){
   const held = state.holdings.filter(h => (calc?.res[h.acct]?.holdings||[]).some(x=>x.h.id===h.id && x.units>1e-12));
   if (!syncOn() || !held.length) return null;
   const symbols = [...new Set(held.map(h => `${h.symbol}:${h.cur}`))].join(",");
-  const r = await fetch(`${sync.url}?action=prices&token=${encodeURIComponent(sync.token)}&symbols=${encodeURIComponent(symbols)}`);
-  const j = await r.json(); if (!j.ok) throw new Error(j.error);
+  const j = await api("prices", {symbols}); if (!j.ok) throw new Error(j.error);
   return j.prices || {};
 }
 async function autoPrices(){
@@ -1784,6 +1920,23 @@ async function autoPrices(){
     sync.lastPrice = todayStr(); saveSync();
     if (n){ save(); render(); toast(`Prices updated for ${n} holding${n>1?"s":""}`); }
   } catch(e){ /* try again next time */ }
+}
+
+function bootSync(){
+pull().then(() => autoPrices());
+/* ---------- updates: "A new version is ready" with one-tap refresh ---------- */
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener("controllerchange", () => { if (refreshing) return; refreshing = true; location.reload(); });
+  const showUpdate = w => { const bar = $("#update-bar"); bar.hidden = false; $("#update-go").onclick = () => { $("#update-go").textContent = "Updating…"; w.postMessage("SKIP_WAITING"); }; };
+  navigator.serviceWorker.register("sw.js").then(reg => {
+    if (reg.waiting && navigator.serviceWorker.controller) showUpdate(reg.waiting);
+    reg.addEventListener("updatefound", () => { const w = reg.installing; w && w.addEventListener("statechange", () => { if (w.state === "installed" && navigator.serviceWorker.controller) showUpdate(w); }); });
+    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") reg.update().catch(() => {}); });
+    setInterval(() => reg.update().catch(() => {}), 60*60*1000);
+  }).catch(() => {});
+  $("#update-later").onclick = () => { $("#update-bar").hidden = true; };
+}
 }
 
 /* ---------- interest engine ---------- */
@@ -1805,7 +1958,10 @@ function dayInterest(a, bal, ds){
 }
 function compute(){
   const today = todayStr(), accts = state.accounts;
-  const res = {}; accts.forEach(a => res[a.id] = {bal:0, pending:0, paid:0, today:0, month:0, all:0, value:0, invested:0, first:null});
+  const res = {}; accts.forEach(a => res[a.id] = {bal:0, lc:0, ib:0, pending:0, paid:0, today:0, month:0, all:0, value:0, invested:0, first:null});
+  // ledger kept in whole centavos (lc); only interest (ib) is fractional
+  const L = (id, sign, c) => { const r = res[id]; if (!r) return; r.lc += sign*c; r.bal = r.lc/100 + r.ib; };
+  const cr = (r, x) => { r.ib += x; r.bal = r.lc/100 + r.ib; };
   const byDate = {}; let start = today;
   for (const t of state.txns){ (byDate[t.date] ||= []).push(t); if (t.date < start) start = t.date;
     for (const k of ["to","from"]) if (res[t[k]] && (!res[t[k]].first || t.date < res[t[k]].first)) res[t[k]].first = t.date; }
@@ -1814,20 +1970,20 @@ function compute(){
   while (d <= end){
     const ds = ymd(d);
     for (const t of (byDate[ds]||[])){
-      const amt = Number(t.amount)||0;
-      if (t.type === "income" && res[t.to]) { res[t.to].bal += amt; res[t.to].invested += amt; }
-      else if (t.type === "expense" && res[t.from]) res[t.from].bal -= amt;
-      else if (t.type === "transfer"){ if (res[t.from]) { res[t.from].bal -= amt; res[t.from].invested -= amt; } if (res[t.to]) { res[t.to].bal += amt; res[t.to].invested += amt; } }
-      else if (t.type === "adjust" && res[t.to]) { res[t.to].bal += amt; if (t.opening) res[t.to].invested += amt; }
+      const c = Math.round((Number(t.amount)||0)*100), amt = c/100;
+      if (t.type === "income") { L(t.to, 1, c); if (res[t.to]) res[t.to].invested += amt; }
+      else if (t.type === "expense") L(t.from, -1, c);
+      else if (t.type === "transfer"){ L(t.from, -1, c); if (res[t.from]) res[t.from].invested -= amt; L(t.to, 1, c); if (res[t.to]) res[t.to].invested += amt; }
+      else if (t.type === "adjust") { L(t.to, 1, c); if (t.opening && res[t.to]) res[t.to].invested += amt; }
     }
     let total = 0;
     for (const a of accts){
       const r = res[a.id];
       const i = earns(a) ? dayInterest(a, r.bal, ds) : 0;
-      if (a.kind === "savings" && a.credit !== "monthly") r.bal += i; else if (i) r.pending += i;
-      if (a.kind === "savings" && a.credit === "monthly" && Number(ds.slice(8)) === new Date(Number(ds.slice(0,4)), Number(ds.slice(5,7)), 0).getDate()){ r.bal += r.pending; r.pending = 0; }
-      if (a.kind === "mp2" && ds.slice(5) === "12-31"){ if (a.payout==="annual") r.paid += r.pending; else r.bal += r.pending; r.pending = 0; }
-      if (a.kind === "td"){ const m = tdMaturity(a); if (m && ds === m){ r.bal += r.pending; r.pending = 0; } }
+      if (a.kind === "savings" && a.credit !== "monthly") cr(r, i); else if (i) r.pending += i;
+      if (a.kind === "savings" && a.credit === "monthly" && Number(ds.slice(8)) === new Date(Number(ds.slice(0,4)), Number(ds.slice(5,7)), 0).getDate()){ cr(r, r.pending); r.pending = 0; }
+      if (a.kind === "mp2" && ds.slice(5) === "12-31"){ if (a.payout==="annual") r.paid += r.pending; else cr(r, r.pending); r.pending = 0; }
+      if (a.kind === "td"){ const m = tdMaturity(a); if (m && ds === m){ cr(r, r.pending); r.pending = 0; } }
       r.all += i; if (ds === today) r.today = i; if (ds.slice(0,7) === monthKey) r.month += i;
       r.value = r.bal + r.pending; total += r.value;
     }
@@ -2863,11 +3019,17 @@ $("#st-quips").onclick = () => setPref("quips", !state.prefs.quips);
 $("#st-handle").onclick = () => setPref("handle", !state.prefs.handle, !state.prefs.handle ? "Menu handle shown" : "Handle hidden. The menu button and left-edge swipe still work.");
 $("#st-acct").onchange = () => setPref("defaultAcct", $("#st-acct").value);
 $("#st-start").onchange = () => setPref("startTab", $("#st-start").value);
-$("#st-export").onclick = () => {
-  const blob = new Blob([JSON.stringify(state, null, 2)], {type:"application/json"});
-  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `pitaka-backup-${todayStr()}.json`;
-  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-  toast("Backup saved to your downloads");
+$("#st-export").onclick = async () => {
+  const data = JSON.stringify(state, null, 2), filename = `pitaka-backup-${todayStr()}.json`;
+  try {
+    const dl = window.claude?.use ? await claude.use("downloads") : null;
+    if (dl) { await dl.save({filename, data}); toast("Backup saved"); return; }
+  } catch(e){ if (e?.code==="declined") { toast("Backup not saved"); return; } }
+  try {
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([data], {type:"application/json"})); a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    toast("Backup saved to your downloads");
+  } catch { try { await navigator.clipboard.writeText(data); toast("Backup copied. Paste it into a note to keep it."); } catch { toast("Couldn’t save the backup on this device."); } }
 };
 $("#st-import").onchange = async e => {
   const f = e.target.files[0]; e.target.value = ""; if (!f) return;
@@ -3207,7 +3369,7 @@ function pulseHtml(){
 function trendQuip(h){
   const now = new Date(), ws = weekStart(now), cur = rangeSpend(ws, now), usual = usualWeek(ws);
   if (!usual.weeks) return null;
-  const hot = Object.keys(cur.by).map(k => ({k, v:cur.by[k], u:usual.by[k]||0})).filter(x => x.u > 0 && x.v >= 300 && x.v > x.u + 200).sort((a,b)=> (b.v-b.u) - (a.v-a.u))[0];
+  const hot = Object.keys(cur.by).map(k => ({k, v:cur.by[k], u:usual.by[k]||0})).filter(x => x.u > 0 && x.v >= 300 && x.v > x.u + 200 && !SENSITIVE_CAT.test(x.k)).sort((a,b)=> (b.v-b.u) - (a.v-a.u))[0];
   const seed = Number(todayStr().replace(/-/g,"")) + h;
   if (hot && h % 2 === 0) return pick(talkFor(hot.k).up, seed);
   const n = (now.getDay()+6)%7, prev = rangeSpend(addDays(ws,-7), addDays(ws,-7+n));
@@ -3227,7 +3389,7 @@ TILE.weekly = function(){
     chg >= 0.05 ? `<span class="neg">▲ ${(chg*100).toFixed(0)}%</span> vs the week before (${esc(peso(before.total,0))}).` : `About the same as the week before.`;
   const base = usual.weeks ? usual.by : before.by;
   const rows = Object.keys(last.by).map(k => ({k, v:last.by[k], u:base[k]||0, d:last.by[k]-(base[k]||0)}));
-  const tone = rows.filter(r => r.d > 150 && r.v > r.u*1.15).sort((a,b)=>b.d-a.d).slice(0,2);
+  const tone = rows.filter(r => r.d > 150 && r.v > r.u*1.15 && !SENSITIVE_CAT.test(r.k)).sort((a,b)=>b.d-a.d).slice(0,2);
   const good = Object.keys(base).map(k => ({k, v:last.by[k]||0, u:base[k], d:(last.by[k]||0)-base[k]})).filter(r => r.u >= 200 && r.d < -100).sort((a,b)=>a.d-b.d).slice(0,2);
   const seed = Number(ymd(ls).replace(/-/g,""));
   const toneHtml = tone.length ? tone.map((r,i) => { const talk = talkFor(r.k);
@@ -3569,7 +3731,8 @@ TILE.earning = function(){
     cash: `In cash, e-wallets and savings, ready to use.`
   }[m];
   const strip = [["networth","Net worth",v.networth,""],["interestMonth",`Interest · ${new Date().toLocaleDateString("en-PH",{month:"short"})}`,v.interestMonth,"gain"],["spent",`Spent · ${new Date().toLocaleDateString("en-PH",{month:"short"})}`,v.spent,""],["cash","Cash on hand",v.cash,""]].filter(x=>x[0]!==m).slice(0,3);
-  return `<div class="hero"><p class="hero-lead">${esc(H.lead)}<button class="hero-switch" data-hero-switch aria-label="Change what the big number shows">${icon("repeat")}Switch</button></p>
+  const nextM = HERO_ORDER[(HERO_ORDER.indexOf(m)+1) % HERO_ORDER.length];
+  return `<div class="hero"><button class="hero-switch" data-hero-switch aria-label="Flip to ${esc(HERO[nextM].lead.toLowerCase())}">${icon("repeat")}<span>Switch</span></button><p class="hero-lead">${esc(H.lead)}</p>
     <button class="hero-tap" data-insight="${H.insight}" aria-label="${esc(H.lead)}: ${esc(big)}. Show details"><span class="hero-num display" style="display:block;${m==="interest"?"":m==="left"&&v.left<0?"color:var(--neg)":"color:var(--text)"}">${esc(big)}${H.unit?`<span class="unit">${H.unit}</span>`:""}</span></button>
     <p class="hero-sub">${sub}</p>
     <div class="stat-strip">${strip.map(x=>`<button class="stat" data-insight="${({networth:"networth",interestMonth:"interest",spent:"spending",cash:"networth"})[x[0]]}"><div class="k">${x[1]}</div><div class="v ${x[3]}">${esc(x[0]==="interestMonth"?peso(x[2]):pesoShort(x[2]))}</div></button>`).join("")}</div>${pulseHtml()}</div>`;
@@ -3701,7 +3864,7 @@ function renderFPlan(){
     <div class="section"><div class="section-h"><h2>Goals</h2><button class="link" data-goal-add>Add goal</button></div>${goals?`<div class="list">${goals}</div>`:`<div class="empty">Add a goal, like “Business capital ₱500,000 by 2031”, and see how much to save each month.<div class="btns"><button class="btn primary" data-goal-add>Add a goal</button></div></div>`}</div>
     <div class="section"><div class="section-h"><h2>Where you’ll be</h2></div>
       <div class="hz" role="group" aria-label="Years ahead">${[1,3,5,10].map(y=>`<button class="chip" data-hz="${y}" aria-pressed="${y===hz}">${y} year${y>1?"s":""}</button>`).join("")}</div>
-      <div class="proj-chart"><div class="k" style="font-size:.8rem;color:var(--text-2)">In ${hz} year${hz>1?"s":""}</div><div class="proj-big">${esc(peso(end,0))}</div><div class="s" style="font-size:.82rem;color:var(--text-2)">${esc(peso(now,0))} now, plus ${esc(peso(put,0))} you put in, plus about ${esc(peso(Math.max(0,end-now-put),0))} in growth</div>
+      <div class="proj-chart"><div class="k" style="font-size:.8rem;color:var(--text-2)">In ${hz} year${hz>1?"s":""}</div><div class="proj-big">≈ ${esc(peso(end,0))}</div><div class="s" style="font-size:.82rem;color:var(--text-2)">${esc(peso(now,0))} now, plus ${esc(peso(put,0))} you put in, plus about ${esc(peso(Math.max(0,end-now-put),0))} in growth</div>
         <svg class="chart" viewBox="0 0 600 120" preserveAspectRatio="none" role="img" aria-label="Projected savings and investments" style="margin-top:8px"><path d="${line} L${W},${H} L0,${H}Z" fill="var(--brand)" opacity=".1"/><path d="${line}" fill="none" stroke="var(--brand)" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg></div>
       <div class="list">${accts.map(a=>`<div class="bar-row"><div class="top"><div><div class="t">${esc(a.name)}</div><div class="s">${monthlyOf(a)?`+${esc(pesoShort(monthlyOf(a)))} a month`:"No monthly amount in your plan"}</div></div><div class="amt">${esc(pesoShort(project(a,R[a.id].value,monthlyOf(a),months)))}</div></div></div>`).join("")}</div>
       <div class="section" style="margin-top:var(--s-5)"><div class="section-h"><h2>Growth you expect</h2></div><div class="set-card" style="background:var(--surface);box-shadow:var(--shadow-card)">
@@ -4379,6 +4542,327 @@ document.body.insertAdjacentHTML("afterbegin", '<div class="bg-art" aria-hidden=
   upd();
 })();
 
+/* =====================================================================
+   Patch 17A: accuracy. One source of truth for recurring money,
+   one record per scheduled occurrence, centavo-exact ledger.
+   ===================================================================== */
+const m2 = x => Math.round((Number(x)||0)*100)/100;
+
+/* ---------- every amount is stored as exact centavos ---------- */
+function normalizeMoney(){
+  for (const t of state.txns){ t.amount = m2(t.amount); if (t.inst?.feeAmt!=null) t.inst.feeAmt = m2(t.inst.feeAmt); }
+  for (const p of state.plan) p.amount = m2(p.amount);
+  for (const r of (state.recurring||[])){ if (r.amount!=null) r.amount = m2(r.amount); (r.deductions||[]).forEach(d => d.amount = m2(d.amount)); }
+  for (const c of state.categories) if (c.limit!=null) c.limit = m2(c.limit);
+}
+const _save17 = save;
+save = function(){ try { normalizeMoney(); } catch {} return _save17(); };
+
+/* ---------- recurring: each occurrence is recorded once, ever ---------- */
+function ensureP17(){
+  if (!state) return;
+  for (const r of (state.recurring||[])){
+    if (r.done) continue;
+    r.done = {};
+    // migrate: every occurrence up to the old "lastPosted" counts as handled
+    if (r.lastPosted) for (const d of occDates(r, r.start, r.lastPosted)) {
+      const t = state.txns.find(x => x.rec===r.id && x.date===d); r.done[d] = t ? t.id : "skip";
+    }
+    r.effective ||= r.start;
+  }
+  // link plan items to a matching scheduled item so a bill can't be counted twice
+  const norm = s => (s||"").toLowerCase().replace(/[^a-z0-9]/g,"");
+  for (const p of state.plan){
+    if (p.recId && (state.recurring||[]).some(r=>r.id===p.recId)) continue;
+    delete p.recId;
+    const n = norm(p.label); if (!n) continue;
+    const r = (state.recurring||[]).find(r => { const m = norm(r.name); return m && (m===n || m.includes(n) || n.includes(m)); });
+    if (r) p.recId = r.id;
+  }
+}
+const occDone = (r, d) => !!(r.done && r.done[d]);
+const markDone = (r, d, v) => { r.done ||= {}; r.done[d] = v; if (!r.lastPosted || d > r.lastPosted) r.lastPosted = d; };
+nextOcc = function(r){ const far = ymd(addDays(new Date(), 400)); return occDates(r, r.start, far).find(d => !occDone(r, d)) || null; };
+pendingFor = function(r, days){ const to = ymd(addDays(new Date(), days)); return occDates(r, r.start, to).filter(d => !occDone(r, d)); };
+function postOccTracked(r, d, amountOverride){
+  const before = state.txns.length;
+  let n;
+  if (amountOverride != null){ const keep = r.amount, dyn = r.dynamic; r.amount = amountOverride; r.dynamic = null; n = postOcc(r, d); r.amount = keep; r.dynamic = dyn; }
+  else n = postOcc(r, d);
+  markDone(r, d, n ? state.txns[before].id : "skip");
+  return n;
+}
+processRecurring = function(){
+  ensureP10(); ensureP17(); if (!state.recurring.length) return;
+  const today = todayStr(); let n = 0;
+  for (const r of state.recurring){
+    if (!r.auto || r.paused) continue;
+    const from = r.effective && r.effective > r.start ? r.effective : r.start;
+    for (const d of occDates(r, from, today)) if (!occDone(r, d)) n += postOccTracked(r, d);
+  }
+  if (n){ calc = compute(); save(); setTimeout(() => toast(`Recorded ${n} scheduled item${n>1?"s":""}`), 1300); }
+};
+recPaid = function(id, d, amountOverride){
+  const r = state.recurring.find(x=>x.id===id); if (!r) return;
+  if (occDone(r, d)) { toast(`${r.name} for ${fmtDate(d)} is already recorded`); return; }
+  const before = snapshot(); const n = postOccTracked(r, d, amountOverride); save(); render(); refreshOpenSheets();
+  toast(n ? `${r.name} recorded` : `${r.name}: nothing due`, () => { restore(before, "Change undone"); refreshOpenSheets(); });
+};
+recSkip = function(id, d){
+  const r = state.recurring.find(x=>x.id===id); if (!r) return;
+  const before = snapshot(); markDone(r, d, "skip"); save(); render(); refreshOpenSheets();
+  toast(`${r.name} skipped for ${fmtDate(d)}`, () => { restore(before, "Change undone"); refreshOpenSheets(); });
+};
+// Editing a schedule: past dates in the new pattern are NOT recorded again
+$("#rec-form").onsubmit = e => {
+  e.preventDefault(); const err = m => { $("#re-err").textContent = m; };
+  const name = $("#re-name").value.trim(); if (!name) return err("Give it a name, like Netflix or Salary.");
+  const dyn = !$("#re-dyn-wrap").hidden && $("#re-dyn").checked, amt = evalExpr($("#re-amt").value);
+  if (!dyn && !(amt>0)) return err("Enter the amount.");
+  const r = {name, type:rtype, amount: dyn ? null : m2(amt), dynamic: dyn ? "due" : null, freq:$("#re-freq").value, start:$("#re-start").value||todayStr(), auto:rAuto};
+  if (rtype!=="income") r.from = $("#re-from").value; if (rtype!=="expense") r.to = $("#re-to").value;
+  if (rtype!=="transfer") r.category = $("#re-cat").value;
+  if (rtype==="transfer" && r.from===r.to) return err("Choose two different accounts.");
+  if (rtype==="income"){
+    const deds = $$("#re-deds .ded-row").map(x => ({name:x.querySelector("[data-dn]").value.trim(), amount:num(x.querySelector("[data-da]").value)})).filter(x=>x.name||x.amount);
+    if (deds.some(x=>!x.name || !(x.amount>0))) return err("Each deduction needs a name and an amount.");
+    if (deds.reduce((s,x)=>s+x.amount,0) >= r.amount) return err("Deductions add up to more than the income.");
+    if (deds.length) ensureCat("Contributions","expense","shield");
+    r.deductions = deds.map(x=>({...x, amount:m2(x.amount), category:"Contributions"}));
+  }
+  const before = snapshot();
+  if (recEditing){
+    const keep = {id:recEditing.id, done:recEditing.done||{}, lastPosted:recEditing.lastPosted, sub:recEditing.sub, color:recEditing.color, abbr:recEditing.abbr};
+    const patternChanged = r.start!==recEditing.start || r.freq!==recEditing.freq;
+    Object.keys(recEditing).forEach(k=>delete recEditing[k]); Object.assign(recEditing, r, keep);
+    if (patternChanged) recEditing.effective = todayStr();
+  } else state.recurring.push({id:uid(), ...r, done:{}, effective:r.start, lastPosted:null});
+  ensureP17(); processRecurring(); save(); render(); $("#d-rec").close(); if ($("#d-recs").open) openRecs();
+  toast(recEditing ? "Schedule saved. Past dates weren’t recorded again." : `${name} scheduled`, () => { restore(before, "Change undone"); if ($("#d-recs").open) openRecs(); });
+};
+
+/* ---------- plan progress: every record counts once ---------- */
+planProgress = function(mk){
+  ensureP17();
+  const inMonth = state.txns.filter(t => t.date.slice(0,7)===mk);
+  const used = new Set(), rows = state.plan.map(p => ({p, a:acctById(p.accountId), done:0}));
+  // 1) scheduled records linked to a plan item
+  for (const row of rows) if (row.p.recId) for (const t of inMonth) if (t.rec===row.p.recId && !used.has(t.id) && t.type!=="income" && !(t.note||"").includes("(from ")) { row.done += Number(t.amount); used.add(t.id); }
+  // 2) expenses named like the plan item
+  for (const row of rows) if (!row.a) for (const t of inMonth) if (t.type==="expense" && !used.has(t.id) && t.note && t.note.toLowerCase()===row.p.label.toLowerCase()) { row.done += Number(t.amount); used.add(t.id); }
+  // 3) money moved into a linked account, shared across plan items in plan order
+  const pool = {};
+  for (const t of inMonth) if ((t.type==="transfer"||t.type==="income") && t.to && !used.has(t.id)) pool[t.to] = (pool[t.to]||0) + Number(t.amount);
+  for (const row of rows) if (row.a && pool[row.a.id] > 0){ const take = Math.min(pool[row.a.id], Math.max(0, row.p.amount - row.done)); row.done += take; pool[row.a.id] -= take; }
+  return rows.map(r => ({...r, done:m2(r.done), left: m2(Math.max(0, r.p.amount - r.done))}));
+};
+function planRecInfo(p){
+  const r = p.recId && (state.recurring||[]).find(x=>x.id===p.recId); if (!r) return null;
+  const mk = todayStr().slice(0,7), monthEnd = ymd(new Date(Number(mk.slice(0,4)), Number(mk.slice(5)), 0));
+  const due = occDates(r, r.start, monthEnd).filter(d => d.slice(0,7)===mk && !occDone(r, d));
+  return {r, next: due[0] || null};
+}
+// Plan rows: a real button for the row, separate action buttons (no nested controls)
+planHtml = function(mk){
+  ensureP10(); ensureP17();
+  if (!state.plan.length) return `<div class="empty">No plan yet. Decide where each peso goes before the month starts.<div class="btns"><button class="btn primary" data-editplan>Make a plan</button></div></div>`;
+  const rows = planProgress(mk), total = rows.reduce((s,x)=>s+x.p.amount,0), done = rows.reduce((s,x)=>s+Math.min(x.done,x.p.amount),0), inc = avgIncome();
+  const pct = total ? done/total : 0, R = 22, C = 2*Math.PI*R, isCur = mk===todayStr().slice(0,7);
+  const head = `<button class="plan-head" data-fplan aria-label="Open your financial plan"><div><div class="k">Planned each month</div><div class="v">${esc(peso(total,0))}</div><div class="s">${inc>0?(total<=inc?`${esc(peso(inc-total,0))} of your usual ${esc(peso(inc,0))} income is unplanned`:`${esc(peso(total-inc,0))} more than your usual income`):"Record income to compare"}</div></div>
+    <svg class="ring" viewBox="0 0 56 56" role="img" aria-label="${(pct*100).toFixed(0)}% of this month’s plan done"><circle cx="28" cy="28" r="${R}" fill="none" stroke="var(--surface-2)" stroke-width="6"/><circle cx="28" cy="28" r="${R}" fill="none" stroke="var(--brand)" stroke-width="6" stroke-linecap="round" stroke-dasharray="${C*pct} ${C}" transform="rotate(-90 28 28)"/><text x="28" y="32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--text)" font-family="Figtree">${(pct*100).toFixed(0)}%</text></svg></button>`;
+  const items = rows.map(({p,a,done,left}) => {
+    const K = PLAN_KINDS[p.kind]||PLAN_KINDS.other, isDone = done >= p.amount - 0.5, ri = planRecInfo(p);
+    let action;
+    if (isDone) action = `<span class="done-badge">${icon("check")}Done</span>`;
+    else if (!isCur) action = `<span class="s">${esc(pesoShort(left))} short</span>`;
+    else if (ri && ri.r.auto && ri.next) action = `<span class="rec-badge auto">Auto ${esc(fmtDate(ri.next))}</span>`;
+    else if (a) action = `<button class="btn sm" data-planmove="${p.id}">Move ${esc(pesoShort(left))}</button>`;
+    else action = `<button class="btn sm" data-planpay="${p.id}">Mark paid</button>`;
+    const sub = ri ? `Scheduled: ${esc(ri.r.name)}${ri.r.auto?" (automatic)":""}` : a ? `Goes to ${esc(a.name)}` : "Paid as an expense";
+    return `<div class="pl-item"><button class="pl-main" data-planitem="${p.id}" aria-label="${esc(p.label)}: ${esc(peso(done,0))} of ${esc(peso(p.amount,0))}. Open"><span class="avatar" style="--c:${K.c}">${icon(K.icon)}</span><span class="body"><span class="t">${esc(p.label)}</span><span class="s"><span class="kind-pill">${esc(K.label)}</span> ${sub}</span>
+      <span class="bar"><i class="${isDone?"done":""}" style="width:${Math.min(100,done/p.amount*100)}%"></i></span></span></button>
+      <div class="end"><span class="amt">${esc(pesoShort(p.amount))}</span>${action}</div></div>`; }).join("");
+  return head + `<div class="list" style="margin-top:var(--s-2)">${items}</div><div class="btns" style="margin-top:var(--s-3)"><button class="btn" data-editplan>Edit plan</button></div>`;
+};
+// Paying a plan item that has a schedule records THAT occurrence, so nothing doubles
+const _openPlanPay17 = openPlanPay;
+openPlanPay = function(id){
+  _openPlanPay17(id);
+  const p = state.plan.find(x=>x.id===id), ri = p && planRecInfo(p);
+  if (ri){
+    $("#pp-hint").textContent = ri.next ? `Linked to your scheduled “${ri.r.name}” for ${fmtDate(ri.next,true)}. Recording it here marks that date done${ri.r.auto?", so it won’t be added again automatically":""}.` : `Linked to your scheduled “${ri.r.name}”. This month’s is already recorded.`;
+    if (ri.r.auto && ri.next && ri.next > todayStr()) $("#pp-save").textContent = "Pay now instead";
+  }
+};
+$("#pp-form").onsubmit = e => {
+  e.preventDefault(); const p = ppItem; if (!p) return;
+  const amt = num($("#pp-amt").value), from = $("#pp-from").value, date = $("#pp-date").value || todayStr();
+  if (!(amt>0)) { $("#pp-err").textContent = "Enter the amount, or use the calculator to add things up."; return; }
+  if (date > todayStr()) { $("#pp-err").textContent = "Pick today or an earlier date."; return; }
+  const ri = planRecInfo(p);
+  if (ri && ri.next){ $("#d-planpay").close(); const keepFrom = ri.r.from; if (ri.r.type!=="income") ri.r.from = from; recPaid(ri.r.id, ri.next, m2(amt)); ri.r.from = keepFrom; save(); return; }
+  const before = snapshot(), a = acctById(p.accountId);
+  if (a){ if (from===a.id) { $("#pp-err").textContent = "Pick a different account to move from."; return; }
+    state.txns.push({id:uid(), ts:Date.now(), type:"transfer", from, to:a.id, amount:m2(amt), date, note:p.label}); }
+  else state.txns.push({id:uid(), ts:Date.now(), type:"expense", from, amount:m2(amt), date, category:guessPlanCategory(p), note:p.label});
+  save(); render(); $("#d-planpay").close(); refreshOpenSheets();
+  toast(`${p.label}: ${peso(amt)} recorded`, () => { restore(before, "Change undone"); refreshOpenSheets(); });
+};
+document.addEventListener("click", e => { const b = e.target.closest(".pl-main[data-planitem]"); if (b) openPlanPay(b.dataset.planitem); });
+
+/* ---------- centavo-exact ledger in the balance engine ---------- */
+// (see compute(): ledger amounts are added as whole centavos; only interest is fractional)
+
+/* ---------- jokes never touch health, family or required payments ---------- */
+const SENSITIVE_CAT = /health|medic|pharma|hospital|family|parent|support|contribution|insurance|education|tuition|funeral/i;
+
+/* =====================================================================
+   Patch 17B: simpler structure, faster rendering, sturdier storage
+   ===================================================================== */
+popDone = function(){
+  const items = $$(".pl-item"); if (!items.length) return;
+  const now = new Set(items.filter(el => el.querySelector(".done-badge")).map(el => el.querySelector("[data-planitem]")?.dataset.planitem));
+  if (doneSeen && !calm()) now.forEach(id => { if (!doneSeen.has(id)) $$(`.pl-item [data-planitem="${id}"]`).forEach(b => b.closest(".pl-item").querySelector(".done-badge")?.classList.add("pop")); });
+  doneSeen = now;
+};
+
+/* ---------- Plan tab: this month, bills, goals in one place ---------- */
+let planTab = "month";
+function billsHtml(){
+  const rec = upcomingRecItems(30), cards = state.accounts.filter(isCredit).filter(a=>owedOn(a.id)>0 && a.dueDay).map(a=>({d:nextDueDay(a.dueDay), html:`<div class="due-item">${avatar(a)}<div class="body"><div class="t">${esc(a.name)}</div><div class="s">${esc(peso(dueNow(a)))} due · ${whenChip(nextDueDay(a.dueDay))}</div></div><div class="acts"><button class="btn sm primary" data-pay="${a.id}">Pay</button></div></div>`}));
+  const all = [...rec, ...cards].sort((a,b)=>a.d.localeCompare(b.d));
+  const subs = subsList(), sched = (state.recurring||[]).filter(r=>!r.sub);
+  const mo = subs.reduce((s,r)=>s+subMonthly(r),0);
+  return `<div class="section" style="margin-top:0"><div class="section-h"><h2>Due in the next 30 days</h2></div>${all.length?`<div class="list">${all.map(x=>x.html).join("")}</div>`:`<div class="empty">Nothing due in the next 30 days.</div>`}</div>
+    <div class="section"><div class="section-h"><h2>Bills and income</h2><button class="link" data-dr2="recs">Manage</button></div>${sched.length?`<div class="list">${sched.map(r=>{ const n = nextOcc(r); return `<button class="row" data-recedit2="${r.id}">${recIcon(r)}<span class="body"><span class="t" style="display:block">${esc(r.name)}<span class="rec-badge ${r.auto?"auto":"remind"}">${r.auto?"Auto":"Reminder"}</span></span><span class="s" style="display:block">${n?`Next ${esc(fmtDate(n))}`:"No upcoming date"}</span></span><span class="end amt ${r.type==="income"?"pos":""}">${r.dynamic==="due"?"Due":esc(pesoShort(r.amount))}</span></button>`; }).join("")}</div>`:`<div class="empty">Add salary, SSS, rent or card autopay.<div class="btns"><button class="btn primary" data-recnew>Add a bill</button></div></div>`}</div>
+    <div class="section"><div class="section-h"><h2>Subscriptions</h2><span class="s" style="color:var(--text-2);font-size:.85rem">${subs.length?`${esc(peso(mo,0))}/mo`:""}</span></div>${subs.length?`<div class="list">${subs.map(subRow).join("")}</div><div class="btns" style="margin-top:var(--s-3)"><button class="btn" data-subnew>Add subscription</button></div>`:`<div class="empty">Track Netflix, Spotify and others.<div class="btns"><button class="btn primary" data-subnew>Add a subscription</button></div></div>`}</div>`;
+}
+function goalsHtml(){
+  const R = calc.res, hz = state.planCfg?.horizon || 5, months = hz*12, accts = state.accounts.filter(a=>earns(a)||a.kind==="invest");
+  const monthlyOf = a => state.plan.filter(p=>p.accountId===a.id).reduce((s,p)=>s+Number(p.amount),0);
+  const end = accts.reduce((s,a)=>s+project(a, R[a.id].value, monthlyOf(a), months),0);
+  const goals = (state.goals||[]).map(g => { const {have,pct} = goalProgress(g), need = goalMonthly(g);
+    return `<button class="row" data-goal="${g.id}" style="display:block;min-height:0"><span style="display:flex;justify-content:space-between;gap:12px"><span><span class="t" style="display:block">${esc(g.name)}</span><span class="s" style="display:block">${esc(pesoShort(have))} of ${esc(pesoShort(g.target))}</span></span><span class="amt">${(pct*100).toFixed(0)}%</span></span><span class="bar" style="display:block;height:8px;margin-top:8px"><i class="${pct>=1?"done":""}" style="width:${pct*100}%"></i></span><span class="s" style="display:block;margin-top:6px">${pct>=1?"Reached.":need!=null?`About ${esc(peso(need,0))} a month to get there`:"Add a date to see the monthly amount"}</span></button>`; }).join("");
+  return `<div class="section" style="margin-top:0"><div class="section-h"><h2>Goals</h2><button class="link" data-goal-add>Add goal</button></div>${goals?`<div class="list">${goals}</div>`:`<div class="empty">Add a goal, like “Business capital ₱500,000 by 2031”.<div class="btns"><button class="btn primary" data-goal-add>Add a goal</button></div></div>`}</div>
+    <div class="section"><div class="section-h"><h2>Where you’ll be</h2></div><button class="proj-chart" data-fplan style="width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer"><div class="k" style="font-size:.8rem;color:var(--text-2)">In ${hz} year${hz>1?"s":""}, if you follow your plan</div><div class="proj-big">≈ ${esc(peso(end,0))}</div><div class="s" style="font-size:.82rem;color:var(--text-2)">An estimate, not a promise. Tap to change the years, returns and plan.</div></button></div>`;
+}
+function renderPlanPage(){
+  if (!$("#v-plan")) return;
+  ensureP10(); ensureP17();
+  const mk = todayStr().slice(0,7), b = budgetData();
+  $$("#pl-tabs button").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.ptab===planTab)));
+  let html;
+  if (planTab==="month") html = `<div class="section" style="margin-top:0"><div class="section-h"><h2>Monthly plan</h2></div>${planHtml(mk)}</div>
+      <div class="section"><div class="section-h"><h2>Budgets</h2><button class="link" data-budget-edit>Edit</button></div>${b.total ? budgetSummaryHtml(b) + (b.cats.length?`<div class="list" style="margin-top:var(--s-2)">${b.cats.map(x=>budgetRow(x,b.isCur,b.daysLeft)).join("")}</div>`:"") : `<div class="empty">Set a monthly limit for categories like Food or Shopping.<div class="btns"><button class="btn primary" data-budget-edit>Set budgets</button></div></div>`}</div>`;
+  else if (planTab==="bills") html = billsHtml();
+  else html = goalsHtml();
+  $("#pl-body").innerHTML = html;
+}
+$("#pl-tabs").addEventListener("click", e => { const b = e.target.closest("[data-ptab]"); if (!b) return; planTab = b.dataset.ptab; renderPlanPage(); if (!calm()) $("#pl-body").animate([{opacity:0, transform:"translateY(6px)"},{opacity:1, transform:"none"}], {duration:220, easing:"cubic-bezier(.22,1,.36,1)"}); });
+document.addEventListener("click", e => {
+  let x;
+  if ((x = e.target.closest("[data-recedit2]"))) return openRecEdit(x.dataset.recedit2);
+  if (e.target.closest("[data-recnew]")) return openRecEdit(null);
+  if (e.target.closest("[data-subnew]")) return openSubEdit(null);
+});
+const _go17 = go;
+go = function(v){
+  if (v==="plan"){ _go17("plan"); $("#v-plan").hidden = false; renderPlanPage(); window.scrollTo(0,0); return; }
+  $("#v-plan").hidden = true; _go17(v);
+};
+
+/* ---------- Home: a calmer default (one time, with undo) ---------- */
+const CORE_TILES = ["earning","quick","alerts","weekly","budgets","spending","accounts"];
+function simplifyHomeOnce(){
+  if (!state?.dashboard || state.prefs.home17) return;
+  const before = snapshot();
+  const order = [...CORE_TILES, ...state.dashboard.map(d=>d.id).filter(id=>!CORE_TILES.includes(id))];
+  const byId = Object.fromEntries(state.dashboard.map(d=>[d.id,d]));
+  state.dashboard = order.filter(id=>byId[id]).map(id => ({id, on: CORE_TILES.includes(id)}));
+  state.prefs.home17 = true; saveLocal();
+  setTimeout(() => toast("Home now shows 7 essentials. Turn others back on in Customize.", () => { restore(before, "Home restored"); state.prefs.home17 = true; saveLocal(); }), 1600);
+}
+
+/* ---------- render only what you can see; catch up when you switch ---------- */
+const dirty = {accounts:true, activity:true, summary:true, plan:true};
+const _rAcc = renderAccounts, _rAct = renderActivity, _rSum = renderSummary;
+renderAccounts = function(force){ if (!force && view!=="accounts") { dirty.accounts = true; return; } dirty.accounts = false; _rAcc(); };
+renderActivity = function(force){ if (!force && view!=="activity") { dirty.activity = true; return; } dirty.activity = false; _rAct(); };
+renderSummary = function(force){ if (!force && view!=="summary") { dirty.summary = true; return; } dirty.summary = false; _rSum(); };
+const _render17 = render;
+render = function(){ if (state && !state.prefs.home17) simplifyHomeOnce(); _render17(); if (view==="plan") renderPlanPage(); else dirty.plan = true; };
+const _go17b = go;
+go = function(v){
+  if (v==="accounts" && dirty.accounts) renderAccounts(true);
+  if (v==="activity" && dirty.activity) renderActivity(true);
+  if (v==="summary" && dirty.summary) renderSummary(true);
+  _go17b(v);
+};
+// insights that read the Summary's tables need it fresh
+const _openInsight17 = openInsight;
+openInsight = function(k){ if (dirty.summary) renderSummary(true); return _openInsight17(k); };
+
+/* ---------- storage: a second copy in IndexedDB (bigger and sturdier) ---------- */
+const IDB = { db:null,
+  open(){ return this.db ? Promise.resolve(this.db) : new Promise((res, rej) => { try { const r = indexedDB.open("pitaka", 1); r.onupgradeneeded = () => r.result.createObjectStore("kv"); r.onsuccess = () => res(this.db = r.result); r.onerror = () => rej(r.error); } catch(e){ rej(e); } }); },
+  async get(k){ const db = await this.open(); return new Promise((res, rej) => { const q = db.transaction("kv").objectStore("kv").get(k); q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error); }); },
+  async set(k, v){ const db = await this.open(); return new Promise((res, rej) => { const tx = db.transaction("kv","readwrite"); tx.objectStore("kv").put(v, k); tx.oncomplete = () => res(); tx.onerror = () => rej(tx.error); }); }
+};
+let idbTimer = null;
+const _saveLocal17 = saveLocal;
+saveLocal = function(){
+  try { _saveLocal17(); } catch {}
+  clearTimeout(idbTimer); idbTimer = setTimeout(() => { IDB.set("state", JSON.stringify(state)).catch(() => {}); }, 400);
+};
+async function idbRecover(){
+  try {
+    const raw = await IDB.get("state"); if (!raw) { saveLocal(); return; }
+    const other = JSON.parse(raw);
+    if ((other.updated||0) > (state.updated||0) + 1000 && other.accounts){ state = migrate(other); ensureP17(); applyPrefs(); render(); toast("Restored your latest data from this device"); }
+  } catch {}
+}
+
+/* ---------- visual effects: Full or Calm ---------- */
+const _apply17 = applyPrefs;
+applyPrefs = function(){ _apply17(); document.documentElement.dataset.fx = state.prefs.fx || "full"; };
+const _rs17 = renderSettings;
+renderSettings = function(){ _rs17(); $("#st-fx").value = state.prefs.fx || "full"; };
+$("#st-fx").onchange = () => setPref("fx", $("#st-fx").value);
+
+/* ---------- test hook (only with ?test in the address) ---------- */
+if (/[?&]test\b/.test(location.search)) window.__pitaka = {
+  get state(){ return state; }, set state(v){ state = v; }, compute:() => compute(), evalExpr, occDates, processRecurring, recPaid, recSkip, planProgress, normalizeMoney, ensureP17, save, render, go, migrate, defaults, todayStr
+};
+
+/* ---------- amounts get thousands separators as you type ---------- */
+function groupDigits(raw){
+  const str = String(raw), neg = /^\s*[-−]/.test(str);
+  const s = str.replace(/[^\d.]/g, ""), i = s.indexOf(".");
+  let int = i < 0 ? s : s.slice(0, i); const dec = i < 0 ? null : s.slice(i+1).replace(/\./g, "");
+  int = int.replace(/^0+(?=\d)/, "");
+  const g = int.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return (neg ? "-" : "") + (g || (dec !== null ? "0" : "")) + (dec !== null ? "." + dec : "");
+}
+function formatMoneyInput(inp){
+  const v = inp.value; if (!v) return;
+  const focused = document.activeElement === inp;
+  const caret = focused ? (inp.selectionStart ?? v.length) : v.length;
+  const keep = v.slice(0, caret).replace(/,/g, "").length;          // characters before the caret, ignoring commas
+  const f = isExpr(v.replace(/,/g, "")) ? v.replace(/\d[\d,]*(?:\.\d*)?/g, m => groupDigits(m)) : groupDigits(v);
+  if (f === v) return;
+  inp.value = f;
+  if (!focused) return;
+  let pos = 0, seen = 0; while (pos < f.length && seen < keep){ if (f[pos] !== ",") seen++; pos++; }
+  try { inp.setSelectionRange(pos, pos); } catch {}
+}
+const isMoneyInput = el => { if (!el || el.tagName !== "INPUT" || el.hasAttribute("data-noformat")) return false; const im = el.getAttribute("inputmode"); return im === "decimal" || (im === "none" && !!el.parentElement?.querySelector("[data-calc]")); };
+document.addEventListener("input", e => { if (isMoneyInput(e.target)) formatMoneyInput(e.target); }, true);
+document.addEventListener("focusout", e => { if (isMoneyInput(e.target)) formatMoneyInput(e.target); }, true);
+// values filled in by the app (templates, plan amounts, balances) get commas when a sheet opens
+const formatAllIn = root => root.querySelectorAll('input[inputmode="decimal"]').forEach(i => { if (isMoneyInput(i)) formatMoneyInput(i); });
+const _openSheet18 = openSheet;
+openSheet = function(d, stack){ _openSheet18(d, stack); requestAnimationFrame(() => formatAllIn(d)); };
+
 /* ---------- Google Sheet sync settings ---------- */
 function syncSettingsUI(){
   if (!$("#sy-url")) return;
@@ -4397,9 +4881,9 @@ $("#sy-connect").onclick = async () => {
   if (!token) { toast("Paste the token from the setup() log."); $("#sy-token").focus(); return; }
   $("#sy-status").textContent = "Checking…";
   try {
-    const r = await fetch(`${url}?action=ping&token=${encodeURIComponent(token)}`); const j = await r.json();
+    const j = await api("ping", null, {url, token});
     if (!j.ok) throw new Error(j.error);
-    sync = Object.assign(sync, {url, token}); saveSync(); await pull(); toast("Connected to your Google Sheet");
+    sync = Object.assign(sync, {url, token, base:0}); saveSync(); await pull(); toast("Connected to your Google Sheet");
   } catch(e){ $("#sy-status").textContent = String(e.message)==="bad_token" ? "That token doesn’t match. Run setup() again and copy the token from the log." : "Couldn’t reach the web app. Check the URL and that it’s deployed with access set to Anyone."; }
 };
 $("#sy-now").onclick = () => { sync.lastPrice = null; saveSync(); pull().then(autoPrices); };
@@ -4419,27 +4903,227 @@ $("#pr-fetch").onclick = async () => {
 };
 const _openPrices = openPrices;
 openPrices = function(id){ _openPrices(id); syncSettingsUI(); };
+/* ---------- pay a card, PayLater or loan: all at once or little by little ---------- */
+const isPayable = a => !!a && (isCredit(a) || a.kind === "borrowed");
 
+/* What's due this cycle, counting payments you've already made toward it */
+function cycleInfo(a){
+  const owed = owedOn(a.id), today = todayStr();
+  if (isCredit(a) && a.dueDay){
+    const nd = nextDueDay(a.dueDay), prev = addMonths(nd, -1);
+    const paid = state.txns.filter(t => t.type === "transfer" && t.to === a.id && t.date > prev && t.date <= today).reduce((s,t) => s + Number(t.amount), 0);
+    // due at the start of the cycle = what dueNow() would say before this cycle's payments
+    const plans = installments(a), remaining = plans.reduce((s,p) => s + p.remaining, 0), thisMonth = plans.reduce((s,p) => s + p.monthly, 0);
+    const owedStart = owed + paid, dueStart = Math.min(owedStart, Math.max(0, owedStart - remaining) + thisMonth);
+    return {owed, paid:m2(paid), dueStart:m2(dueStart), due:m2(Math.max(0, dueStart - paid)), dueDate:nd};
+  }
+  const paid = state.txns.filter(t => t.type === "transfer" && t.to === a.id).reduce((s,t) => s + Number(t.amount), 0);
+  return {owed, paid:m2(paid), dueStart:m2(owed + paid), due:owed, dueDate:a.dueDate || null};
+}
+const partsRule = a => (state.recurring || []).find(r => r.partsOf === a.id);
+
+/* A plan never pays more than what's still owed */
+const _recAmount775 = recAmount;
+recAmount = function(r){ const v = _recAmount775(r); if (!r.capToOwed) return v; calc = compute(); return Math.max(0, Math.min(v, owedOn(r.to))); };
+
+/* ---------- the sheet ---------- */
+let pcAcct = null, pcMode = "now", pcCover = "due", pcAuto = false;
+function pcStatusHtml(a, c){
+  const isCard = isCredit(a);
+  const pct = c.dueStart > 0 ? Math.min(1, c.paid / c.dueStart) : (c.owed > 0 ? 0 : 1);
+  const when = c.dueDate ? `${isCard ? "Due" : "Pay back by"} ${fmtDate(c.dueDate, true)}` : "No due date set";
+  return `<div class="row2"><span>${esc(when)}</span><span>${c.dueDate ? esc(whenText(daysUntil(c.dueDate))) : ""}</span></div>
+    <div class="big">${esc(peso(c.due))} <span style="font-size:.85rem;font-weight:600;color:var(--text-2)">${c.due > 0 ? (isCard ? "left to pay this cycle" : "still to pay") : "nothing due"}</span></div>
+    <div class="bar"><i class="${pct >= 1 ? "done" : ""}" style="width:${pct * 100}%"></i></div>
+    <div class="foot">Paid ${esc(peso(c.paid))}${isCard ? " this cycle" : " so far"}${isCard ? ` · ${esc(peso(c.owed))} owed in total` : ""}</div>`;
+}
+function pcQuickHtml(a, c){
+  const opts = [];
+  if (isCredit(a) && c.due > 0) opts.push(["Amount due", c.due]);
+  if (c.owed > 0 && Math.abs(c.owed - c.due) > 0.5) opts.push([isCredit(a) ? "Whole balance" : "All of it", c.owed]);
+  if (c.due > 0) opts.push(["Half", m2(c.due / 2)]);
+  if (!isCredit(a) && c.owed > 0 && !opts.some(o => o[1] === c.owed)) opts.unshift(["All of it", c.owed]);
+  return opts.map(([l, v], i) => `<button type="button" class="chip" data-pcq="${v}" aria-pressed="${i === 0}">${esc(l)} · ${esc(pesoShort(v))}</button>`).join("") + `<button type="button" class="chip" data-pcq="" aria-pressed="false">Other amount</button>`;
+}
+function setPcMode(m){
+  pcMode = m;
+  $$("#pc-mode button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.pcmode === m)));
+  $("#pc-now").hidden = m !== "now"; $("#pc-parts").hidden = m !== "parts";
+  const a = acctById(pcAcct);
+  $("#pc-save").textContent = m === "now" ? (a?.kind === "borrowed" ? "Record payback" : "Record payment") : (partsRule(a) ? "Update plan" : "Start plan");
+  $("#pc-err").textContent = "";
+  if (m === "parts") pcPreview();
+}
+function pcCoverAmount(){ const a = acctById(pcAcct), c = cycleInfo(a); return pcCover === "all" ? c.owed : (c.due || c.owed); }
+function pcPlanDates(){
+  const r = {freq:$("#pc-freq").value, start:$("#pc-start").value || todayStr(), end:$("#pc-end").value || null};
+  if (!r.end) return [];
+  return occDates(r, r.start, r.end);
+}
+function pcSplit(total, n){
+  if (!n) return [];
+  const per = Math.ceil(total / n);                     // round each part up to a whole peso
+  const parts = Array(n).fill(per); parts[n-1] = m2(total - per * (n - 1));
+  while (parts.length > 1 && parts[parts.length-1] <= 0) { parts.pop(); parts[parts.length-1] = m2(total - per * (parts.length - 1)); }
+  return parts;
+}
+function pcPreview(){
+  const a = acctById(pcAcct), c = cycleInfo(a), total = pcCoverAmount(), dates = pcPlanDates(), parts = pcSplit(total, dates.length);
+  let html;
+  if (!(total > 0)) html = `<div class="warn">Nothing to pay right now.</div>`;
+  else if (!dates.length) html = `<div class="warn">No payment dates fit between the first payment and the finish date.</div>`;
+  else {
+    const late = c.dueDate && $("#pc-end").value > c.dueDate;
+    html = `<div class="ph">${parts.length} payment${parts.length > 1 ? "s" : ""} of about ${esc(peso(parts[0], 0))}<span>${esc(peso(total))} total</span></div>`
+      + dates.slice(0, parts.length).slice(0, 8).map((d, i) => `<div class="pr"><span class="d">${esc(fmtDate(d, true))}</span><span>${esc(peso(parts[i]))}</span></div>`).join("")
+      + (parts.length > 8 ? `<div class="pr"><span class="d">and ${parts.length - 8} more</span><span></span></div>` : "")
+      + (late ? `<div class="warn">This finishes after the due date (${esc(fmtDate(c.dueDate))}), so interest or late fees may apply.</div>` : "");
+  }
+  $("#pc-preview").innerHTML = html;
+}
+function openPayCard(id, mode){
+  const a = acctById(id); if (!isPayable(a)) return;
+  pcAcct = id; const c = cycleInfo(a), existing = partsRule(a);
+  $("#pc-title").textContent = a.kind === "borrowed" ? `Pay back ${a.person || a.name}` : `Pay ${a.name}`;
+  $("#pc-status").innerHTML = pcStatusHtml(a, c);
+  // pay now
+  $("#pc-quick").innerHTML = pcQuickHtml(a, c);
+  const first = $("#pc-quick [data-pcq]"); $("#pc-amt").value = first && first.dataset.pcq ? Number(first.dataset.pcq).toFixed(2) : "";
+  $("#pc-amt-res").textContent = ""; if (!$("#pc-amt-pad").hidden) calcToggle("pc-amt", false);
+  const src = state.accounts.filter(x => !isDebt(x) && x.kind !== "lent" && x.id !== id);
+  const def = (acctById(state.prefs.defaultAcct) && state.prefs.defaultAcct !== id) ? state.prefs.defaultAcct : (src.find(x => ["savings","wallet","cash"].includes(x.kind)) || src[0])?.id;
+  const opts = sel => GROUPS.map(g => { const l = src.filter(x => KIND[x.kind].group === g); return l.length ? `<optgroup label="${esc(g)}">${l.map(x => `<option value="${x.id}"${x.id === sel ? " selected" : ""}>${esc(x.name)}</option>`).join("")}</optgroup>` : ""; }).join("");
+  $("#pc-from").innerHTML = opts(def); $("#pc-pfrom").innerHTML = opts(existing?.from || def);
+  $("#pc-date").value = todayStr();
+  $("#pc-now-hint").textContent = isCredit(a) ? "Paying only part of the amount due usually means interest on the rest. Paying the full amount due avoids it." : "Every payment lowers what you owe.";
+  // little by little
+  pcCover = existing && existing.total && Math.abs(existing.total - c.owed) < 1 ? "all" : "due";
+  $("#pc-cover").innerHTML = (isCredit(a) && c.due > 0 && Math.abs(c.due - c.owed) > 0.5 ? `<button type="button" class="chip" data-pccover="due" aria-pressed="${pcCover === "due"}">Amount due · ${esc(pesoShort(c.due))}</button>` : "")
+    + `<button type="button" class="chip" data-pccover="all" aria-pressed="${pcCover === "all" || !(isCredit(a) && c.due > 0 && Math.abs(c.due - c.owed) > 0.5)}">${isCredit(a) ? "Whole balance" : "All of it"} · ${esc(pesoShort(c.owed))}</button>`;
+  if (!$("#pc-cover [data-pccover=due]")) pcCover = "all";
+  $("#pc-freq").value = existing?.freq || "weekly";
+  $("#pc-start").value = existing && existing.start > todayStr() ? existing.start : todayStr();
+  const endDefault = c.dueDate && c.dueDate >= todayStr() ? c.dueDate : ymd(addDays(new Date(), 28));
+  $("#pc-end").value = existing?.end || endDefault;
+  pcAuto = !!existing?.auto; $("#pc-auto").setAttribute("aria-checked", String(pcAuto));
+  setPcMode(mode || "now");
+  openSheet($("#d-paycard"), $("#d-detail").open);
+}
+
+/* ---------- interactions ---------- */
+$$("#pc-mode button").forEach(b => b.onclick = () => setPcMode(b.dataset.pcmode));
+$("#pc-quick").addEventListener("click", e => {
+  const b = e.target.closest("[data-pcq]"); if (!b) return;
+  $$("#pc-quick .chip").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  if (b.dataset.pcq) { $("#pc-amt").value = Number(b.dataset.pcq).toFixed(2); formatMoneyInput($("#pc-amt")); }
+  else { $("#pc-amt").value = ""; $("#pc-amt").focus(); }
+});
+$("#pc-amt").addEventListener("input", () => { calcUpdate("pc-amt"); $$("#pc-quick .chip").forEach(x => x.setAttribute("aria-pressed", String(!x.dataset.pcq))); });
+$("#pc-cover").addEventListener("click", e => { const b = e.target.closest("[data-pccover]"); if (!b) return; pcCover = b.dataset.pccover; $$("#pc-cover .chip").forEach(x => x.setAttribute("aria-pressed", String(x === b))); pcPreview(); });
+["#pc-freq", "#pc-start", "#pc-end"].forEach(s => $(s).addEventListener("input", pcPreview));
+$("#pc-auto").onclick = () => { pcAuto = !pcAuto; $("#pc-auto").setAttribute("aria-checked", String(pcAuto)); };
+
+$("#pc-form").onsubmit = e => {
+  e.preventDefault();
+  const a = acctById(pcAcct), err = m => { $("#pc-err").textContent = m; }; if (!a) return;
+  const c = cycleInfo(a), before = snapshot();
+  if (pcMode === "now"){
+    const raw = $("#pc-amt").value, amt = isExpr(raw.replace(/,/g, "")) ? evalExpr(raw) : num(raw), from = $("#pc-from").value, date = $("#pc-date").value || todayStr();
+    if (!(amt > 0)) return err("Enter how much you’re paying.");
+    if (amt > c.owed + 0.005) return err(`That’s more than you owe (${peso(c.owed)}).`);
+    if (date > todayStr()) return err("Pick today or an earlier date.");
+    state.txns.push({id:uid(), ts:Date.now(), type:"transfer", from, to:a.id, amount:m2(amt), date, note: a.kind === "borrowed" ? "Paid back" : "Payment"});
+    save(); render(); $("#d-paycard").close(); if ($("#d-detail").open) openDetail(a.id, true); refreshOpenSheets();
+    const left = m2(c.owed - amt);
+    toast(left > 0.005 ? `${peso(amt)} paid. ${peso(left)} left.` : `${a.name} is fully paid.`, () => { restore(before, "Payment undone"); if ($("#d-detail").open) openDetail(a.id, true); });
+    return;
+  }
+  const total = pcCoverAmount(), dates = pcPlanDates(), parts = pcSplit(total, dates.length);
+  if (!(total > 0)) return err("There’s nothing to pay right now.");
+  if (!dates.length) return err("Pick a first payment date on or before the finish date.");
+  const from = $("#pc-pfrom").value;
+  const rule = {name: a.kind === "borrowed" ? `Pay back ${a.person || a.name}` : `${a.name}: little by little`, type:"transfer", from, to:a.id,
+    amount: parts[0], freq:$("#pc-freq").value, start:$("#pc-start").value || todayStr(), end:$("#pc-end").value, auto:pcAuto,
+    capToOwed:true, partsOf:a.id, total:m2(total), parts:parts.length};
+  const ex = partsRule(a);
+  if (ex){ Object.keys(ex).forEach(k => { if (!["id","done","lastPosted"].includes(k)) delete ex[k]; }); Object.assign(ex, rule, {effective: todayStr()}); }
+  else state.recurring.push({id:uid(), ...rule, done:{}, effective:rule.start, lastPosted:null});
+  processRecurring(); save(); render(); $("#d-paycard").close(); if ($("#d-detail").open) openDetail(a.id, true); refreshOpenSheets();
+  toast(`${parts.length} payments of about ${peso(parts[0], 0)} planned${pcAuto ? ", paid automatically" : ". You’ll be reminded each time"}.`, () => { restore(before, "Plan removed"); if ($("#d-detail").open) openDetail(a.id, true); });
+};
+
+/* ---------- every Pay / Pay back button opens this sheet ---------- */
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-pay], [data-repay]"); if (!b) return;
+  const id = b.dataset.pay || b.dataset.repay; if (!isPayable(acctById(id))) return;
+  e.stopPropagation(); e.preventDefault(); openPayCard(id);
+}, true);
+
+/* ---------- the plan shows on the card, PayLater or loan screen ---------- */
+function partsCardHtml(a){
+  const r = partsRule(a); if (!r) return isPayable(a) && owedOn(a.id) > 0 ? `<div class="btns" style="margin-top:var(--s-3)"><button class="btn" data-pcparts="${a.id}">Pay little by little</button></div>` : "";
+  const dates = occDates(r, r.start, r.end || r.start), paid = dates.filter(d => occDone(r, d)).length, next = dates.find(d => !occDone(r, d));
+  const freqTxt = {weekly:"every week", semimonthly:"every payday", monthly:"every month"}[r.freq] || "";
+  return `<div class="parts-card"><div class="top"><div class="t">Paying little by little</div><div class="s">${paid} of ${dates.length} paid</div></div>
+    <div class="s">${esc(peso(r.amount, 0))} ${freqTxt} until ${esc(fmtDate(r.end, true))}${r.auto ? " · automatic" : ""}</div>
+    <div class="parts-dots" aria-hidden="true">${dates.map(d => `<i class="${occDone(r, d) ? "paid" : d === next ? "next" : ""}"></i>`).join("")}</div>
+    <div class="btns" style="margin-top:8px">${next && owedOn(a.id) > 0 ? `<button class="btn primary sm" data-recpaid="${r.id}|${next}">Pay ${esc(fmtDate(next))} part</button>` : ""}<button class="btn sm" data-pcparts="${a.id}">Change</button><button class="btn sm danger" data-pcstop="${r.id}">Stop</button></div></div>`;
+}
+const _creditExtra775 = creditExtraHtml;
+creditExtraHtml = function(a){ return _creditExtra775(a) + partsCardHtml(a); };
+const _openDetail775 = openDetail;
+openDetail = function(id, keep){
+  _openDetail775(id, keep);
+  const a = acctById(id);
+  if (a?.kind === "borrowed" && !$("#dt-body .parts-card")) { const facts = $("#dt-body .facts"); if (facts) facts.insertAdjacentHTML("afterend", partsCardHtml(a)); }
+};
+document.addEventListener("click", e => {
+  let x;
+  if ((x = e.target.closest("[data-pcparts]"))) return openPayCard(x.dataset.pcparts, "parts");
+  if ((x = e.target.closest("[data-pcstop]"))) {
+    const r = state.recurring.find(z => z.id === x.dataset.pcstop); if (!r) return;
+    const before = snapshot(), acct = r.partsOf; state.recurring = state.recurring.filter(z => z !== r); save(); render(); if ($("#d-detail").open) openDetail(acct, true);
+    toast("Plan stopped. Payments already made stay recorded.", () => { restore(before, "Plan restored"); if ($("#d-detail").open) openDetail(acct, true); });
+  }
+});
+// paying a part from the account screen refreshes that screen
+let lastDetail775 = null;
+const _openDetail775b = openDetail;
+openDetail = function(id, keep){ lastDetail775 = id; return _openDetail775b(id, keep); };
+document.addEventListener("click", e => { if (e.target.closest("#d-detail [data-recpaid]")) setTimeout(() => { if ($("#d-detail").open && lastDetail775) openDetail(lastDetail775, true); }, 60); });
+/* ---------- tapping Switch flips the hero card to the next number ---------- */
+let heroFlipping = false;
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-hero-switch]"); if (!b) return;
+  e.stopPropagation(); e.preventDefault();
+  if (heroFlipping) return;
+  const cur = state.prefs.heroMetric || "interest", next = HERO_ORDER[(HERO_ORDER.indexOf(cur)+1) % HERO_ORDER.length];
+  const card = b.closest(".hero"), hadFocus = document.activeElement === b;
+  const swap = () => {
+    setPref("heroMetric", next);
+    const n = $('#dash .tile[data-tile="earning"] .hero');
+    n?.querySelector(".hero-num")?.classList.remove("swap");
+    if (hadFocus) n?.querySelector("[data-hero-switch]")?.focus();
+    return n;
+  };
+  if (calm() || !card) { swap(); return; }
+  heroFlipping = true; buzz(8);
+  const half = card.animate([{transform:"perspective(1100px) rotateY(0deg)"}, {transform:"perspective(1100px) rotateY(90deg)"}], {duration:170, easing:"cubic-bezier(.55,0,1,.45)", fill:"forwards"});
+  half.onfinish = () => {
+    const n = swap();
+    if (!n) { heroFlipping = false; return; }
+    const back = n.animate([{transform:"perspective(1100px) rotateY(-90deg)"}, {transform:"perspective(1100px) rotateY(0deg)"}], {duration:280, easing:"cubic-bezier(.22,1,.36,1)"});
+    back.onfinish = back.oncancel = () => { heroFlipping = false; };
+  };
+}, true);   // capture: runs before the older Switch handler
 /* ---------- boot ---------- */
 hydrateIcons();
 state = loadLocal(); if (!state) state = defaults(); state = migrate(state); saveLocal();
-applyPrefs(); processRecurring(); render(); setSync("On this device", "ok"); if (state.prefs.startTab && state.prefs.startTab!=="home") go(state.prefs.startTab);
+P.target = '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/>'; $$('[data-icon="target"]').forEach(el => el.innerHTML = icon("target"));
+applyPrefs(); processRecurring(); render(); setSync("On this device", "ok"); idbRecover(); if (state.prefs.startTab && state.prefs.startTab!=="home") go(state.prefs.startTab);
 setTimeout(() => { const sp = document.getElementById("splash"); if (!sp) return; sp.classList.add("hide"); setTimeout(() => sp.remove(), 400); }, Math.max(0, 1100 - performance.now()));
 setInterval(() => { if (todayStr() !== (calc?.history.at(-1)?.[0])) { processRecurring(); render(); } }, 60000);
-pull().then(() => autoPrices());
-/* ---------- updates: "A new version is ready" with one-tap refresh ---------- */
-if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
-  let refreshing = false;
-  navigator.serviceWorker.addEventListener("controllerchange", () => { if (refreshing) return; refreshing = true; location.reload(); });
-  const showUpdate = w => { const bar = $("#update-bar"); bar.hidden = false; $("#update-go").onclick = () => { $("#update-go").textContent = "Updating…"; w.postMessage("SKIP_WAITING"); }; };
-  navigator.serviceWorker.register("sw.js").then(reg => {
-    if (reg.waiting && navigator.serviceWorker.controller) showUpdate(reg.waiting);
-    reg.addEventListener("updatefound", () => { const w = reg.installing; w && w.addEventListener("statechange", () => { if (w.state === "installed" && navigator.serviceWorker.controller) showUpdate(w); }); });
-    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") reg.update().catch(() => {}); });
-    setInterval(() => reg.update().catch(() => {}), 60*60*1000);
-  }).catch(() => {});
-  $("#update-later").onclick = () => { $("#update-bar").hidden = true; };
-}
+bootSync();
 })();
 </script>
 </body>
