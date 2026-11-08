@@ -1028,6 +1028,68 @@ button,[role="button"],[data-open],[data-insight],[data-cat-open],label[for]{cur
 :root[data-fx="calm"] .bg-blobs{display:none}
 :root[data-fx="calm"] .bg-art.has-blobs::before{display:none}
 @media (prefers-reduced-motion:reduce){.bg-blobs i{animation:none!important}}
+/* ---------- fewer colors: one accent for icons ---------- */
+.avatar{--c:var(--brand)!important}
+.bg-blobs .b3{background:radial-gradient(circle,color-mix(in srgb,var(--brand) 10%,transparent) 0%,transparent 60%)}
+
+/* ---------- lock screen ---------- */
+.lock{position:fixed;inset:0;z-index:400;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px}
+.lock .lk-logo{width:64px;height:64px;border-radius:20px;background:var(--brand);display:grid;place-items:center;color:var(--on-brand);font-size:1.8rem}
+.lock h2{margin:0;font-size:var(--fs-xl);font-weight:700}
+.lk-dots{display:flex;gap:14px;margin:6px 0}
+.lk-dots i{width:14px;height:14px;border-radius:50%;border:2px solid var(--text-2);transition:background-color var(--d-fast) ease,transform var(--d-fast) var(--ease-pop)}
+.lk-dots i.on{background:var(--brand);border-color:var(--brand);transform:scale(1.1)}
+.lk-msg{min-height:1.3em;font-size:var(--fs-sm);color:var(--neg);font-weight:600;text-align:center}
+.lk-pad{display:grid;grid-template-columns:repeat(3,72px);gap:14px}
+.lk-pad button{height:72px;border-radius:50%;border:var(--hair);background:var(--surface);font-size:1.6rem;font-weight:700;color:var(--text);box-shadow:var(--sh-1)}
+.lk-pad button:active{transform:scale(.94);background:var(--surface-2)}
+.lk-pad button.fn{background:none;border:0;box-shadow:none;font-size:.9rem;color:var(--text-2)}
+.lk-pad button.fn svg{width:28px;height:28px}
+.lk-forgot{background:none;border:0;color:var(--text-2);font-size:var(--fs-sm);font-weight:600;text-decoration:underline;padding:10px}
+:root.is-locked body{overflow:hidden}
+
+/* ---------- balance check ---------- */
+.bc-row{display:flex;align-items:center;gap:12px;padding:12px 14px}
+.bc-row+.bc-row{border-top:1px solid var(--line)}
+.bc-row .body{flex:1;min-width:0}
+.bc-row .t{font-weight:600}
+.bc-row .s{font-size:var(--fs-sm);color:var(--text-2)}
+.bc-in{display:flex;flex-direction:column;align-items:flex-end;gap:2px;width:132px}
+.bc-in input{text-align:right;padding:8px 10px;min-height:40px}
+.bc-diff{font-size:var(--fs-xs);font-weight:700;min-height:1em}
+.bc-diff.ok{color:var(--pos)} .bc-diff.off{color:var(--interest-text)}
+
+/* ---------- monthly review ---------- */
+.rv-hero{background:linear-gradient(140deg,color-mix(in srgb,var(--brand) 12%,var(--surface)),var(--surface));border:var(--hair);border-radius:var(--r-md);padding:16px}
+.rv-hero .k{font-size:var(--fs-sm);color:var(--text-2);font-weight:600}
+.rv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.rv-grid span{display:block;font-size:var(--fs-xs);color:var(--text-2)}
+.rv-grid b{font-size:var(--fs-lg);font-variant-numeric:tabular-nums}
+.rv-item{display:flex;align-items:center;gap:10px;padding:12px 14px;font-size:var(--fs-sm)}
+.rv-item+.rv-item{border-top:1px solid var(--line)}
+.rv-item .body{flex:1}
+.rv-item .dot{width:8px;height:8px;border-radius:50%;background:var(--pos);flex:none}
+.rv-item .dot.warn{background:var(--interest)}
+.ms-card{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:var(--hair);border-left:4px solid var(--brand);border-radius:var(--r-md);padding:14px;box-shadow:var(--sh-1)}
+.ms-ic{width:36px;height:36px;border-radius:12px;background:color-mix(in srgb,var(--brand) 12%,var(--surface));color:var(--brand);display:grid;place-items:center;flex:none}
+.ms-ic svg{width:18px;height:18px}
+.ms-card .t{font-weight:700}
+.ms-card .s{font-size:var(--fs-sm);color:var(--text-2)}
+
+/* ---------- activity filters ---------- */
+.af-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:-6px 0 12px}
+#af-toggle{display:inline-flex;align-items:center;gap:6px}
+#af-toggle svg{width:16px;height:16px}
+.af-count{background:var(--brand);color:var(--on-brand);border-radius:99px;font-size:.7rem;padding:1px 7px}
+.af-sum{font-size:var(--fs-sm);color:var(--text-2);font-variant-numeric:tabular-nums;text-align:right}
+.af-panel{background:var(--surface);border:var(--hair);border-radius:var(--r-md);padding:4px 14px 14px;margin-bottom:14px}
+
+/* ---------- receipt scan ---------- */
+.scan-row{display:flex;align-items:center;gap:10px;margin:-6px 0 12px;flex-wrap:wrap}
+#t-scan{display:inline-flex;align-items:center;gap:6px}
+#t-scan svg{width:16px;height:16px}
+.scan-status{font-size:var(--fs-xs);color:var(--text-2);font-weight:600}
+.scan-status.ok{color:var(--pos)} .scan-status.warn{color:var(--interest-text)}
 </style>
 </head>
 <body>
@@ -1036,6 +1098,21 @@ button,[role="button"],[data-open],[data-insight],[data-cat-open],label[for]{cur
   <div class="sp-name">pitaka</div>
   <div class="sp-by">Developed by <b>CloudyBoi</b></div>
 </div></div>
+<div class="lock" id="lock" hidden role="dialog" aria-modal="true" aria-labelledby="lk-h">
+  <div class="lk-logo" aria-hidden="true">₱</div>
+  <h2 id="lk-h">Enter your PIN</h2>
+  <div class="lk-dots" id="lk-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="lk-msg" id="lk-msg" role="alert"></div>
+  <div class="lk-pad" id="lk-pad">
+    <button type="button" data-lk="1">1</button><button type="button" data-lk="2">2</button><button type="button" data-lk="3">3</button>
+    <button type="button" data-lk="4">4</button><button type="button" data-lk="5">5</button><button type="button" data-lk="6">6</button>
+    <button type="button" data-lk="7">7</button><button type="button" data-lk="8">8</button><button type="button" data-lk="9">9</button>
+    <button type="button" class="fn" data-lk="bio" id="lk-bio" aria-label="Use fingerprint or face"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 11v3M8.5 8.5A5 5 0 0 1 17 12v1M7 12a5 5 0 0 0 .5 2.2M12 7a5 5 0 0 0-5 5M16 17c-.5 1-1.2 2-2 2.8M9.5 19.5A9 9 0 0 1 7 16M12 3a9 9 0 0 1 9 9v1M3 12a9 9 0 0 1 2.6-6.4"/></svg></button>
+    <button type="button" data-lk="0">0</button>
+    <button type="button" class="fn" data-lk="del" aria-label="Delete">⌫</button>
+  </div>
+  <button type="button" class="lk-forgot" id="lk-forgot">Forgot PIN?</button>
+</div>
 <div class="wrap">
   <header class="appbar">
     <div class="appbar-left"><button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><span id="menu-avatar">👛</span></button><div class="brand">pitaka</div></div>
@@ -1136,6 +1213,8 @@ button,[role="button"],[data-open],[data-insight],[data-cat-open],label[for]{cur
     <button class="d-item" data-dr="cats"><span data-icon="tag"></span>Categories</button>
     <button class="d-item" data-dr="tpls"><span data-icon="spark"></span>Templates</button>
     <button class="d-item" data-dr="fplan"><span data-icon="star"></span>Financial plan</button>
+    <button class="d-item" data-review><span data-icon="chart"></span>Monthly review</button>
+    <button class="d-item" data-balcheck><span data-icon="sync"></span>Check balances</button>
     <button class="d-item" data-dr="subs"><span data-icon="tv"></span>Subscriptions</button>
     <button class="d-item" data-dr="recs"><span data-icon="clock"></span>Scheduled</button>
     <button class="d-item" data-dr="budgets"><span data-icon="piggy"></span>Budgets</button>
@@ -1405,6 +1484,42 @@ button,[role="button"],[data-open],[data-insight],[data-cat-open],label[for]{cur
   </form>
 </dialog>
 
+<!-- Lock setup -->
+<dialog id="d-locksetup" aria-labelledby="ls-title">
+  <form class="sheet" method="dialog" id="ls-form" novalidate>
+    <div class="grabber" aria-hidden="true"></div>
+    <div class="sheet-h"><h3 id="ls-title">Choose a 4-digit PIN</h3><button type="button" class="x" data-close aria-label="Close"><span data-icon="x"></span></button></div>
+    <div id="ls-pin-wrap"><label for="ls-pin" style="margin-top:0">PIN (4 to 6 numbers)</label><input id="ls-pin" type="password" inputmode="numeric" autocomplete="off" maxlength="6" pattern="[0-9]*" data-noformat style="font-size:1.6rem;letter-spacing:.5em;text-align:center"></div>
+    <div id="ls-bio-row" hidden><p class="hint" style="margin-top:0">Also unlock with your fingerprint or face? Your PIN still works as a backup.</p><div class="btns"><button type="button" class="btn primary" id="ls-bio-yes">Use fingerprint or face</button><button type="button" class="btn" id="ls-bio-no">PIN only</button></div></div>
+    <p class="hint">This keeps people who pick up your phone out of Pitaka. If you forget the PIN, you can remove it with your Google Sheet token, or erase this phone’s copy and restore from your Sheet or a backup.</p>
+    <div class="err" id="ls-err" role="alert"></div>
+    <div class="sheet-foot"><button type="submit" class="btn primary" id="ls-save">Continue</button></div>
+  </form>
+</dialog>
+
+<!-- Balance check -->
+<dialog id="d-balcheck" aria-labelledby="bc-title">
+  <form class="sheet" method="dialog" id="bc-form" novalidate>
+    <div class="grabber" aria-hidden="true"></div>
+    <div class="sheet-h"><h3 id="bc-title">Check your balances</h3><button type="button" class="x" data-close aria-label="Close"><span data-icon="x"></span></button></div>
+    <p class="hint" style="margin-top:0">Open each app or wallet and type what it shows. Pitaka fixes any difference with a “Balance check” record. Investments are updated through Update prices.</p>
+    <div class="list" id="bc-list" style="margin-top:var(--s-3)"></div>
+    <p class="hint" id="bc-sum"></p>
+    <div class="err" id="bc-err" role="alert"></div>
+    <div class="sheet-foot"><button type="submit" class="btn primary">Save balances</button></div>
+  </form>
+</dialog>
+
+<!-- Monthly review -->
+<dialog id="d-review" aria-labelledby="rv-title">
+  <div class="sheet">
+    <div class="grabber" aria-hidden="true"></div>
+    <div class="sheet-h"><h3 id="rv-title">Month in review</h3><button type="button" class="x" data-close aria-label="Close"><span data-icon="x"></span></button></div>
+    <div id="rv-body"></div>
+    <div class="sheet-foot"><button type="button" class="btn primary" id="rv-done">Done</button></div>
+  </div>
+</dialog>
+
 <!-- Budgets -->
 <dialog id="d-budgets" aria-labelledby="bg-title">
   <div class="sheet">
@@ -1452,6 +1567,8 @@ button,[role="button"],[data-open],[data-insight],[data-cat-open],label[for]{cur
 
     <section class="set-group" aria-labelledby="sg-priv"><h4 id="sg-priv">Privacy</h4><div class="set-card">
       <div class="set-row"><div><div class="t">Hide amounts</div><div class="s">Shows ₱ •••• instead of numbers. Handy in public.</div></div><button class="set-switch" role="switch" id="st-hide" aria-checked="false" aria-label="Hide amounts"><span class="switch"></span></button></div>
+      <div class="set-row"><div><div class="t">App lock</div><div class="s" id="st-lock-state">Off</div></div><div><button type="button" class="btn sm" id="st-lock-on">Set a PIN</button><button type="button" class="btn sm danger" id="st-lock-off" hidden>Turn off</button></div></div>
+      <div class="set-row" id="st-lock-after-row" hidden><div><div class="t">Lock again after</div><div class="s">Time away from the app</div></div><select id="st-lock-after" aria-label="Lock again after"><option value="0">Right away</option><option value="60">1 minute</option><option value="300">5 minutes</option><option value="900">15 minutes</option></select></div>
     </div></section>
 
     <section class="set-group" aria-labelledby="sg-beh"><h4 id="sg-beh">How Pitaka works for you</h4><div class="set-card">
@@ -1952,7 +2069,8 @@ function sheetView(){
   const nm = id => state.accounts.find(a=>a.id===id)?.name || "";
   return {
     accounts: state.accounts.map(a => ({name:a.name, kind:KIND[a.kind]?.label || a.kind, balance: Math.round((calc?.res[a.id]?.value||0)*100)/100})),
-    txns: [...state.txns].sort((a,b)=>b.date.localeCompare(a.date)).map(t => ({date:t.date, type:t.type, amount:t.amount, category:t.category, from:nm(t.from), to:nm(t.to), note:t.note}))
+    txns: [...state.txns].sort((a,b)=>b.date.localeCompare(a.date)).map(t => ({date:t.date, type:t.type, amount:t.amount, category:t.category, from:nm(t.from), to:nm(t.to), note:t.note})),
+    upcoming: typeof upcomingForReminders === "function" ? upcomingForReminders() : []
   };
 }
 /* All sync calls are POST, so your token never appears in a web address. */
@@ -4887,7 +5005,7 @@ go = function(v){
 };
 
 /* ---------- Home: a calmer default (one time, with undo) ---------- */
-const CORE_TILES = ["earning","quick","alerts","weekly","budgets","spending","accounts"];
+const CORE_TILES = ["earning","monthstart","quick","alerts","weekly","budgets","spending","accounts"];
 function simplifyHomeOnce(){
   if (!state?.dashboard || state.prefs.home17) return;
   const before = snapshot();
@@ -4946,7 +5064,7 @@ $("#st-fx").onchange = () => setPref("fx", $("#st-fx").value);
 
 /* ---------- test hook (only with ?test in the address) ---------- */
 if (/[?&]test\b/.test(location.search)) window.__pitaka = {
-  get state(){ return state; }, set state(v){ state = v; }, compute:() => compute(), evalExpr, occDates, processRecurring, recPaid, recSkip, planProgress, normalizeMoney, ensureP17, save, render, go, migrate, defaults, todayStr
+  get state(){ return state; }, set state(v){ state = v; }, compute:() => compute(), evalExpr, occDates, processRecurring, recPaid, recSkip, planProgress, normalizeMoney, ensureP17, save, render, go, migrate, defaults, todayStr, parseReceipt, upcomingForReminders, smartGuess, lockCfg: () => lockCfg(), cycleInfo
 };
 
 /* ---------- amounts get thousands separators as you type ---------- */
@@ -5245,6 +5363,438 @@ applyPrefs = function(){ _apply777(); document.documentElement.dataset.bgmotion 
 const _rs777 = renderSettings;
 renderSettings = function(){ _rs777(); $("#st-bgmotion").setAttribute("aria-checked", String(state.prefs.bgMotion !== false)); };
 $("#st-bgmotion").onclick = () => setPref("bgMotion", state.prefs.bgMotion === false);
+/* ---------- 1. faster logging: home-screen shortcuts + smart defaults ---------- */
+/* Smart defaults: for a new expense, guess the category and account you
+   usually use at this time of day, from the last 60 days. */
+function smartGuess(type){
+  const since = ymd(addDays(new Date(), -60)), hour = new Date().getHours();
+  const near = t => { const h = new Date(t.ts||0).getHours(); return Math.min(Math.abs(h - hour), 24 - Math.abs(h - hour)) <= 2; };
+  const pool = state.txns.filter(t => t.type === type && t.date >= since && !t.rec && t.ts);
+  if (pool.length < 3) return null;
+  const score = {};
+  pool.forEach(t => { const k = t.category || ""; score[k] = (score[k]||0) + (near(t) ? 3 : 1); });
+  const cat = Object.entries(score).sort((a,b) => b[1]-a[1])[0]?.[0];
+  if (!cat) return null;
+  const acc = {}; pool.filter(t => t.category === cat).forEach(t => { const a = type === "income" ? t.to : t.from; if (a) acc[a] = (acc[a]||0) + 1; });
+  const account = Object.entries(acc).sort((a,b) => b[1]-a[1])[0]?.[0];
+  return {cat, account};
+}
+const _openTxn7781 = openTxn;
+openTxn = function(pre){
+  _openTxn7781(pre);
+  const p = pre || {};
+  if (p.editId || p.from || p.to || p.amount || p.note) return;   // something specific was asked for
+  const type = p.type || "expense"; if (type === "transfer") return;
+  const g = smartGuess(type); if (!g) return;
+  if (state.categories.some(c => c.name === g.cat)) { tcat = g.cat; renderCats(); }
+  const sel = type === "income" ? $("#t-to") : $("#t-from");
+  if (g.account && acctById(g.account) && [...sel.options].some(o => o.value === g.account)) { sel.value = g.account; sel.dispatchEvent(new Event("change")); }
+};
+
+/* Home-screen shortcuts (long-press the app icon): ?add=expense|income|transfer, ?go=plan */
+(function shortcutEntry(){
+  const q = new URLSearchParams(location.search), add = q.get("add"), goTo = q.get("go");
+  if (!add && !goTo) return;
+  const run = () => {
+    if (goTo && ["home","activity","plan","accounts","summary"].includes(goTo)) go(goTo);
+    if (add && ["expense","income","transfer"].includes(add)) openTxn({type:add});
+    // clean the address so a refresh doesn't reopen the form
+    try { history.replaceState(null, "", location.pathname + location.hash); } catch {}
+  };
+  // wait for the first render and the splash
+  setTimeout(run, Math.max(400, 1150 - performance.now()));
+})();
+/* ---------- 2. monthly balance check: make Pitaka match your real accounts ---------- */
+const checkable = a => !["invest","lent"].includes(a.kind);
+function openBalanceCheck(){
+  calc = compute();
+  const list = state.accounts.filter(checkable);
+  $("#bc-list").innerHTML = list.map(a => {
+    const debt = isDebt(a), v = debt ? owedOn(a.id) : calc.res[a.id].value;
+    return `<div class="bc-row" data-bcid="${a.id}">${avatar(a)}<div class="body"><div class="t">${esc(a.name)}</div><div class="s">Pitaka: ${esc(peso(v))}${debt ? " owed" : ""}</div></div>
+      <div class="bc-in"><label class="sr" for="bc-${a.id}">Real ${debt ? "amount owed" : "balance"} for ${esc(a.name)}</label><input id="bc-${a.id}" inputmode="decimal" placeholder="${esc(v.toFixed(2))}" data-pitaka="${v}"><span class="bc-diff" aria-live="polite"></span></div></div>`;
+  }).join("") || `<div class="empty">No accounts to check.</div>`;
+  $("#bc-err").textContent = ""; bcSummary();
+  openSheet($("#d-balcheck"));
+}
+function bcSummary(){
+  let matched = 0, changed = 0, net = 0;
+  $$("#bc-list .bc-row").forEach(r => {
+    const inp = r.querySelector("input"), out = r.querySelector(".bc-diff"), raw = inp.value.trim();
+    if (!raw) { out.textContent = ""; out.className = "bc-diff"; return; }
+    const real = num(raw), was = Number(inp.dataset.pitaka); if (isNaN(real)) { out.textContent = "?"; return; }
+    const d = m2(real - was);
+    if (Math.abs(d) < 0.01) { matched++; out.textContent = "Matches"; out.className = "bc-diff ok"; }
+    else { changed++; net += d; out.textContent = `${d > 0 ? "+" : "−"}${peso(Math.abs(d)).replace("−","")}`; out.className = "bc-diff off"; }
+  });
+  $("#bc-sum").textContent = matched + changed ? `${matched} matching, ${changed} to fix` : "Type what each app or wallet shows. Leave blank to skip.";
+}
+$("#bc-list").addEventListener("input", bcSummary);
+$("#bc-form").onsubmit = e => {
+  e.preventDefault();
+  const before = snapshot(); let n = 0;
+  $$("#bc-list .bc-row").forEach(r => {
+    const inp = r.querySelector("input"); if (!inp.value.trim()) return;
+    const a = acctById(r.dataset.bcid), real = num(inp.value); if (!a || isNaN(real)) return;
+    const target = isDebt(a) ? -real : real, d = m2(target - calc.res[a.id].value);
+    if (Math.abs(d) >= 0.01) { state.txns.push({id:uid(), ts:Date.now(), type:"adjust", to:a.id, amount:d, date:todayStr(), note:"Balance check"}); n++; }
+  });
+  state.prefs.checkedMonth = todayStr().slice(0,7);
+  save(); render(); $("#d-balcheck").close();
+  toast(n ? `${n} account${n > 1 ? "s" : ""} corrected. Pitaka matches your real balances now.` : "Everything matches. Nice.", () => restore(before, "Balance check undone"));
+};
+
+/* ---------- 4. monthly review: what happened, and what to change ---------- */
+function reviewData(mk){
+  const prevMk = shiftMonth(mk, -1), t = monthTotals(mk), tp = monthTotals(prevMk), me = monthExpenses(mk), mp = monthExpenses(prevMk);
+  const kept = t.inc > 0 ? (t.inc - t.exp) / t.inc : null;
+  const plan = planProgress(mk), planDone = plan.filter(x => x.done >= x.p.amount - 0.5).length;
+  const over = state.categories.filter(c => c.type === "expense" && c.limit && (me.by[c.name]||0) > c.limit).map(c => ({c, spent: me.by[c.name]}));
+  const top = Object.entries(me.by).sort((a,b) => b[1]-a[1]).slice(0,3);
+  const rises = Object.keys(me.by).map(k => [k, (me.by[k]||0) - (mp.by[k]||0)]).filter(x => x[1] > 300 && !SENSITIVE_CAT.test(x[0])).sort((a,b) => b[1]-a[1]).slice(0,2);
+  return {mk, prevMk, t, tp, kept, plan, planDone, over, top, rises};
+}
+function reviewHtml(d){
+  const name = monthName(d.mk), pct = x => `${(x*100).toFixed(0)}%`;
+  const wins = [], fixes = [];
+  if (d.kept != null && d.kept >= 0.2) wins.push(`You kept ${pct(d.kept)} of your income.`);
+  if (d.tp.exp > 0 && d.t.exp < d.tp.exp) wins.push(`You spent ${peso(d.tp.exp - d.t.exp, 0)} less than in ${monthName(d.prevMk, false)}.`);
+  if (d.plan.length && d.planDone === d.plan.length) wins.push("You finished every line of your monthly plan.");
+  d.over.forEach(o => fixes.push({t:`${o.c.name} went over its ${peso(o.c.limit, 0)} budget by ${peso(o.spent - o.c.limit, 0)}.`, a:`<button type="button" class="btn sm" data-budget-edit>Adjust budgets</button>`}));
+  d.rises.forEach(([k, v]) => fixes.push({t:`${k} rose by ${peso(v, 0)} from last month.`, a:`<button type="button" class="btn sm" data-cat-open="${esc(k)}">See ${esc(k)}</button>`}));
+  const missed = d.plan.filter(x => x.done < x.p.amount - 0.5);
+  if (missed.length) fixes.push({t:`${missed.length} plan line${missed.length > 1 ? "s" : ""} weren’t completed: ${missed.slice(0,3).map(x => x.p.label).join(", ")}${missed.length > 3 ? "…" : ""}.`, a:`<button type="button" class="btn sm" data-editplan>Adjust plan</button>`});
+  if (d.kept != null && d.kept < 0) fixes.push({t:`You spent ${peso(d.t.exp - d.t.inc, 0)} more than you earned.`, a:""});
+  return `<div class="rv-hero"><div class="k">${esc(name)}</div><div class="rv-grid">
+      <div><span>Income</span><b>${esc(pesoShort(d.t.inc))}</b></div><div><span>Spent</span><b>${esc(pesoShort(d.t.exp))}</b></div><div><span>Kept</span><b>${d.kept == null ? "—" : esc(pct(d.kept))}</b></div><div><span>Plan done</span><b>${d.plan.length ? `${d.planDone}/${d.plan.length}` : "—"}</b></div></div></div>
+    ${wins.length ? `<div class="section" style="margin-top:var(--s-4)"><div class="section-h"><h2>Went well</h2></div><div class="list">${wins.map(w => `<div class="rv-item good"><span class="dot"></span><span>${esc(w)}</span></div>`).join("")}</div></div>` : ""}
+    <div class="section" style="margin-top:var(--s-4)"><div class="section-h"><h2>Worth changing</h2></div>${fixes.length ? `<div class="list">${fixes.map(f => `<div class="rv-item"><span class="dot warn"></span><span class="body">${esc(f.t)}</span>${f.a}</div>`).join("")}</div>` : `<div class="empty">Nothing stood out. Keep doing what you’re doing.</div>`}</div>
+    ${d.top.length ? `<div class="section" style="margin-top:var(--s-4)"><div class="section-h"><h2>Where most of it went</h2></div><div class="list">${d.top.map(([c,v]) => catBarRow(c, v, d.t.exp)).join("")}</div></div>` : ""}
+    <div class="section" style="margin-top:var(--s-4)"><div class="section-h"><h2>Start the new month right</h2></div><div class="list">
+      <button type="button" class="row" data-balcheck>${`<span class="avatar">${icon("sync")}</span>`}<span class="body"><span class="t" style="display:block">Check your balances</span><span class="s" style="display:block">${state.prefs.checkedMonth === todayStr().slice(0,7) ? "Done this month" : "Make Pitaka match your real accounts"}</span></span></button>
+      <button type="button" class="row" data-editplan><span class="avatar">${icon("target")}</span><span class="body"><span class="t" style="display:block">Review your monthly plan</span><span class="s" style="display:block">Change amounts for the month ahead</span></span></button></div></div>`;
+}
+function openReview(mk){
+  mk = mk || shiftMonth(todayStr().slice(0,7), -1);
+  $("#rv-title").textContent = `${monthName(mk, false)} in review`;
+  $("#rv-body").innerHTML = reviewHtml(reviewData(mk));
+  state.prefs.reviewedMonth = mk; saveLocal();
+  openSheet($("#d-review"));
+}
+$("#rv-done").onclick = () => { $("#d-review").close(); render(); };
+
+/* Home: a gentle card in the first 10 days of a month, until you've done it */
+DASH_TILES.push({id:"monthstart", name:"New month check-in", desc:"Review last month and check balances (first 10 days)"});
+TILE.monthstart = function(){
+  const today = todayStr(), mk = today.slice(0,7), last = shiftMonth(mk, -1), day = Number(today.slice(8));
+  const needReview = state.prefs.reviewedMonth !== last && state.txns.some(t => t.date.slice(0,7) === last);
+  const needCheck = state.prefs.checkedMonth !== mk;
+  if (day > 10 || (!needReview && !needCheck)) return "";
+  return `<div class="ms-card"><div class="ms-ic">${icon("star")}</div><div class="body"><div class="t">New month, fresh start</div><div class="s">${needReview ? `Your ${esc(monthName(last, false))} review is ready.` : "Last month is reviewed."} ${needCheck ? "Take 2 minutes to check your balances." : ""}</div>
+    <div class="btns" style="margin-top:8px">${needReview ? `<button class="btn primary sm" data-review>See review</button>` : ""}${needCheck ? `<button class="btn sm" data-balcheck>Check balances</button>` : ""}</div></div></div>`;
+};
+function ensureMonthTile(){
+  if (!state?.dashboard || state.prefs.ms7782) return;
+  const d = state.dashboard, at = d.findIndex(x => x.id === "monthstart"); if (at >= 0) d.splice(at, 1);
+  const i = d.findIndex(x => x.id === "earning"); d.splice(i >= 0 ? i + 1 : 0, 0, {id:"monthstart", on:true});
+  state.prefs.ms7782 = true;
+}
+const _render7782 = render;
+render = function(){ ensureMonthTile(); _render7782(); };
+document.addEventListener("click", e => {
+  if (e.target.closest("#drawer [data-balcheck], #drawer [data-review]")) setDrawer(false);
+  if (e.target.closest("[data-balcheck]")) { e.preventDefault(); return openBalanceCheck(); }
+  if (e.target.closest("[data-review]")) { e.preventDefault(); return openReview(); }
+});
+/* ---------- 3. app lock: PIN, plus fingerprint/face where the phone supports it ----------
+   The PIN is never stored, only a salted PBKDF2 hash. This keeps people who pick up
+   your phone out of the app. It does not encrypt the data on the device. */
+const LOCK_KEY = "pitaka-lock";
+const lockCfg = () => { try { return JSON.parse(localStorage.getItem(LOCK_KEY)) || null; } catch { return null; } };
+const setLockCfg = c => { try { c ? localStorage.setItem(LOCK_KEY, JSON.stringify(c)) : localStorage.removeItem(LOCK_KEY); } catch {} };
+const b64 = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
+const unb64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+async function pinHash(pin, saltB64, iter){
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(pin), "PBKDF2", false, ["deriveBits"]);
+  const bits = await crypto.subtle.deriveBits({name:"PBKDF2", hash:"SHA-256", salt:unb64(saltB64), iterations:iter}, key, 256);
+  return b64(bits);
+}
+const bioAvailable = async () => { try { return !!(window.PublicKeyCredential && await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()); } catch { return false; } };
+
+/* ---------- the lock screen ---------- */
+let pinBuf = "", fails = 0, coolUntil = 0, locked = false, hiddenAt = 0;
+function lockNow(){
+  const c = lockCfg(); if (!c) return;
+  locked = true; pinBuf = ""; $("#lk-dots").innerHTML = "<i></i>".repeat(c.len || 4); drawDots(); $("#lk-msg").textContent = "";
+  $("#lock").hidden = false; document.documentElement.classList.add("is-locked");
+  $("#lk-bio").hidden = !c.bio;
+  $("#lk-forgot").hidden = false;
+  if (c.bio && document.visibilityState === "visible") setTimeout(bioUnlock, 350);
+}
+function unlock(){
+  locked = false; fails = 0; $("#lock").hidden = true; document.documentElement.classList.remove("is-locked");
+  if (!calm()) $("#lock").animate?.([{opacity:1},{opacity:0}], {duration:160});
+}
+function drawDots(){ $$("#lk-dots i").forEach((d,i) => d.classList.toggle("on", i < pinBuf.length)); }
+async function tryPin(){
+  const c = lockCfg(); if (!c) return unlock();
+  if (Date.now() < coolUntil) { $("#lk-msg").textContent = `Too many tries. Wait ${Math.ceil((coolUntil-Date.now())/1000)} seconds.`; pinBuf = ""; drawDots(); return; }
+  const h = await pinHash(pinBuf, c.salt, c.iter);
+  if (h === c.hash) { unlock(); return; }
+  fails++; pinBuf = ""; drawDots();
+  if (!calm()) $("#lk-dots").animate([{transform:"translateX(0)"},{transform:"translateX(-10px)"},{transform:"translateX(10px)"},{transform:"translateX(0)"}], {duration:260});
+  if (fails >= 5) { coolUntil = Date.now() + 30000; fails = 0; $("#lk-msg").textContent = "Too many tries. Wait 30 seconds."; }
+  else $("#lk-msg").textContent = "Wrong PIN. Try again.";
+}
+async function bioUnlock(){
+  const c = lockCfg(); if (!c?.bio) return;
+  try {
+    await navigator.credentials.get({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)), allowCredentials:[{type:"public-key", id:unb64(c.bio)}], userVerification:"required", timeout:60000}});
+    unlock();
+  } catch { $("#lk-msg").textContent = "Use your PIN instead."; }
+}
+$("#lk-pad").addEventListener("click", e => {
+  const k = e.target.closest("[data-lk]"); if (!k || !locked) return;
+  const v = k.dataset.lk;
+  if (v === "del") pinBuf = pinBuf.slice(0,-1);
+  else if (v === "bio") return bioUnlock();
+  else if (pinBuf.length < 6) pinBuf += v;
+  drawDots(); $("#lk-msg").textContent = "";
+  const c = lockCfg(); if (pinBuf.length === (c?.len || 4)) setTimeout(tryPin, 90);
+});
+document.addEventListener("keydown", e => {
+  if (!locked) return;
+  if (/^\d$/.test(e.key)) { e.preventDefault(); $(`#lk-pad [data-lk="${e.key}"]`)?.click(); }
+  else if (e.key === "Backspace") { e.preventDefault(); $(`#lk-pad [data-lk="del"]`).click(); }
+}, true);
+$("#lk-bio").onclick = bioUnlock;
+$("#lk-forgot").onclick = () => {
+  const hasSync = typeof sync !== "undefined" && sync && sync.token;
+  if (hasSync) {
+    const t = prompt("Forgot your PIN? Enter your Google Sheet token (from Apps Script) to remove the lock.");
+    if (t && t.trim() === sync.token) { setLockCfg(null); unlock(); toast("Lock removed. Set a new PIN in Settings."); }
+    else if (t) $("#lk-msg").textContent = "That token doesn’t match.";
+    return;
+  }
+  if (confirm("Without your PIN, the only way in is to erase Pitaka’s data on this phone. Your Google Sheet copy and any backup files are not affected. Erase and start over?")) {
+    try { localStorage.clear(); indexedDB.deleteDatabase("pitaka"); } catch {}
+    location.reload();
+  }
+};
+// lock when you come back after being away
+document.addEventListener("visibilitychange", () => {
+  const c = lockCfg(); if (!c) return;
+  if (document.hidden) hiddenAt = Date.now();
+  else if (!locked && hiddenAt && Date.now() - hiddenAt > (c.after ?? 60) * 1000) lockNow();
+});
+// lock immediately on open, before anything is visible
+if (lockCfg()) lockNow();
+
+/* ---------- settings: set up, change, remove ---------- */
+let setupStep = null, firstPin = "";
+function lockSettingsUI(){
+  const c = lockCfg();
+  $("#st-lock-state").textContent = c ? `On${c.bio ? " · fingerprint or face" : ""} · locks after ${c.after >= 60 ? `${c.after/60} minute${c.after > 60 ? "s" : ""}` : "leaving the app"}` : "Off";
+  $("#st-lock-on").hidden = !!c; $("#st-lock-off").hidden = !c; $("#st-lock-after-row").hidden = !c;
+  if (c) $("#st-lock-after").value = String(c.after ?? 60);
+}
+const _rs7783 = renderSettings;
+renderSettings = function(){ _rs7783(); lockSettingsUI(); };
+$("#st-lock-on").onclick = () => { setupStep = 1; firstPin = ""; $("#ls-title").textContent = "Choose a 4-digit PIN"; $("#ls-pin").value = ""; $("#ls-err").textContent = ""; $("#ls-bio-row").hidden = true; openSheet($("#d-locksetup"), true); setTimeout(() => $("#ls-pin").focus(), 80); };
+$("#st-lock-off").onclick = () => { if (!confirm("Turn off the app lock?")) return; setLockCfg(null); lockSettingsUI(); toast("App lock off"); };
+$("#st-lock-after").onchange = () => { const c = lockCfg(); if (!c) return; c.after = Number($("#st-lock-after").value); setLockCfg(c); lockSettingsUI(); };
+$("#ls-form").onsubmit = async e => {
+  e.preventDefault();
+  const pin = $("#ls-pin").value.trim();
+  if (!/^\d{4,6}$/.test(pin)) { $("#ls-err").textContent = "Use 4 to 6 numbers."; return; }
+  if (/^(\d)\1+$/.test(pin) || "0123456789".includes(pin) || "9876543210".includes(pin)) { $("#ls-err").textContent = "That’s easy to guess. Try another."; return; }
+  if (setupStep === 1) { firstPin = pin; setupStep = 2; $("#ls-title").textContent = "Enter it again"; $("#ls-pin").value = ""; $("#ls-err").textContent = ""; $("#ls-pin").focus(); return; }
+  if (pin !== firstPin) { setupStep = 1; firstPin = ""; $("#ls-title").textContent = "Choose a 4-digit PIN"; $("#ls-pin").value = ""; $("#ls-err").textContent = "Those didn’t match. Start again."; return; }
+  const salt = b64(crypto.getRandomValues(new Uint8Array(16))), iter = 150000;
+  const cfg = {hash: await pinHash(pin, salt, iter), salt, iter, len: pin.length, after: 60, bio: null};
+  setLockCfg(cfg); setupStep = 3; $("#ls-title").textContent = "PIN set";
+  if (await bioAvailable()) { $("#ls-bio-row").hidden = false; $("#ls-pin-wrap").hidden = true; $("#ls-save").hidden = true; }
+  else { $("#d-locksetup").close(); lockSettingsUI(); toast("App lock on. Pitaka asks for your PIN when you open it."); }
+};
+$("#ls-bio-yes").onclick = async () => {
+  try {
+    const cred = await navigator.credentials.create({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)), rp:{name:"Pitaka"}, user:{id:crypto.getRandomValues(new Uint8Array(16)), name:"pitaka", displayName:state.name || "Pitaka"},
+      pubKeyCredParams:[{type:"public-key", alg:-7},{type:"public-key", alg:-257}], authenticatorSelection:{authenticatorAttachment:"platform", userVerification:"required", residentKey:"discouraged"}, timeout:60000}});
+    const c = lockCfg(); c.bio = b64(cred.rawId); setLockCfg(c); toast("Fingerprint or face unlock is on");
+  } catch { toast("Couldn’t set up fingerprint or face. Your PIN still works."); }
+  $("#d-locksetup").close(); $("#ls-pin-wrap").hidden = false; $("#ls-save").hidden = false; lockSettingsUI();
+};
+$("#ls-bio-no").onclick = () => { $("#d-locksetup").close(); $("#ls-pin-wrap").hidden = false; $("#ls-save").hidden = false; lockSettingsUI(); toast("App lock on"); };
+/* ---------- 5. Activity filters: when, category, how much, with totals ---------- */
+const AF = {range:"all", from:"", to:"", cat:"", min:"", max:""};
+(function filterUI(){
+  const host = $("#f-acct"); if (!host) return;
+  host.insertAdjacentHTML("afterend", `<div class="af-bar"><button type="button" class="btn sm" id="af-toggle" aria-expanded="false" aria-controls="af-panel">${icon("sliders")}<span>Filters</span><span class="af-count" id="af-count" hidden></span></button><div class="af-sum" id="af-sum" aria-live="polite"></div></div>
+    <div class="af-panel" id="af-panel" hidden>
+      <label id="af-range-l">When</label>
+      <div class="chips" id="af-range" role="group" aria-labelledby="af-range-l" style="flex-wrap:wrap">
+        ${[["all","All time"],["month","This month"],["last","Last month"],["3m","Last 3 months"],["custom","Pick dates"]].map(([k,l]) => `<button type="button" class="chip" data-afr="${k}" aria-pressed="${k==="all"}">${l}</button>`).join("")}
+      </div>
+      <div class="two" id="af-dates" hidden><div><label for="af-from">From</label><input type="date" id="af-from"></div><div><label for="af-to">To</label><input type="date" id="af-to"></div></div>
+      <div class="two"><div><label for="af-cat">Category</label><select id="af-cat"></select></div><div class="two" style="gap:6px"><div><label for="af-min">Min ₱</label><input id="af-min" inputmode="decimal" placeholder="0"></div><div><label for="af-max">Max ₱</label><input id="af-max" inputmode="decimal" placeholder="Any"></div></div></div>
+      <div class="btns" style="margin-top:var(--s-3)"><button type="button" class="btn sm" id="af-clear">Clear filters</button></div>
+    </div>`);
+  $("#af-toggle").onclick = () => { const p = $("#af-panel"); p.hidden = !p.hidden; $("#af-toggle").setAttribute("aria-expanded", String(!p.hidden)); if (!p.hidden) fillCats(); };
+  $("#af-range").onclick = e => { const b = e.target.closest("[data-afr]"); if (!b) return; AF.range = b.dataset.afr; $$("#af-range .chip").forEach(c => c.setAttribute("aria-pressed", String(c === b))); $("#af-dates").hidden = AF.range !== "custom"; renderActivity(true); };
+  ["af-from","af-to","af-cat","af-min","af-max"].forEach(id => $("#"+id).addEventListener("input", () => { AF.from = $("#af-from").value; AF.to = $("#af-to").value; AF.cat = $("#af-cat").value; AF.min = $("#af-min").value; AF.max = $("#af-max").value; renderActivity(true); }));
+  $("#af-clear").onclick = () => { Object.assign(AF, {range:"all", from:"", to:"", cat:"", min:"", max:""}); ["af-from","af-to","af-min","af-max"].forEach(id => $("#"+id).value = ""); $("#af-cat").value = ""; $$("#af-range .chip").forEach(c => c.setAttribute("aria-pressed", String(c.dataset.afr === "all"))); $("#af-dates").hidden = true; renderActivity(true); };
+  function fillCats(){ const cur = $("#af-cat").value; $("#af-cat").innerHTML = `<option value="">All categories</option>` + state.categories.map(c => `<option${c.name===cur?" selected":""}>${esc(c.name)}</option>`).join(""); }
+})();
+function afRange(){
+  const today = todayStr(), mk = today.slice(0,7);
+  if (AF.range === "month") return [mk + "-01", today];
+  if (AF.range === "last") { const l = shiftMonth(mk, -1); return [l + "-01", ymd(new Date(Number(l.slice(0,4)), Number(l.slice(5)), 0))]; }
+  if (AF.range === "3m") return [shiftMonth(mk, -2) + "-01", today];
+  if (AF.range === "custom") return [AF.from || "0000-00-00", AF.to || "9999-99-99"];
+  return null;
+}
+function afPass(t){
+  const r = afRange(); if (r && (t.date < r[0] || t.date > r[1])) return false;
+  if (AF.cat && t.category !== AF.cat) return false;
+  const a = Math.abs(Number(t.amount)), mn = num(AF.min), mx = num(AF.max);
+  if (!isNaN(mn) && a < mn) return false; if (!isNaN(mx) && a > mx) return false;
+  return true;
+}
+const afActive = () => (AF.range !== "all") + !!AF.cat + !!AF.min + !!AF.max;
+const _renderActivity7785 = renderActivity;
+renderActivity = function(force){
+  if (!force && view !== "activity") return _renderActivity7785(force);
+  const all = state.txns, shown = all.filter(afPass);
+  state.txns = shown;
+  try { _renderActivity7785(force); } finally { state.txns = all; }
+  // totals for what's on screen (after the search, type and account filters too)
+  const ids = new Set($$("#act-list [data-tx]").map(x => x.dataset.tx));
+  const vis = shown.filter(t => ids.has(t.id)), sp = vis.filter(t => t.type === "expense").reduce((s,t) => s + Number(t.amount), 0), inc = vis.filter(t => t.type === "income").reduce((s,t) => s + Number(t.amount), 0);
+  const n = afActive(), cnt = $("#af-count"); if (cnt) { cnt.hidden = !n; cnt.textContent = n; }
+  const sum = $("#af-sum"); if (sum) sum.innerHTML = vis.length ? `${vis.length} record${vis.length > 1 ? "s" : ""}${sp ? ` · <span class="neg">−${esc(pesoShort(sp))}</span>` : ""}${inc ? ` · <span class="pos">+${esc(pesoShort(inc))}</span>` : ""}` : "";
+};
+/* ---------- 6. fewer colors: color now means something ----------
+   Icons and progress bars use your accent. Red = over budget or owed, amber = almost
+   or interest, green = good. Category colors stay only where you need to tell slices
+   apart (the donut chart). */
+const _catBarRow7786 = catBarRow;
+catBarRow = function(c, v, total){ const col = catColor(c); return _catBarRow7786(c, v, total).split(`background:${col}`).join("background:var(--brand)"); };
+const _budgetRow7786 = budgetRow;
+budgetRow = function(x, isCur, daysLeft){ const col = catColor(x.c.name); return _budgetRow7786(x, isCur, daysLeft).split(`background:${col}`).join("background:var(--brand)"); };
+const _sparkSvg7786 = sparkSvg;
+sparkSvg = function(vals){ return _sparkSvg7786(vals, "var(--brand)"); };
+/* ---------- 7. reminders that work when the app is closed ----------
+   The app can't wake itself up, but your Google Sheet can: Apps Script runs daily on
+   Google's servers and turns this list into Google Calendar events and an email. */
+function upcomingForReminders(days = 45){
+  const today = todayStr(), to = ymd(addDays(new Date(), days)), out = [];
+  calc = calc || compute();
+  for (const r of (state.recurring || [])){
+    if (r.paused) continue;
+    for (const d of occDates(r, r.start > today ? r.start : today, to)) {
+      if (occDone(r, d)) continue;
+      const amt = r.dynamic === "due" ? (acctById(r.to) ? dueNow(acctById(r.to)) : 0) : Number(r.amount) || 0;
+      out.push({date:d, title: r.type === "income" ? `${r.name} (income)` : r.name, amount:m2(amt), kind: r.sub ? "subscription" : r.partsOf ? "part payment" : r.type, auto: !!r.auto});
+    }
+  }
+  for (const a of state.accounts){
+    if (isCredit(a) && a.dueDay && owedOn(a.id) > 0) { const d = nextDueDay(a.dueDay); if (d <= to) out.push({date:d, title:`${a.name} payment due`, amount:m2(dueNow(a)), kind:"card", auto:false}); }
+    if (a.kind === "borrowed" && a.dueDate && owedOn(a.id) > 0 && a.dueDate <= to) out.push({date:a.dueDate < today ? today : a.dueDate, title:`Pay back ${a.person || a.name}${a.dueDate < today ? " (overdue)" : ""}`, amount:m2(owedOn(a.id)), kind:"loan", auto:false});
+    if (a.kind === "lent" && a.dueDate && (calc.res[a.id]?.value || 0) > 0 && a.dueDate <= to) out.push({date:a.dueDate < today ? today : a.dueDate, title:`${a.person || a.name} pays you back`, amount:m2(calc.res[a.id].value), kind:"collect", auto:false});
+    if (a.kind === "td") { const m = tdMaturity(a); if (m && m >= today && m <= to) out.push({date:m, title:`${a.name} matures`, amount:m2(calc.res[a.id]?.value || 0), kind:"maturity", auto:false}); }
+  }
+  return out.sort((x,y) => x.date.localeCompare(y.date));
+}
+/* ---------- 8. scan a receipt: GCash, Maya, bank or store receipts ----------
+   Reading happens on your phone (Tesseract OCR). The image never leaves the device.
+   The first scan downloads the reader (~6 MB); after that the browser keeps it. */
+const OCR = {
+  lib:"https://cdn.jsdelivr.net/npm/tesseract.js@6.0.1/dist/tesseract.min.js",
+  worker:"https://cdn.jsdelivr.net/npm/tesseract.js@6.0.1/dist/worker.min.js",
+  core:"https://cdn.jsdelivr.net/npm/tesseract.js-core@6.1.2",
+  lang:"https://cdn.jsdelivr.net/npm/@tesseract.js-data/eng@1.0.0/4.0.0_best_int"
+};
+let ocrWorker = null;
+function loadScript(src){ return new Promise((res, rej) => { if (window.Tesseract) return res(); const s = document.createElement("script"); s.src = src; s.crossOrigin = "anonymous"; s.onload = res; s.onerror = () => rej(new Error("load")); document.head.appendChild(s); }); }
+async function getOcr(onProgress){
+  if (ocrWorker) return ocrWorker;
+  await loadScript(OCR.lib);
+  ocrWorker = await Tesseract.createWorker("eng", 1, {workerPath:OCR.worker, corePath:OCR.core, langPath:OCR.lang, gzip:true,
+    logger: m => { if (m.status === "recognizing text" && onProgress) onProgress(Math.round(m.progress * 100)); }});
+  return ocrWorker;
+}
+
+/* turn receipt text into amount, date, who, reference, source */
+const MONTHS = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,sept:9,oct:10,nov:11,dec:12};
+function parseReceipt(text){
+  const raw = String(text || ""), lines = raw.split(/\r?\n/).map(l => l.trim()).filter(Boolean), low = raw.toLowerCase();
+  const money = s => { const m = String(s).replace(/[oO](?=\d)|(?<=\d)[oO]/g, "0").match(/(?:php|₱|p)?\s*([0-9]{1,3}(?:[ ,][0-9]{3})*(?:\.[0-9]{2})|[0-9]+\.[0-9]{2})/i); return m ? parseFloat(m[1].replace(/[ ,]/g, "")) : NaN; };
+  // amount: prefer lines that say what was paid
+  const keys = [/total\s*amount\s*sent/i, /amount\s*sent/i, /total\s*amount/i, /amount\s*paid/i, /total\s*paid/i, /grand\s*total/i, /^total\b/i, /\bamount\b/i, /\btotal\b/i];
+  let amount = NaN;
+  for (const k of keys) { for (let i = 0; i < lines.length && isNaN(amount); i++) if (k.test(lines[i])) { amount = money(lines[i].replace(k, "")); if (isNaN(amount) && lines[i+1]) amount = money(lines[i+1]); } if (!isNaN(amount)) break; }
+  if (isNaN(amount)) { const all = [...raw.matchAll(/(?:php|₱)\s*([0-9][0-9,]*\.[0-9]{2})/gi)].map(m => parseFloat(m[1].replace(/,/g, ""))); if (all.length) amount = Math.max(...all); }
+  // date
+  let date = null;
+  const ymdOk = (y, m, d) => { if (y < 100) y += 2000; const dt = new Date(y, m - 1, d); return dt.getMonth() === m - 1 && y >= 2015 ? ymd(dt) : null; };
+  let m;
+  if ((m = raw.match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sept?|oct|nov|dec)[a-z]*\.?\s+(\d{1,2}),?\s+(\d{4})/i))) date = ymdOk(+m[3], MONTHS[m[1].toLowerCase()], +m[2]);
+  else if ((m = raw.match(/\b(\d{1,2})\s+(jan|feb|mar|apr|may|jun|jul|aug|sept?|oct|nov|dec)[a-z]*\.?,?\s+(\d{4})/i))) date = ymdOk(+m[3], MONTHS[m[2].toLowerCase()], +m[1]);
+  else if ((m = raw.match(/\b(\d{4})-(\d{1,2})-(\d{1,2})\b/))) date = ymdOk(+m[1], +m[2], +m[3]);
+  else if ((m = raw.match(/\b(\d{1,2})\/(\d{1,2})\/(\d{2,4})\b/))) date = ymdOk(+m[3], +m[1], +m[2]);
+  if (date && date > todayStr()) date = null;
+  // source and who
+  const source = /gcash|g-xchange|express send|gcredit|ggives|gsave|gcash ref/i.test(raw) ? "gcash" : /\bmaya\b|paymaya/i.test(raw) ? "maya" : /\b(bpi|bdo|unionbank|landbank|metrobank|security bank|rcbc|pnb|seabank|gotyme)\b/i.test(raw) ? "bank" : null;
+  let who = "";
+  for (let i = 0; i < lines.length && !who; i++) {
+    const l = lines[i];
+    const mm = l.match(/^(?:sent to|paid to|pay to|to|merchant|biller|recipient|store)\s*[:\-]?\s*(.+)$/i);
+    if (mm && mm[1] && !/\d{3,}/.test(mm[1])) who = mm[1];
+    else if (/^(sent to|paid to|merchant|biller|recipient)\s*[:\-]?$/i.test(l) && lines[i+1]) who = lines[i+1];
+  }
+  if (!who) { const head = lines.slice(0, 4).find(l => /^[A-Z][A-Z0-9 &'.,-]{3,}$/.test(l) && !/gcash|maya|receipt|transaction|successful|express send/i.test(l)); if (head) who = head; }
+  who = who.replace(/\s+/g, " ").replace(/[|]+/g, "").trim().slice(0, 40);
+  const ref = (raw.match(/ref(?:erence)?\.?\s*(?:no\.?|number|#)?\s*[:\-]?\s*([A-Z0-9][A-Z0-9 ]{5,24})/i) || [])[1]?.replace(/\s+/g, "").slice(0, 20) || "";
+  // category guess from who or keywords
+  const hay = (who + " " + low);
+  const cat = /jollibee|mcdo|mcdonald|chowking|kfc|greenwich|mang inasal|food|resto|cafe|coffee|bakery|grill|kitchen|7-eleven|ministop|grocery|puregold|savemore|sm hypermarket|robinsons supermarket/i.test(hay) ? "Food"
+    : /grab|angkas|joyride|move it|taxi|bus|jeep|fare|lrt|mrt|gas|fuel|petron|shell|caltex|seaoil/i.test(hay) ? "Transport"
+    : /meralco|electric|water|maynilad|manila water|pldt|converge|sky|internet|bill/i.test(hay) ? "Bills"
+    : /globe|smart|tnt|tm load|load|dito/i.test(hay) ? "Load & data"
+    : /shopee|lazada|tiktok shop|zalora|mall|store|shop/i.test(hay) ? "Shopping"
+    : /pharma|mercury|watsons|clinic|hospital|medical/i.test(hay) ? "Health" : null;
+  return {amount: isNaN(amount) ? null : m2(amount), date, who, ref, source, cat};
+}
+
+/* ---------- UI in the add sheet ---------- */
+(function scanUI(){
+  const strip = $("#t-tpls"); if (!strip) return;
+  strip.insertAdjacentHTML("beforebegin", `<div class="scan-row"><button type="button" class="btn sm" id="t-scan">${icon("receipt")}<span>Scan a receipt</span></button><input type="file" id="t-scan-file" accept="image/*" hidden><span class="scan-status" id="t-scan-status" aria-live="polite"></span></div>`);
+  $("#t-scan").onclick = () => $("#t-scan-file").click();
+  $("#t-scan-file").onchange = async e => {
+    const f = e.target.files[0]; e.target.value = ""; if (!f) return;
+    const st = $("#t-scan-status"), btn = $("#t-scan");
+    btn.disabled = true; st.className = "scan-status"; st.textContent = ocrWorker ? "Reading…" : "Getting the reader ready (first time only)…";
+    try {
+      const w = await getOcr(p => { st.textContent = `Reading… ${p}%`; });
+      const { data } = await w.recognize(f);
+      const r = parseReceipt(data.text);
+      if (!r.amount) { st.className = "scan-status warn"; st.textContent = "Couldn’t find the amount. Type it in, or try a clearer screenshot."; return; }
+      setType("expense");
+      $("#t-amt").value = r.amount.toFixed(2); formatMoneyInput($("#t-amt")); calcUpdate("t-amt");
+      if (r.date) setDate(r.date);
+      if (r.cat && state.categories.some(c => c.name === r.cat)) { tcat = r.cat; renderCats(); }
+      const note = [r.who, r.ref ? `Ref ${r.ref}` : ""].filter(Boolean).join(" · "); if (note) $("#t-note").value = note;
+      if (r.source){ const acc = state.accounts.find(a => new RegExp(r.source === "bank" ? "bank|bpi|bdo|union|land|metro|sea|gotyme" : r.source, "i").test(a.name) && !isDebt(a)); if (acc) { $("#t-from").value = acc.id; $("#t-from").dispatchEvent(new Event("change")); } }
+      st.className = "scan-status ok"; st.textContent = `Found ${peso(r.amount)}${r.date ? ` on ${fmtDate(r.date)}` : ""}. Check the details, then save.`;
+    } catch (err) {
+      st.className = "scan-status warn";
+      st.textContent = navigator.onLine ? "Scanning isn’t available here. Type the amount instead." : "The first scan needs internet to get the reader. Type the amount for now.";
+    } finally { btn.disabled = false; }
+  };
+  const _openTxn7788 = openTxn;
+  openTxn = function(pre){ _openTxn7788(pre); const st = $("#t-scan-status"); if (st) { st.textContent = ""; st.className = "scan-status"; } $(".scan-row").hidden = !!(pre && pre.editId); };
+})();
 /* ---------- boot ---------- */
 hydrateIcons();
 state = loadLocal(); if (!state) state = defaults(); state = migrate(state); saveLocal();
