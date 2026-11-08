@@ -1090,6 +1090,90 @@ button,[role="button"],[data-open],[data-insight],[data-cat-open],label[for]{cur
 #t-scan svg{width:16px;height:16px}
 .scan-status{font-size:var(--fs-xs);color:var(--text-2);font-weight:600}
 .scan-status.ok{color:var(--pos)} .scan-status.warn{color:var(--interest-text)}
+/* ---------- plan picture: where your income goes ---------- */
+:root{--g-plan-bill:#5B6B8C;--g-plan-save:var(--brand);--g-plan-invest:#C98A12;--g-plan-spend:color-mix(in srgb,var(--brand) 35%,var(--surface))}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--g-plan-bill:#8C9BBA;--g-plan-invest:#E0A93A}}
+:root[data-theme="dark"]{--g-plan-bill:#8C9BBA;--g-plan-invest:#E0A93A}
+.alloc{background:var(--surface);border:var(--hair);border-radius:var(--r-md);padding:14px;box-shadow:var(--sh-1)}
+.alloc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-bottom:10px}
+.alloc-head .k{font-size:var(--fs-xs);color:var(--text-2);font-weight:600}
+.alloc-head .v{font-size:var(--fs-xl);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.alloc-head .v span{font-size:var(--fs-sm);font-weight:600;color:var(--text-2)}
+.pill{font-size:var(--fs-xs);font-weight:700;padding:4px 10px;border-radius:99px;background:var(--surface-2);color:var(--text-2);white-space:nowrap}
+.pill.good{background:color-mix(in srgb,var(--pos) 14%,var(--surface));color:var(--pos)}
+.pill.bad{background:color-mix(in srgb,var(--neg) 12%,var(--surface));color:var(--neg)}
+.pill.warn{background:var(--interest-soft);color:var(--interest-text)}
+.alloc-bar{display:flex;height:18px;border-radius:9px;overflow:hidden;background:var(--surface-2);gap:2px}
+.alloc-bar .seg{height:100%;transition:width var(--d-slow) var(--ease-out);min-width:3px}
+.seg-bill,.sw-bill{background:var(--g-plan-bill)} .seg-saving,.sw-saving{background:var(--g-plan-save)} .seg-invest,.sw-invest{background:var(--g-plan-invest)}
+.seg-spend,.sw-spend{background:var(--g-plan-spend)}
+.seg-free,.sw-free{background:repeating-linear-gradient(45deg,var(--surface-2) 0 5px,color-mix(in srgb,var(--text-2) 22%,transparent) 5px 7px)}
+.alloc-legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px}
+.alloc-legend .li{display:flex;align-items:center;gap:7px;font-size:var(--fs-sm)}
+.alloc-legend .sw{width:12px;height:12px;border-radius:4px;flex:none}
+.alloc-legend .n{color:var(--text-2);white-space:nowrap}
+.alloc-legend b{font-variant-numeric:tabular-nums}
+.alloc-legend .p{font-size:var(--fs-xs);color:var(--text-2);font-variant-numeric:tabular-nums}
+.plan-start{text-align:center;background:linear-gradient(160deg,color-mix(in srgb,var(--brand) 10%,var(--surface)),var(--surface));border:var(--hair);border-radius:var(--r-lg);padding:26px 20px;box-shadow:var(--sh-1)}
+.plan-start .ps-ic{width:56px;height:56px;border-radius:18px;background:var(--brand);color:var(--on-brand);display:grid;place-items:center;margin:0 auto 10px}
+.plan-start .ps-ic svg{width:28px;height:28px}
+.plan-start h3{margin:0 0 6px;font-size:var(--fs-xl)}
+.plan-start p{margin:0 0 16px;color:var(--text-2);font-size:var(--fs-sm)}
+
+/* ---------- plan setup steps ---------- */
+.pw-stepno{font-size:var(--fs-xs);color:var(--text-2);font-weight:600;margin-top:2px}
+.pw-steps{display:flex;gap:6px;list-style:none;padding:0;margin:0 0 12px}
+.pw-steps li{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:var(--fs-xs);color:var(--text-2);font-weight:600}
+.pw-steps li span{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--surface-2);font-weight:700}
+.pw-steps li span svg{width:14px;height:14px}
+.pw-steps li.on{color:var(--text)} .pw-steps li.on span{background:var(--brand);color:var(--on-brand)}
+.pw-steps li.done span{background:color-mix(in srgb,var(--brand) 18%,var(--surface));color:var(--brand)}
+.pw-bar{position:sticky;top:-2px;z-index:2;margin:0 -2px 14px;background:var(--surface)}
+.pw-bar .alloc{padding:10px 12px;box-shadow:var(--sh-2)}
+.pw-bar .alloc-head .v{font-size:var(--fs-lg)}
+.pw-q{margin:4px 0 2px;font-size:var(--fs-lg);font-weight:700}
+.pw-ideas,.pw-goals{flex-wrap:wrap;margin:10px 0}
+.pw-goals .chip{border-color:var(--brand);color:var(--brand)}
+.pw-lines{display:grid;gap:8px;margin:8px 0 10px}
+.pw-line{display:grid;grid-template-columns:1fr 120px 36px;gap:6px;align-items:center;background:var(--surface-2);border-radius:12px;padding:8px}
+.pw-line .pw-acct{grid-column:1 / -1}
+.pw-line input,.pw-line select{min-height:40px;padding:8px 10px}
+.pw-amt{text-align:right}
+.pw-bud{padding:4px 12px}
+.pw-bud-row{display:flex;align-items:center;gap:10px;padding:6px 0}
+.pw-bud-row+.pw-bud-row{border-top:1px solid var(--line)}
+.pw-bud-row .n{flex:1;font-weight:600}
+.pw-bud-row input{width:110px;text-align:right;min-height:38px;padding:6px 10px}
+.pw-foot{display:flex;gap:8px}
+.pw-foot #pw-next{flex:1}
+
+/* ---------- goals ---------- */
+.goal-card{background:var(--surface);border:var(--hair);border-radius:var(--r-md);padding:14px;box-shadow:var(--sh-1)}
+.goal-card+.goal-card{margin-top:10px}
+.goal-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;width:100%;background:none;border:0;padding:0;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.goal-top .t{display:block;font-weight:700;font-size:var(--fs-lg)}
+.goal-top .s{display:block;font-size:var(--fs-sm);color:var(--text-2);margin-top:2px}
+.bullet{position:relative;height:12px;border-radius:6px;background:var(--surface-2);margin-top:12px;overflow:visible}
+.bullet i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:var(--brand);transition:width var(--d-slow) var(--ease-out)}
+.bullet b{position:absolute;top:-4px;bottom:-4px;width:3px;margin-left:-1.5px;border-radius:2px;background:var(--text)}
+.bullet-legend{display:flex;justify-content:space-between;gap:8px;font-size:var(--fs-xs);color:var(--text-2);margin-top:6px}
+.bullet-legend .mk{display:inline-block;width:3px;height:10px;background:var(--text);border-radius:2px;vertical-align:-1px;margin-right:4px}
+.goal-chart{display:block;width:100%;height:84px;margin-top:10px}
+.gc-target{stroke:var(--text-2);stroke-width:1;stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
+.gc-deadline{stroke:var(--line);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.gc-need{stroke:var(--text-2);stroke-width:1.5;stroke-dasharray:2 4;fill:none;vector-effect:non-scaling-stroke}
+.gc-pace{stroke:var(--brand);stroke-width:2.5;fill:none;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.gc-fill{fill:color-mix(in srgb,var(--brand) 12%,transparent)}
+.gc-dot{fill:var(--brand);stroke:var(--surface);stroke-width:2}
+.goal-line{font-size:var(--fs-sm);color:var(--text-2);margin:8px 0 10px}
+.goal-calc{background:var(--surface-2);border-radius:12px;padding:10px 12px;margin-top:10px}
+.goal-calc:empty{display:none}
+.gc-row{display:flex;justify-content:space-between;font-size:var(--fs-sm);padding:3px 0}
+.gc-row b{font-variant-numeric:tabular-nums}
+.gc-row.big{font-size:var(--fs-lg);border-top:1px solid var(--line);margin-top:4px;padding-top:8px}
+.gc-row.big b{color:var(--brand)}
+button.pill{border:0;cursor:pointer;font:inherit;font-size:var(--fs-xs);font-weight:700}
+#pl-body .alloc + .btns{margin-bottom:6px}
 </style>
 </head>
 <body>
@@ -1517,6 +1601,19 @@ button,[role="button"],[data-open],[data-insight],[data-cat-open],label[for]{cur
     <div class="sheet-h"><h3 id="rv-title">Month in review</h3><button type="button" class="x" data-close aria-label="Close"><span data-icon="x"></span></button></div>
     <div id="rv-body"></div>
     <div class="sheet-foot"><button type="button" class="btn primary" id="rv-done">Done</button></div>
+  </div>
+</dialog>
+
+<!-- Plan setup (4 steps) -->
+<dialog id="d-planwiz" aria-labelledby="pw-title">
+  <div class="sheet">
+    <div class="grabber" aria-hidden="true"></div>
+    <div class="sheet-h"><div><h3 id="pw-title">Your monthly plan</h3><div class="pw-stepno" id="pw-stepno">Step 1 of 4</div></div><button type="button" class="x" data-close aria-label="Close"><span data-icon="x"></span></button></div>
+    <ol class="pw-steps" id="pw-steps" aria-label="Steps"></ol>
+    <div class="pw-bar" id="pw-bar"></div>
+    <div id="pw-body"></div>
+    <div class="err" id="pw-err" role="alert"></div>
+    <div class="sheet-foot pw-foot"><button type="button" class="btn" id="pw-back">Back</button><button type="button" class="btn" id="pw-skip">Skip</button><button type="button" class="btn primary" id="pw-next">Next</button></div>
   </div>
 </dialog>
 
@@ -5795,6 +5892,313 @@ function parseReceipt(text){
   const _openTxn7788 = openTxn;
   openTxn = function(pre){ _openTxn7788(pre); const st = $("#t-scan-status"); if (st) { st.textContent = ""; st.className = "scan-status"; } $(".scan-row").hidden = !!(pre && pre.editId); };
 })();
+/* =====================================================================
+   Plan setup, made simple: 4 guided steps with a live picture of where
+   your income goes. Replaces the old one-page plan editor.
+   ===================================================================== */
+const GROUP = {
+  bill:   {label:"Bills and must-pays", short:"Bills",     color:"var(--g-plan-bill)"},
+  saving: {label:"Saving",              short:"Saving",    color:"var(--g-plan-save)"},
+  invest: {label:"Investing",           short:"Investing", color:"var(--g-plan-invest)"},
+  spend:  {label:"Spending money",      short:"Spending",  color:"var(--g-plan-spend)"},
+  free:   {label:"Not planned yet",     short:"Unplanned", color:"transparent"}
+};
+const groupOf = p => p.kind === "invest" ? "invest" : p.kind === "saving" ? "saving" : "bill";
+
+/* income: what you set, else your scheduled income, else your recent average */
+function planIncome(){
+  if (state.planCfg?.income > 0) return state.planCfg.income;
+  const perMonth = r => r.freq === "semimonthly" ? 2 : r.freq === "weekly" ? 52/12 : r.freq === "yearly" ? 1/12 : 1;
+  const sched = (state.recurring||[]).filter(r => r.type === "income" && !r.paused).reduce((s,r) => s + Number(r.amount||0) * perMonth(r) - (r.deductions||[]).reduce((a,d)=>a+Number(d.amount),0) * perMonth(r), 0);
+  return m2(sched || avgIncome() || 0);
+}
+
+/* ---------- the picture: where each peso of income goes ---------- */
+function allocation(income, lines, spend){
+  const sum = k => lines.filter(p => groupOf(p) === k).reduce((s,p) => s + (Number(p.amount)||0), 0);
+  const g = {bill:sum("bill"), saving:sum("saving"), invest:sum("invest")};
+  g.spend = Math.max(0, spend ?? 0);
+  const planned = g.bill + g.saving + g.invest + g.spend;
+  g.free = Math.max(0, income - planned);
+  return {g, planned, over: Math.max(0, planned - income), income};
+}
+function allocBarHtml(a, opts={}){
+  const base = Math.max(a.income, a.planned, 1);
+  const segs = ["bill","saving","invest","spend","free"].filter(k => a.g[k] > 0.5);
+  const pct = v => (v / base * 100);
+  const bar = `<div class="alloc-bar" role="img" aria-label="${esc(segs.map(k => `${GROUP[k].short} ${peso(a.g[k],0)}`).join(", "))}">${segs.map(k => `<span class="seg seg-${k}" style="width:${pct(a.g[k])}%"></span>`).join("")}</div>`;
+  const legend = `<div class="alloc-legend">${segs.map(k => `<div class="li"><i class="sw sw-${k}"></i><span class="n">${GROUP[k].short}</span><b>${esc(peso(a.g[k],0))}</b><span class="p">${a.income>0 ? Math.round(a.g[k]/a.income*100)+"%" : ""}</span></div>`).join("")}</div>`;
+  const head = opts.head === false ? "" : `<div class="alloc-head"><div><div class="k">${opts.title || "Where your income goes"}</div><div class="v">${a.income > 0 ? `${esc(peso(a.income,0))} <span>a month</span>` : `${esc(peso(a.planned,0))} <span>planned</span>`}</div></div>${!(a.income > 0) ? `<button type="button" class="pill warn" data-editplan>Add your income</button>` : a.over > 0.5 ? `<span class="pill bad">${esc(peso(a.over,0))} over</span>` : a.g.free > 0.5 ? `<span class="pill">${esc(peso(a.g.free,0))} left to plan</span>` : `<span class="pill good">Every peso has a job</span>`}</div>`;
+  return `<div class="alloc">${head}${bar}${legend}</div>`;
+}
+
+/* ---------- the 4-step setup ---------- */
+const BILL_IDEAS = [["PhilHealth",950],["SSS",""],["HMO",""],["Term life",""],["Pag-IBIG",200],["Rent",""],["Parents",2000],["Internet",""],["Load",""],["Tuition",""]];
+const SAVE_IDEAS = [["Emergency fund","savings"],["MP2","mp2"],["Business fund","savings"],["Index funds (VOO)","invest"],["Crypto","invest"],["Travel","savings"]];
+let PW = null;   // working copy while the setup is open
+function pwStart(step){
+  ensureP10();
+  const lines = state.plan.map(p => ({...p}));
+  const spendBud = state.categories.filter(c => c.type === "expense" && c.limit).reduce((s,c) => s + c.limit, 0);
+  PW = {step: step || 1, income: planIncome(), lines, spend: state.planCfg?.spend ?? (spendBud || null), budgets: !!spendBud};
+  pwRender(); openSheet($("#d-planwiz"));
+}
+function pwLines(kind){ return PW.lines.map((p,i) => ({p,i})).filter(x => kind === "bill" ? groupOf(x.p) === "bill" : groupOf(x.p) !== "bill"); }
+function pwSpendAuto(){ const a = allocation(PW.income, PW.lines, 0); return Math.max(0, m2(PW.income - a.planned)); }
+function lineRow({p,i}, withAcct){
+  const accts = state.accounts.filter(a => ["savings","mp2","td","invest","cash","wallet"].includes(a.kind));
+  return `<div class="pw-line" data-pwi="${i}">
+    <input class="pw-name" value="${esc(p.label)}" placeholder="What it’s for" aria-label="What it’s for">
+    <input class="pw-amt" inputmode="decimal" value="${p.amount ? Number(p.amount).toFixed(0) : ""}" placeholder="₱ a month" aria-label="${esc(p.label||"Amount")} per month">
+    <button type="button" class="x" data-pwdel="${i}" aria-label="Remove ${esc(p.label||"line")}">${icon("x")}</button>
+    ${withAcct ? `<select class="pw-acct" aria-label="Where it goes"><option value="">Choose where it goes</option>${accts.map(a => `<option value="${a.id}"${a.id===p.accountId?" selected":""}>${esc(a.name)}</option>`).join("")}</select>` : ""}
+  </div>`;
+}
+function pwStepHtml(){
+  const s = PW.step;
+  if (s === 1) return `<h4 class="pw-q">How much comes in each month?</h4>
+    <p class="hint">Use your take-home pay after deductions, plus side income you can count on.</p>
+    <div class="amount-field"><span aria-hidden="true">₱</span><input id="pw-income" inputmode="decimal" value="${PW.income ? Number(PW.income).toFixed(0) : ""}" placeholder="0" aria-label="Monthly income"></div>
+    <div class="chips" style="margin-top:12px;flex-wrap:wrap">${[avgIncome() && ["Your recent average", avgIncome()], planIncome() && ["From your scheduled salary", planIncome()]].filter(Boolean).filter((x,i,arr) => arr.findIndex(y => Math.round(y[1])===Math.round(x[1]))===i).map(([l,v]) => `<button type="button" class="chip" data-pwinc="${Math.round(v)}">${esc(l)} · ${esc(pesoShort(v))}</button>`).join("")}</div>`;
+  if (s === 2) return `<h4 class="pw-q">Bills and must-pays</h4>
+    <p class="hint">Things you pay every month no matter what. Tap to add, then type the amount.</p>
+    <div class="chips pw-ideas">${BILL_IDEAS.filter(([n]) => !PW.lines.some(p => p.label.toLowerCase()===n.toLowerCase())).map(([n,v]) => `<button type="button" class="chip" data-pwbill="${esc(n)}" data-v="${v}">+ ${esc(n)}</button>`).join("")}</div>
+    <div class="pw-lines">${pwLines("bill").map(x => lineRow(x,false)).join("") || `<p class="hint">No bills yet.</p>`}</div>
+    <button type="button" class="btn sm" data-pwaddbill>Add another bill</button>`;
+  if (s === 3) {
+    const goalsNeed = (state.goals||[]).map(g => ({g, need: goalMonthly(g)})).filter(x => x.need > 0 && !PW.lines.some(p => p.goalId === x.g.id));
+    return `<h4 class="pw-q">Saving and investing</h4>
+    <p class="hint">Pay yourself next. Pick an account for each so Pitaka can track it.</p>
+    ${goalsNeed.length ? `<div class="pw-goals">${goalsNeed.map(x => `<button type="button" class="chip" data-pwgoal="${x.g.id}">+ ${esc(x.g.name)} · ${esc(pesoShort(x.need))}/mo</button>`).join("")}</div>` : ""}
+    <div class="chips pw-ideas">${SAVE_IDEAS.filter(([n]) => !PW.lines.some(p => p.label.toLowerCase()===n.toLowerCase())).map(([n,k]) => `<button type="button" class="chip" data-pwsave="${esc(n)}" data-k="${k}">+ ${esc(n)}</button>`).join("")}</div>
+    <div class="pw-lines">${pwLines("save").map(x => lineRow(x,true)).join("") || `<p class="hint">Nothing yet.</p>`}</div>
+    <button type="button" class="btn sm" data-pwaddsave>Add another</button>`;
+  }
+  const left = pwSpendAuto();
+  return `<h4 class="pw-q">Spending money</h4>
+    <p class="hint">What’s left is for food, transport, load and fun. ${left > 0 ? `You have <b>${esc(peso(left,0))}</b> a month, about <b>${esc(peso(left/30,0))}</b> a day.` : `Your plan already uses all your income. Consider lowering a line.`}</p>
+    <label class="check"><input type="checkbox" id="pw-budgets" ${PW.budgets?"checked":""}> Split it into category budgets for me</label>
+    <div id="pw-budget-preview"></div>`;
+}
+function suggestBudgets(total){
+  // split by your last 3 months of spending; fall back to a simple starting split
+  const mk = todayStr().slice(0,7), data = [1,2,3].map(i => monthExpenses(shiftMonth(mk,-i))), n = data.filter(d => d.total>0).length;
+  const skip = new Set(PW.lines.map(p => p.label.toLowerCase())), avg = {};
+  if (n) data.forEach(d => Object.entries(d.by).forEach(([c,v]) => { if (!SENSITIVE_CAT.test(c) && !/fees|contribution|subscriptions/i.test(c) && !skip.has(c.toLowerCase())) avg[c] = (avg[c]||0) + v/n; }));
+  let base = Object.entries(avg).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  if (!base.length) base = [["Food",.45],["Transport",.15],["Load & data",.05],["Shopping",.15],["Fun",.10],["Other",.10]];
+  const sum = base.reduce((s,x)=>s+x[1],0) || 1;
+  return base.filter(([c]) => state.categories.some(x => x.name===c && x.type==="expense")).map(([c,v]) => [c, Math.floor(total * v / sum / 50) * 50]);
+}
+function pwRender(){
+  const steps = ["Income","Bills","Saving","Spending"];
+  $("#pw-steps").innerHTML = steps.map((n,i) => `<li class="${i+1===PW.step?"on":i+1<PW.step?"done":""}" aria-current="${i+1===PW.step?"step":"false"}"><span>${i+1<PW.step?icon("check"):i+1}</span>${n}</li>`).join("");
+  $("#pw-stepno").textContent = `Step ${PW.step} of 4`;
+  $("#pw-body").innerHTML = pwStepHtml();
+  $("#pw-back").hidden = PW.step === 1; $("#pw-skip").hidden = PW.step === 4;
+  $("#pw-next").textContent = PW.step === 4 ? "Save plan" : "Next";
+  pwBar(); if (PW.step === 4) pwBudgetPreview();
+  $("#pw-body").querySelectorAll('input[inputmode="decimal"]').forEach(i => formatMoneyInput(i));
+}
+function pwBar(){
+  const spend = PW.step === 4 ? pwSpendAuto() : 0;
+  $("#pw-bar").innerHTML = allocBarHtml(allocation(PW.income, PW.lines, spend), {title: "Your month so far"});
+}
+function pwBudgetPreview(){
+  const box = $("#pw-budget-preview"); if (!box) return;
+  PW.budgets = $("#pw-budgets").checked;
+  if (!PW.budgets) { box.innerHTML = ""; return; }
+  const sug = suggestBudgets(pwSpendAuto());
+  box.innerHTML = `<div class="list pw-bud">${sug.map(([c,v]) => `<div class="pw-bud-row">${catAvatar(c)}<span class="n">${esc(c)}</span><input inputmode="decimal" data-pwbud="${esc(c)}" value="${v}" aria-label="${esc(c)} budget"></div>`).join("")}</div><p class="hint">Change any amount. You can adjust budgets anytime.</p>`;
+  box.querySelectorAll("input").forEach(i => formatMoneyInput(i));
+}
+function pwRead(){
+  if (PW.step === 1) { const v = num($("#pw-income")?.value); if (!isNaN(v)) PW.income = m2(v); }
+  $$("#pw-body .pw-line").forEach(r => {
+    const p = PW.lines[+r.dataset.pwi]; if (!p) return;
+    p.label = r.querySelector(".pw-name").value.trim(); const v = num(r.querySelector(".pw-amt").value); p.amount = isNaN(v) ? 0 : m2(v);
+    const sel = r.querySelector(".pw-acct"); if (sel) { p.accountId = sel.value; const a = acctById(sel.value); p.kind = a?.kind === "invest" ? "invest" : "saving"; }
+  });
+}
+$("#pw-body").addEventListener("input", e => { pwRead(); pwBar(); if (e.target.id === "pw-budgets") pwBudgetPreview(); });
+$("#pw-body").addEventListener("change", e => { if (e.target.id === "pw-budgets") pwBudgetPreview(); if (e.target.classList.contains("pw-acct")) { pwRead(); pwBar(); } });
+$("#pw-body").addEventListener("click", e => {
+  let b;
+  if ((b = e.target.closest("[data-pwinc]"))) { $("#pw-income").value = b.dataset.pwinc; formatMoneyInput($("#pw-income")); pwRead(); pwBar(); return; }
+  if ((b = e.target.closest("[data-pwbill]"))) { pwRead(); PW.lines.push({id:uid(), label:b.dataset.pwbill, amount:Number(b.dataset.v)||0, accountId:"", kind:"bill"}); pwRender(); focusLast(); return; }
+  if ((b = e.target.closest("[data-pwaddbill]"))) { pwRead(); PW.lines.push({id:uid(), label:"", amount:0, accountId:"", kind:"bill"}); pwRender(); focusLast(true); return; }
+  if ((b = e.target.closest("[data-pwsave]"))) { pwRead(); const k = b.dataset.k, a = state.accounts.find(x => x.kind === k) || state.accounts.find(x => x.kind === "savings"); PW.lines.push({id:uid(), label:b.dataset.pwsave, amount:0, accountId:a?.id||"", kind: a?.kind === "invest" ? "invest" : "saving"}); pwRender(); focusLast(); return; }
+  if ((b = e.target.closest("[data-pwaddsave]"))) { pwRead(); const a = state.accounts.find(x => x.kind === "savings"); PW.lines.push({id:uid(), label:"", amount:0, accountId:a?.id||"", kind:"saving"}); pwRender(); focusLast(true); return; }
+  if ((b = e.target.closest("[data-pwgoal]"))) { pwRead(); const g = state.goals.find(x => x.id === b.dataset.pwgoal); const a = acctById(g.accounts?.[0]); PW.lines.push({id:uid(), label:g.name, amount:Math.ceil(goalMonthly(g)), accountId:a?.id||"", kind: a?.kind === "invest" ? "invest" : "saving", goalId:g.id}); pwRender(); return; }
+  if ((b = e.target.closest("[data-pwdel]"))) { pwRead(); PW.lines.splice(+b.dataset.pwdel, 1); pwRender(); return; }
+});
+function focusLast(name){ const rows = $$("#pw-body .pw-line"); const r = rows[rows.length-1]; r?.querySelector(name ? ".pw-name" : ".pw-amt")?.focus(); }
+$("#pw-back").onclick = () => { pwRead(); PW.step = Math.max(1, PW.step-1); pwRender(); };
+$("#pw-skip").onclick = () => { pwRead(); PW.step = Math.min(4, PW.step+1); pwRender(); };
+$("#pw-next").onclick = () => {
+  pwRead(); $("#pw-err").textContent = "";
+  if (PW.step === 1 && !(PW.income > 0)) { $("#pw-err").textContent = "Enter your monthly income, or tap Skip."; return; }
+  if (PW.step === 3 && PW.lines.some(p => groupOf(p) !== "bill" && p.amount > 0 && !p.accountId)) { $("#pw-err").textContent = "Choose where each saving goes, so Pitaka can track it."; return; }
+  if (PW.step < 4) { PW.step++; pwRender(); $("#pw-body").scrollIntoView?.({block:"start"}); return; }
+  // save
+  const before = snapshot();
+  state.planCfg.income = PW.income || null;
+  const keep = new Map(state.plan.map(p => [p.id, p]));
+  state.plan = PW.lines.filter(p => p.label && p.amount > 0).map(p => ({...(keep.get(p.id)||{}), ...p, kind: groupOf(p) === "bill" ? (p.kind === "other" ? "other" : "bill") : p.kind}));
+  if ($("#pw-budgets")?.checked) $$("#pw-budget-preview [data-pwbud]").forEach(i => { const c = state.categories.find(x => x.name === i.dataset.pwbud); const v = num(i.value); if (c) c.limit = v > 0 ? m2(v) : null; });
+  ensureP17(); save(); render(); $("#d-planwiz").close(); if ($("#d-fplan").open) renderFPlan();
+  toast("Plan saved", () => restore(before, "Plan restored"));
+};
+// every “Edit plan” / “Make a plan” opens the guided setup
+openPlan = function(){ pwStart(1); };
+/* =====================================================================
+   Goals you can see: progress vs where you should be by now, a pace
+   line, and one tap to fund a goal from your monthly plan.
+   ===================================================================== */
+function avgMonthlySpend(){ const mk = todayStr().slice(0,7), t = [1,2,3].map(i => monthExpenses(shiftMonth(mk,-i)).total).filter(x => x > 0); return t.length ? t.reduce((a,b)=>a+b,0)/t.length : 0; }
+const GOAL_IDEAS = [
+  {name:"Emergency fund", hint:"3–6 months of expenses", target:() => Math.round((avgMonthlySpend() || planIncome()*0.7 || 15000) * 6 / 1000) * 1000, months:12, kind:"savings"},
+  {name:"Business capital", hint:"Starting your business", target:() => 500000, months:60, kind:"mp2"},
+  {name:"New laptop or phone", hint:"A big purchase", target:() => 50000, months:10, kind:"savings"},
+  {name:"Travel", hint:"A trip you’re planning", target:() => 30000, months:8, kind:"savings"},
+  {name:"Tuition", hint:"School or review fees", target:() => 40000, months:6, kind:"savings"}
+];
+function monthsBetween(a, b){ const [y1,m1] = a.split("-").map(Number), [y2,m2_] = b.split("-").map(Number); return (y2-y1)*12 + (m2_-m1); }
+function goalPlanMonthly(g){ return state.plan.filter(p => p.goalId === g.id || (!p.goalId && (g.accounts||[]).includes(p.accountId))).reduce((s,p) => s + Number(p.amount), 0); }
+function goalStatus(g){
+  const {have} = goalProgress(g), now = todayStr().slice(0,7), monthly = goalPlanMonthly(g);
+  const created = (g.created || now).slice(0,7), total = g.by ? Math.max(1, monthsBetween(created, g.by)) : null, gone = Math.max(0, monthsBetween(created, now));
+  const expected = total ? Math.min(g.target, (g.startHave||0) + (g.target - (g.startHave||0)) * Math.min(1, gone/total)) : null;
+  const left = Math.max(0, g.target - have), etaMonths = monthly > 0 ? Math.ceil(left / monthly) : null;
+  const eta = etaMonths != null ? addMonths(todayStr(), etaMonths).slice(0,7) : null;
+  let status = "none";
+  if (have >= g.target) status = "done";
+  else if (g.by && eta) status = eta <= g.by ? (expected != null && have > expected + g.target*0.05 ? "ahead" : "track") : "behind";
+  else if (g.by && !monthly) status = "nofund";
+  return {have, monthly, expected, eta, etaMonths, left, status, need: goalMonthly(g)};
+}
+const monthLabel = ym => ym ? new Date(Number(ym.slice(0,4)), Number(ym.slice(5,7))-1, 1).toLocaleDateString("en-PH", {month:"short", year:"numeric"}) : "";
+function goalChartSvg(g, st){
+  // pace line: where your balance goes at your planned monthly amount, against the target
+  const now = todayStr().slice(0,7), end = g.by && st.eta ? (st.eta > g.by ? st.eta : g.by) : (g.by || st.eta || addMonths(todayStr(), 12).slice(0,7));
+  const months = Math.max(2, Math.min(120, monthsBetween(now, end)));
+  const W = 300, H = 84, pad = 4, y = v => H - pad - Math.min(1, v / g.target) * (H - pad*2), x = m => pad + m / months * (W - pad*2);
+  const pts = []; for (let m = 0; m <= months; m++) pts.push([x(m), y(Math.min(g.target, st.have + st.monthly * m))]);
+  const pace = pts.map((p,i) => (i?"L":"M") + p[0].toFixed(1) + "," + p[1].toFixed(1)).join("");
+  const dl = g.by ? x(Math.min(months, Math.max(0, monthsBetween(now, g.by)))) : null;
+  const need = g.by && st.need > 0 ? `<path d="M${x(0)},${y(st.have)} L${dl},${y(g.target)}" class="gc-need"/>` : "";
+  return `<svg class="goal-chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${esc(st.monthly ? `At ${peso(st.monthly,0)} a month you reach ${peso(g.target,0)} around ${monthLabel(st.eta)}` : "No monthly amount planned yet")}">
+    <line x1="${pad}" x2="${W-pad}" y1="${y(g.target)}" y2="${y(g.target)}" class="gc-target"/>
+    ${dl != null ? `<line x1="${dl}" x2="${dl}" y1="${pad}" y2="${H-pad}" class="gc-deadline"/>` : ""}
+    ${need}
+    <path d="${pace} L${x(months)},${H} L${x(0)},${H} Z" class="gc-fill"/><path d="${pace}" class="gc-pace"/>
+    <circle cx="${x(0)}" cy="${y(st.have)}" r="3.5" class="gc-dot"/></svg>`;
+}
+const STATUS = {done:["Reached","good"], ahead:["Ahead","good"], track:["On track","good"], behind:["Behind","bad"], nofund:["Not funded","warn"], none:["",""]};
+function goalCardHtml(g){
+  const st = goalStatus(g), pct = Math.min(1, st.have / g.target), [sLabel, sCls] = STATUS[st.status];
+  const exp = st.expected != null ? Math.min(1, st.expected / g.target) : null;
+  const line = st.status === "done" ? "You did it. Consider a new goal."
+    : !st.monthly ? (st.need ? `Put in ${peso(st.need,0)} a month to reach it by ${monthLabel(g.by)}.` : "Add a monthly amount to see when you’ll get there.")
+    : st.status === "behind" ? `At ${peso(st.monthly,0)} a month you’ll get there around ${monthLabel(st.eta)}, after your ${monthLabel(g.by)} target. You’d need ${peso(st.need,0)} a month.`
+    : `At ${peso(st.monthly,0)} a month you’ll get there around ${monthLabel(st.eta)}.`;
+  return `<div class="goal-card">
+    <button type="button" class="goal-top" data-goal="${g.id}" aria-label="Edit goal ${esc(g.name)}"><span><span class="t">${esc(g.name)}</span><span class="s">${esc(pesoShort(st.have))} of ${esc(pesoShort(g.target))}${g.by ? ` · by ${esc(monthLabel(g.by))}` : ""}</span></span>${sLabel ? `<span class="pill ${sCls}">${sLabel}</span>` : ""}</button>
+    <div class="bullet" role="img" aria-label="${Math.round(pct*100)}% saved${exp != null ? `, should be about ${Math.round(exp*100)}% by now` : ""}"><i style="width:${pct*100}%"></i>${exp != null && st.status !== "done" ? `<b style="left:${exp*100}%" title="Where you should be by now"></b>` : ""}</div>
+    <div class="bullet-legend"><span>${Math.round(pct*100)}% saved</span>${exp != null && st.status !== "done" ? `<span><b class="mk"></b> where you should be by now</span>` : ""}</div>
+    ${st.status !== "done" ? goalChartSvg(g, st) : ""}
+    <p class="goal-line">${esc(line)}</p>
+    ${st.status !== "done" && (!st.monthly || st.status === "behind") && st.need > 0 ? `<button type="button" class="btn sm primary" data-goalfund="${g.id}">Add ${esc(peso(Math.ceil(st.need),0))}/month to my plan</button>` : ""}
+  </div>`;
+}
+function fundGoal(id){
+  const g = state.goals.find(x => x.id === id); if (!g) return;
+  const need = Math.ceil(goalMonthly(g) || 0); if (!need) return;
+  const before = snapshot();
+  const line = state.plan.find(p => p.goalId === g.id) || state.plan.find(p => (g.accounts||[]).includes(p.accountId));
+  if (line) line.amount = Math.max(line.amount, need);
+  else { const a = acctById(g.accounts?.[0]); state.plan.push({id:uid(), label:g.name, amount:need, accountId:a?.id || "", kind: a?.kind === "invest" ? "invest" : "saving", goalId:g.id}); }
+  save(); render(); refreshOpenSheets();
+  toast(`${peso(need,0)} a month for ${g.name} is now in your plan`, () => { restore(before, "Change undone"); refreshOpenSheets(); });
+}
+document.addEventListener("click", e => { const b = e.target.closest("[data-goalfund]"); if (b) fundGoal(b.dataset.goalfund); });
+
+/* ---------- goal setup: presets, one main account, live monthly amount ---------- */
+(function goalSheetExtras(){
+  const name = $("#gl-name"); if (!name) return;
+  name.insertAdjacentHTML("beforebegin", `<div class="chips" id="gl-ideas" style="flex-wrap:wrap;margin-bottom:6px"></div>`);
+  $("#gl-accts").insertAdjacentHTML("afterend", `<div class="goal-calc" id="gl-calc" aria-live="polite"></div><label class="check"><input type="checkbox" id="gl-fund" checked> Add the monthly amount to my plan</label>`);
+  $("#gl-acc-label").textContent = "Where you’re saving it";
+})();
+function glCalc(){
+  const t = num($("#gl-target").value), by = $("#gl-date").value, ids = $$("#gl-accts input:checked").map(i => i.value);
+  const have = ids.reduce((s,id) => s + Math.max(0, calc.res[id]?.value || 0), 0);
+  if (!(t > 0)) { $("#gl-calc").innerHTML = ""; return; }
+  const months = by ? monthsBetween(todayStr().slice(0,7), by) : null, left = Math.max(0, t - have);
+  $("#gl-calc").innerHTML = `<div class="gc-row"><span>Already saved</span><b>${esc(peso(have,0))}</b></div><div class="gc-row"><span>Still to save</span><b>${esc(peso(left,0))}</b></div>`
+    + (left <= 0 ? `<p class="hint" style="margin:6px 0 0"><b>You already have enough</b> in the account you picked. Raise the target, or pick a different account to save it in.</p>` : months > 0 ? `<div class="gc-row big"><span>Each month</span><b>${esc(peso(Math.ceil(left/months),0))}</b></div><p class="hint" style="margin:4px 0 0">for ${months} month${months>1?"s":""}, about ${esc(peso(Math.ceil(left/months/4.33),0))} a week</p>` : by ? `<p class="hint">Pick a date in the future.</p>` : `<p class="hint">Add a date to see how much to save each month.</p>`);
+}
+["#gl-target","#gl-date"].forEach(s => $(s).addEventListener("input", glCalc));
+$("#gl-accts").addEventListener("change", glCalc);
+$("#gl-ideas").addEventListener("click", e => {
+  const b = e.target.closest("[data-gidea]"); if (!b) return;
+  const idea = GOAL_IDEAS[+b.dataset.gidea];
+  $("#gl-name").value = idea.name; $("#gl-target").value = idea.target(); formatMoneyInput($("#gl-target"));
+  $("#gl-date").value = addMonths(todayStr(), idea.months).slice(0,7);
+  const words = idea.name.toLowerCase().split(/\s+/).filter(w => w.length > 3 && !["fund","capital","new","phone"].includes(w));
+  const a = state.accounts.find(x => !isDebt(x) && words.some(w => x.name.toLowerCase().includes(w)))
+    || state.accounts.find(x => x.kind === idea.kind && !/business|goal/i.test(x.name) || (idea.kind !== "savings" && x.kind === idea.kind))
+    || state.accounts.find(x => x.kind === "savings");
+  $$("#gl-accts input").forEach(c => { c.checked = !!a && c.value === a.id; });
+  $$("#gl-ideas .chip").forEach(c => c.setAttribute("aria-pressed", String(c === b))); glCalc();
+});
+const _openGoal7790 = openGoal;
+openGoal = function(id){
+  _openGoal7790(id);
+  $("#gl-ideas").innerHTML = id ? "" : GOAL_IDEAS.map((g,i) => `<button type="button" class="chip" data-gidea="${i}" aria-pressed="false">${esc(g.name)}</button>`).join("");
+  $("#gl-fund").closest("label").hidden = false; $("#gl-fund").checked = !id || !state.plan.some(p => p.goalId === id);
+  glCalc();
+};
+$("#goal-form").onsubmit = e => {
+  e.preventDefault(); const err = m => { $("#gl-err").textContent = m; };
+  const name = $("#gl-name").value.trim(), target = num($("#gl-target").value), by = $("#gl-date").value || null, accts = $$("#gl-accts input:checked").map(i => i.value);
+  if (!name) return err("Name your goal."); if (!(target > 0)) return err("Enter a target amount."); if (!accts.length) return err("Pick the account where you’re saving it.");
+  if (by && by <= todayStr().slice(0,7)) return err("Pick a month in the future.");
+  const before = snapshot();
+  let g = goalEditing;
+  if (g) Object.assign(g, {name, target:m2(target), by, accounts:accts});
+  else { g = {id:uid(), name, target:m2(target), by, accounts:accts, created:todayStr()}; g.startHave = goalProgress(g).have; state.goals.push(g); }
+  if ($("#gl-fund").checked && by) {
+    const need = Math.ceil(goalMonthly(g) || 0);
+    if (need > 0) { const line = state.plan.find(p => p.goalId === g.id); const a = acctById(accts[0]);
+      if (line) Object.assign(line, {label:name, amount:need, accountId:a?.id||line.accountId});
+      else state.plan.push({id:uid(), label:name, amount:need, accountId:a?.id||"", kind: a?.kind === "invest" ? "invest" : "saving", goalId:g.id}); }
+  }
+  save(); render(); $("#d-goal").close(); refreshOpenSheets();
+  toast($("#gl-fund").checked && by ? `Goal saved and added to your plan` : "Goal saved", () => { restore(before, "Change undone"); refreshOpenSheets(); });
+};
+
+/* ---------- Plan tab: picture first, then the details ---------- */
+goalsHtml = function(){
+  const R = calc.res, hz = state.planCfg?.horizon || 5, months = hz*12, accts = state.accounts.filter(a => earns(a) || a.kind === "invest");
+  const monthlyOf = a => state.plan.filter(p => p.accountId === a.id).reduce((s,p) => s + Number(p.amount), 0);
+  const end = accts.reduce((s,a) => s + project(a, R[a.id].value, monthlyOf(a), months), 0);
+  const cards = (state.goals||[]).map(goalCardHtml).join("");
+  return `<div class="section" style="margin-top:0"><div class="section-h"><h2>Your goals</h2><button class="link" data-goal-add>Add goal</button></div>
+      ${cards || `<div class="empty">A goal gives your saving a purpose, like an emergency fund or business capital. Pitaka works out how much to save each month.<div class="btns"><button class="btn primary" data-goal-add>Set your first goal</button></div></div>`}</div>
+    <div class="section"><div class="section-h"><h2>Where you’ll be</h2></div><button class="proj-chart" data-fplan style="width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer"><div class="k" style="font-size:.8rem;color:var(--text-2)">In ${hz} year${hz>1?"s":""}, if you follow your plan</div><div class="proj-big">≈ ${esc(peso(end,0))}</div><div class="s" style="font-size:.82rem;color:var(--text-2)">An estimate, not a promise. Tap to change the years and expected returns.</div></button></div>`;
+};
+const _renderPlanPage7790 = renderPlanPage;
+renderPlanPage = function(){
+  _renderPlanPage7790();
+  if (planTab !== "month" || !$("#pl-body")) return;
+  const hasPlan = state.plan.length > 0;
+  $("#pl-body").insertAdjacentHTML("afterbegin", hasPlan
+    ? `<div class="section" style="margin-top:0">${allocBarHtml(allocation(planIncome(), state.plan, Math.max(0, planIncome() - state.plan.reduce((s,p)=>s+Number(p.amount),0))))}<div class="btns" style="margin-top:10px"><button type="button" class="btn" data-editplan>Edit plan</button></div></div>`
+    : `<div class="plan-start"><div class="ps-ic">${icon("target")}</div><h3>Give every peso a job</h3><p>Four quick steps: your income, your bills, what to save, and what’s left to spend. About 3 minutes.</p><button type="button" class="btn primary" data-editplan>Set up my plan</button></div>`);
+  if (!hasPlan) { const s = $("#pl-body .section"); if (s && /Monthly plan/.test(s.textContent)) s.remove(); }
+  if (hasPlan) { $("#pl-body .plan-head")?.remove(); $$("#pl-body .section .btns").forEach(b => { if (b.querySelector("[data-editplan]") && !b.closest(".section").querySelector(".alloc")) b.remove(); }); }
+};
 /* ---------- boot ---------- */
 hydrateIcons();
 state = loadLocal(); if (!state) state = defaults(); state = migrate(state); saveLocal();
