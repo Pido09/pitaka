@@ -1174,6 +1174,57 @@ button,[role="button"],[data-open],[data-insight],[data-cat-open],label[for]{cur
 .gc-row.big b{color:var(--brand)}
 button.pill{border:0;cursor:pointer;font:inherit;font-size:var(--fs-xs);font-weight:700}
 #pl-body .alloc + .btns{margin-bottom:6px}
+/* ---------- beating inflation ---------- */
+.infl-card{display:block;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;background:var(--surface);border:var(--hair);border-radius:var(--r-md);padding:14px;box-shadow:var(--sh-1);border-left:4px solid var(--pos)}
+.infl-card.bad{border-left-color:var(--neg)} .infl-card.even{border-left-color:var(--interest)}
+.ic-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ic-src{font-size:var(--fs-xs);color:var(--text-2);font-weight:600}
+.ic-vs{display:flex;align-items:flex-end;gap:14px;margin-top:10px}
+.ic-vs>div{flex:1}
+.ic-vs span{display:block;font-size:var(--fs-xs);color:var(--text-2);font-weight:600}
+.ic-vs b{font-size:1.7rem;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.ic-x{flex:0!important;font-size:var(--fs-sm);color:var(--text-2);padding-bottom:8px}
+.ic-meter{position:relative;height:10px;border-radius:5px;background:var(--surface-2);margin-top:10px}
+.ic-meter i{position:absolute;left:0;top:0;bottom:0;border-radius:5px;background:var(--brand)}
+.infl-card.bad .ic-meter i{background:var(--neg)}
+.ic-meter b{position:absolute;top:-5px;bottom:-5px;width:3px;margin-left:-1.5px;border-radius:2px;background:var(--text)}
+.ic-line{margin:10px 0 0;font-size:var(--fs-sm);color:var(--text-2)}
+.infl-hero{background:var(--surface-2);border-radius:var(--r-md);padding:14px}
+.ih-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ih-row span{display:block;font-size:var(--fs-xs);color:var(--text-2);font-weight:600}
+.ih-row b{display:block;font-size:var(--fs-xl);font-weight:800;font-variant-numeric:tabular-nums}
+.ih-row small{display:block;font-size:.68rem;color:var(--text-2)}
+.infl-hero p{margin:10px 0 0;font-size:var(--fs-sm)}
+.rb{background:var(--surface);border:var(--hair);border-radius:var(--r-md);padding:8px 12px 6px}
+.rb-key{font-size:var(--fs-xs);font-weight:700;color:var(--text-2);display:flex;align-items:center;gap:6px;padding:2px 0 4px}
+.rb-key i{width:3px;height:12px;border-radius:2px;background:var(--text)}
+.rb-row{display:grid;grid-template-columns:38% 1fr 56px;gap:8px;align-items:center;width:100%;background:none;border:0;padding:7px 0;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.rb-row+.rb-row{border-top:1px solid var(--line)}
+.rb-name b{display:block;font-size:var(--fs-sm);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rb-name span{display:block;font-size:.68rem;color:var(--text-2)}
+.rb-track{position:relative;height:10px;border-radius:5px;background:var(--surface-2)}
+.rb-track b{position:absolute;top:-4px;bottom:-4px;width:3px;margin-left:-1.5px;border-radius:2px;background:var(--text)}
+.rb-track i{display:block;height:100%;border-radius:5px}
+.rb-track i.up{background:var(--pos)} .rb-track i.down{background:var(--neg)}
+.rb-track i.na{background:repeating-linear-gradient(45deg,var(--surface-2) 0 4px,var(--line) 4px 6px)}
+.rb-val{text-align:right;font-weight:700;font-size:var(--fs-sm);font-variant-numeric:tabular-nums}
+.bp-chart,.it-chart{display:block;width:100%;height:150px}
+.it-chart{height:120px}
+.bp-fill{fill:color-mix(in srgb,var(--brand) 10%,transparent)}
+.bp-nom{fill:none;stroke:var(--brand);stroke-width:2.5;vector-effect:non-scaling-stroke}
+.bp-real{fill:none;stroke:var(--neg);stroke-width:2;stroke-dasharray:5 4;vector-effect:non-scaling-stroke}
+.bp-legend,.it-axis{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 14px;font-size:var(--fs-xs);color:var(--text-2);margin-top:6px}
+.bp-legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.l-nom{background:var(--brand)} .l-real{background:var(--neg)}
+.it-band{fill:color-mix(in srgb,var(--pos) 12%,transparent)}
+.it-line{fill:none;stroke:var(--neg);stroke-width:2.5;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.it-dot{fill:var(--neg);stroke:var(--surface);stroke-width:2}
+.it-axis .band i{display:inline-block;width:12px;height:8px;background:color-mix(in srgb,var(--pos) 25%,transparent);margin-right:4px;vertical-align:middle}
+.it-table{margin-top:10px;font-size:var(--fs-sm)}
+.it-table summary{cursor:pointer;font-weight:600;color:var(--brand);min-height:44px;display:flex;align-items:center}
+.it-table table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.it-table th,.it-table td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--line)}
+.it-table td:last-child,.it-table th:last-child{text-align:right}
 </style>
 </head>
 <body>
@@ -5102,7 +5153,7 @@ go = function(v){
 };
 
 /* ---------- Home: a calmer default (one time, with undo) ---------- */
-const CORE_TILES = ["earning","monthstart","quick","alerts","weekly","budgets","spending","accounts"];
+const CORE_TILES = ["earning","monthstart","quick","alerts","inflation","weekly","budgets","spending","accounts"];
 function simplifyHomeOnce(){
   if (!state?.dashboard || state.prefs.home17) return;
   const before = snapshot();
@@ -5161,7 +5212,7 @@ $("#st-fx").onchange = () => setPref("fx", $("#st-fx").value);
 
 /* ---------- test hook (only with ?test in the address) ---------- */
 if (/[?&]test\b/.test(location.search)) window.__pitaka = {
-  get state(){ return state; }, set state(v){ state = v; }, compute:() => compute(), evalExpr, occDates, processRecurring, recPaid, recSkip, planProgress, normalizeMoney, ensureP17, save, render, go, migrate, defaults, todayStr, parseReceipt, upcomingForReminders, smartGuess, lockCfg: () => lockCfg(), cycleInfo
+  get state(){ return state; }, set state(v){ state = v; }, compute:() => compute(), evalExpr, occDates, processRecurring, recPaid, recSkip, planProgress, normalizeMoney, ensureP17, save, render, go, migrate, defaults, todayStr, parseReceipt, upcomingForReminders, smartGuess, lockCfg: () => lockCfg(), cycleInfo, inflNow, inflSummary
 };
 
 /* ---------- amounts get thousands separators as you type ---------- */
@@ -6199,6 +6250,169 @@ renderPlanPage = function(){
   if (!hasPlan) { const s = $("#pl-body .section"); if (s && /Monthly plan/.test(s.textContent)) s.remove(); }
   if (hasPlan) { $("#pl-body .plan-head")?.remove(); $$("#pl-body .section .btns").forEach(b => { if (b.querySelector("[data-editplan]") && !b.closest(".section").querySelector(".alloc")) b.remove(); }); }
 };
+/* =====================================================================
+   Is my money beating inflation? Philippine headline inflation (PSA,
+   year-on-year, 2018=100) against what each account actually earns.
+   ===================================================================== */
+// Official PSA headline inflation, % year-on-year. Newer months arrive from your
+// Google Sheet (Apps Script reads the PSA release page) or can be typed in Settings.
+const INFL_SEED = [
+  ["2024-11",2.5],["2024-12",2.9],["2025-01",2.9],["2025-02",2.1],["2025-03",1.8],["2025-04",1.4],["2025-05",1.3],["2025-06",1.4],
+  ["2025-07",0.9],["2025-08",1.5],["2025-09",1.7],["2025-10",1.7],["2025-11",1.5],["2025-12",1.8],["2026-01",2.0],["2026-02",2.4],
+  ["2026-03",4.1],["2026-04",7.2],["2026-05",6.8],["2026-06",6.4],["2026-07",6.2],["2026-08",6.1],["2026-09",7.2],["2026-10",7.8]
+];
+function inflSeries(){
+  const map = new Map(INFL_SEED);
+  (state.inflation?.series || []).forEach(([m, r]) => { if (/^\d{4}-\d{2}$/.test(m) && isFinite(r)) map.set(m, Number(r)); });
+  return [...map.entries()].sort((a,b) => a[0].localeCompare(b[0]));
+}
+function inflNow(){
+  const s = inflSeries(), last = s[s.length - 1];
+  const manual = state.inflation?.manual;
+  const y = s.filter(x => x[0] > shiftMonth(last[0], -12)), avg12 = y.reduce((a,x) => a + x[1], 0) / (y.length || 1);
+  return {rate: manual != null ? manual : last[1], month: last[0], manual: manual != null, avg12: Math.round(avg12*10)/10, source: state.inflation?.source || "PSA (bundled)"};
+}
+
+/* What each account really earns per year, after tax */
+function nominalRates(){
+  calc = calc || compute();
+  const out = [];
+  for (const a of state.accounts){
+    if (isDebt(a) || a.kind === "lent") continue;
+    const v = calc.res[a.id]?.value || 0; if (v < 1) continue;
+    let rate = null, how = "";
+    if (["savings","mp2","td"].includes(a.kind)) { rate = (calc.res[a.id].today * 365) / v * 100; how = a.kind === "mp2" ? "tax-free" : "after tax"; }
+    else if (["cash","wallet"].includes(a.kind)) { rate = 0; how = "earns nothing"; }
+    else if (a.kind === "invest") {
+      const exp = state.planCfg?.returns?.[a.id];
+      const hs = (calc.res[a.id].holdings || []).filter(x => x.units > 1e-12);
+      const cost = hs.reduce((s,x) => s + x.cost, 0), val = hs.reduce((s,x) => s + x.value, 0);
+      const first = (state.trades || []).filter(t => t.acct === a.id && t.side === "buy").map(t => t.date).sort()[0];
+      const days = first ? (Date.now() - parseYmd(first)) / 864e5 : 0;
+      if (cost > 0 && days >= 90) { rate = (Math.pow(val / cost, 365 / days) - 1) * 100; how = "your actual return, per year"; }
+      else if (exp != null) { rate = exp; how = "expected (from your plan)"; }
+      else { rate = null; how = "not enough history yet"; }
+    }
+    out.push({a, v, rate: rate == null ? null : Math.round(rate*100)/100, how});
+  }
+  return out;
+}
+const realRate = (nominal, infl) => ((1 + nominal/100) / (1 + infl/100) - 1) * 100;
+function inflSummary(){
+  const I = inflNow(), rows = nominalRates(), known = rows.filter(r => r.rate != null);
+  const total = known.reduce((s,r) => s + r.v, 0);
+  const blended = total ? known.reduce((s,r) => s + r.v * r.rate, 0) / total : 0;
+  const idle = rows.filter(r => r.rate === 0).reduce((s,r) => s + r.v, 0);
+  return {I, rows, blended, real: realRate(blended, I.rate), total, idle, idleLoss: idle * I.rate / 100,
+    yearGain: known.reduce((s,r) => s + r.v * r.rate / 100, 0), yearLoss: total * I.rate / 100};
+}
+
+/* ---------- pictures ---------- */
+function rateBarsHtml(S){
+  const infl = S.I.rate, max = Math.max(10, infl * 1.35, ...S.rows.map(r => r.rate || 0));
+  const x = v => Math.max(0, Math.min(100, v / max * 100));
+  return `<div class="rb"><div class="rb-key"><i></i>Inflation ${infl.toFixed(1)}%</div>
+    ${S.rows.map(r => { const ok = r.rate != null && r.rate >= infl;
+      return `<button type="button" class="rb-row" data-open="${r.a.id}" aria-label="${esc(r.a.name)}: ${r.rate == null ? "no data" : r.rate.toFixed(1) + "% a year"}, ${r.rate == null ? "" : ok ? "above" : "below"} inflation">
+        <span class="rb-name"><b>${esc(r.a.name)}</b><span>${esc(r.how)}</span></span>
+        <span class="rb-track">${r.rate == null ? `<i class="na" style="width:100%"></i>` : `<i class="${ok ? "up" : "down"}" style="width:${x(r.rate)}%"></i>`}<b style="left:${x(infl)}%"></b></span>
+        <span class="rb-val ${r.rate == null ? "" : ok ? "pos" : "neg"}">${r.rate == null ? "—" : (ok ? "▲ " : "▼ ") + r.rate.toFixed(1) + "%"}</span></button>`; }).join("")}
+  </div>`;
+}
+function buyingPowerSvg(){
+  // net worth in pesos vs the same amount in pesos of 12 months ago (prices rising monthly)
+  const hist = calc.history || []; if (hist.length < 40) return "";
+  const S = new Map(inflSeries()), monthly = m => Math.pow(1 + (S.get(m) ?? inflNow().rate) / 100, 1/12);
+  const pts = hist.filter((_, i) => i % 7 === 0 || i === hist.length - 1);
+  let level = 1, lastM = pts[0][0].slice(0,7); const lv = [];
+  for (const [d] of pts){ const m = d.slice(0,7); if (m !== lastM) { level *= monthly(m); lastM = m; } lv.push(level); }
+  const nom = pts.map(p => p[1]), real = nom.map((v,i) => v / lv[i]);
+  const all = [...nom, ...real], hi = Math.max(...all), lo = Math.min(...all), span = (hi - lo) || Math.abs(hi) * .1 || 1, mx = hi + span * .15, mn = lo - span * .25, W = 600, H = 150, pad = 6;
+  const X = i => pad + i / (pts.length - 1) * (W - pad*2), Y = v => H - pad - (v - mn) / ((mx - mn) || 1) * (H - pad*2);
+  const path = arr => arr.map((v,i) => (i ? "L" : "M") + X(i).toFixed(1) + "," + Y(v).toFixed(1)).join("");
+  const priceUp = (lv[lv.length-1] - 1) * 100, start = fmtDate(pts[0][0], true);
+  return `<svg class="bp-chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Your money in pesos, and in ${esc(start)} pesos after price increases">
+      <path d="${path(nom)} L${X(pts.length-1)},${H} L${X(0)},${H} Z" class="bp-fill"/><path d="${path(nom)}" class="bp-nom"/><path d="${path(real)}" class="bp-real"/></svg>
+    <div class="bp-legend"><span><i class="l-nom"></i>Your money in pesos</span><span><i class="l-real"></i>What it buys, in ${esc(start)} prices</span></div>
+    <p class="hint">Prices rose about ${priceUp.toFixed(1)}% since ${esc(start)}. The gap between the lines is buying power lost to inflation.</p>`;
+}
+function inflTrendSvg(){
+  const s = inflSeries().slice(-24), W = 600, H = 120, pad = 8, mx = Math.max(9, ...s.map(x => x[1])) , Y = v => H - pad - v / mx * (H - pad*2), X = i => pad + i / (s.length - 1) * (W - pad*2);
+  const line = s.map((x,i) => (i ? "L" : "M") + X(i).toFixed(1) + "," + Y(x[1]).toFixed(1)).join(""), last = s[s.length-1];
+  return `<svg class="it-chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Inflation over the last ${s.length} months, latest ${last[1]}%">
+      <rect x="${pad}" y="${Y(4)}" width="${W - pad*2}" height="${Y(2) - Y(4)}" class="it-band"/>
+      <path d="${line}" class="it-line"/><circle cx="${X(s.length-1)}" cy="${Y(last[1])}" r="5" class="it-dot"/></svg>
+    <div class="it-axis"><span>${esc(monthName(s[0][0], false))}</span><span class="band"><i></i>BSP target 2–4%</span><span>${esc(monthName(last[0], false))}</span></div>`;
+}
+
+/* ---------- Home tile ---------- */
+DASH_TILES.push({id:"inflation", name:"Beating inflation?", desc:"Your money’s growth vs Philippine inflation"});
+TILE_INSIGHT.inflation = "inflation";
+TILE.inflation = function(){
+  const S = inflSummary(); if (!S.total) return "";
+  const r = S.real, good = r >= 0.25, even = Math.abs(r) < 0.25;
+  return tileH("Beating inflation?") + `<button type="button" class="infl-card ${good ? "good" : even ? "even" : "bad"}" data-insight="inflation">
+    <div class="ic-top"><span class="pill ${good ? "good" : even ? "warn" : "bad"}">${good ? "Yes" : even ? "Barely" : "Not yet"}</span><span class="ic-src">Inflation ${S.I.rate.toFixed(1)}% · ${esc(monthName(S.I.month, false))}${S.I.manual ? " (yours)" : ""}</span></div>
+    <div class="ic-vs"><div><span>Your money earns</span><b>${S.blended.toFixed(1)}%</b></div><div class="ic-x">vs</div><div><span>Prices rise</span><b>${S.I.rate.toFixed(1)}%</b></div></div>
+    <div class="ic-meter" aria-hidden="true"><i style="width:${Math.min(100, S.blended / Math.max(S.blended, S.I.rate, 1) * 100)}%"></i><b style="left:${Math.min(100, S.I.rate / Math.max(S.blended, S.I.rate, 1) * 100)}%"></b></div>
+    <p class="ic-line">${even ? `About even with prices. Your buying power is roughly flat.` : good ? `You’re ahead by about ${r.toFixed(1)}% a year in real terms.` : `Your money loses about ${Math.abs(r).toFixed(1)}% a year in buying power.`}${S.idle > 100 ? ` ₱${Math.round(S.idle).toLocaleString("en-PH")} in cash and e-wallets loses ~${esc(peso(S.idleLoss, 0))} a year.` : ""}</p>
+  </button>`;
+};
+function ensureInflTile(){
+  if (!state?.dashboard || state.prefs.infl7791) return;
+  const d = state.dashboard, at = d.findIndex(x => x.id === "inflation"); if (at >= 0) d.splice(at, 1);
+  const i = d.findIndex(x => x.id === "weekly"); d.splice(i >= 0 ? i : 2, 0, {id:"inflation", on:true});
+  state.prefs.infl7791 = true;
+}
+const _render7791 = render;
+render = function(){ ensureInflTile(); _render7791(); };
+
+/* ---------- details sheet ---------- */
+INSIGHT.inflation = function(){
+  const S = inflSummary(), I = S.I, behind = S.rows.filter(r => r.rate != null && r.rate < I.rate && r.v > 500).sort((a,b) => b.v - a.v);
+  return ["Beating inflation?", `
+    <div class="infl-hero">
+      <div class="ih-row"><div><span>Your money earns</span><b>${S.blended.toFixed(1)}%</b><small>a year, weighted by balance</small></div><div><span>Prices rise</span><b>${I.rate.toFixed(1)}%</b><small>${esc(monthName(I.month, false))}, year on year</small></div><div><span>Real growth</span><b class="${S.real >= 0 ? "pos" : "neg"}">${S.real >= 0 ? "+" : ""}${S.real.toFixed(1)}%</b><small>after inflation</small></div></div>
+      <p>${S.real >= 0 ? `Over a year, your money gains about <b>${esc(peso(S.yearGain - S.yearLoss, 0))}</b> in buying power.` : `Over a year, your money loses about <b>${esc(peso(S.yearLoss - S.yearGain, 0))}</b> in buying power, even after interest.`}</p>
+    </div>
+    <div class="section"><div class="section-h"><h2>Each account vs inflation</h2></div>${rateBarsHtml(S)}<p class="note">Green earns more than prices rise. Red loses buying power. Tap an account for details.</p></div>
+    ${buyingPowerSvg() ? `<div class="section"><div class="section-h"><h2>Your buying power</h2></div><div class="chart-card">${buyingPowerSvg()}</div></div>` : ""}
+    <div class="section"><div class="section-h"><h2>Philippine inflation</h2></div><div class="chart-card">${inflTrendSvg()}</div>
+      <details class="it-table"><summary>See the numbers</summary><table><thead><tr><th>Month</th><th>Inflation</th></tr></thead><tbody>${inflSeries().slice(-12).reverse().map(([m,r]) => `<tr><td>${esc(monthName(m))}</td><td>${r.toFixed(1)}%</td></tr>`).join("")}</tbody></table></details>
+      <p class="hint">Latest: <b>${I.rate.toFixed(1)}%</b> in ${esc(monthName(I.month))}. 12-month average: ${I.avg12.toFixed(1)}%. Source: Philippine Statistics Authority${I.manual ? " (you’re using your own rate)" : ""}.</p></div>
+    <div class="section"><div class="section-h"><h2>What this means</h2></div><div class="list">
+      ${behind.slice(0,3).map(r => `<div class="rv-item"><span class="dot warn"></span><span class="body"><b>${esc(r.a.name)}</b> earns ${r.rate.toFixed(1)}%, below ${I.rate.toFixed(1)}% inflation. ${r.rate === 0 ? "Keep only what you need for the next few weeks here." : r.a.kind === "mp2" ? "It’s safe and tax-free, and paid 7.12% for 2025. One hot year doesn’t erase its long-run edge, and leaving early costs half your dividends." : "Compare with other options, but avoid chasing rates with your emergency fund."}</span></div>`).join("")}
+      <div class="rv-item"><span class="dot"></span><span class="body">Inflation moves around. A rate that loses this month can win over 5 years. Judge long-term money against the <b>average</b>, not one month.</span></div>
+      <div class="rv-item"><span class="dot"></span><span class="body">Your own inflation can differ. Outside Metro Manila it was 8.2% in October 2026, and rice and fares weigh more in some households.</span></div>
+    </div></div>
+    <div class="btns" style="margin-top:var(--s-4)"><button type="button" class="btn" data-infl-set>Use my own inflation rate</button></div>`];
+};
+document.addEventListener("click", e => {
+  if (!e.target.closest("[data-infl-set]")) return;
+  const cur = state.inflation?.manual, v = prompt(`Inflation rate to compare against (% a year). Leave empty to use the official PSA figure.`, cur != null ? cur : "");
+  if (v === null) return;
+  state.inflation ||= {series:[]};
+  const n = parseFloat(String(v).replace(/[^\d.\-]/g, ""));
+  state.inflation.manual = v.trim() === "" || !isFinite(n) ? null : Math.max(-5, Math.min(50, n));
+  save(); render(); refreshOpenSheets();
+  toast(state.inflation.manual == null ? "Using the official PSA inflation rate" : `Comparing against ${state.inflation.manual}% inflation`);
+});
+
+/* ---------- newer months from your Google Sheet (installed app only) ---------- */
+async function refreshInflation(force){
+  if (typeof api !== "function" || typeof syncOn !== "function" || !syncOn() || !navigator.onLine) return;
+  const last = state.inflation?.checked || 0; if (!force && Date.now() - last < 2 * 864e5) return;
+  try {
+    const j = await api("inflation"); if (!j.ok || !Array.isArray(j.series)) return;
+    state.inflation ||= {series:[]};
+    const before = inflNow().month;
+    state.inflation.series = j.series.filter(x => Array.isArray(x) && /^\d{4}-\d{2}$/.test(x[0])).map(([m, r]) => [m, Number(r)]);
+    state.inflation.checked = Date.now(); state.inflation.source = "PSA via your Google Sheet";
+    save(); render();
+    const after = inflNow().month; if (after > before) toast(`New inflation figure: ${inflNow().rate.toFixed(1)}% for ${monthName(after, false)}`);
+  } catch {}
+}
+setTimeout(() => refreshInflation(false), 4000);
 /* ---------- boot ---------- */
 hydrateIcons();
 state = loadLocal(); if (!state) state = defaults(); state = migrate(state); saveLocal();
