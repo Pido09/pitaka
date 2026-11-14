@@ -1263,6 +1263,25 @@ dialog.vt-open,dialog.vt-open::backdrop{animation:none!important}
 @keyframes icon-in{from{opacity:0;filter:blur(3px);transform:scale(.85)}to{opacity:1;filter:none;transform:none}}
 .icon-swap svg{animation:icon-in 180ms cubic-bezier(.22,1,.36,1)}
 @media (prefers-reduced-motion:reduce){.icon-swap svg{animation:none}}
+
+/* =====================================================================
+   UX polish pass (accessibility + touch)
+   - text on red buttons stays readable in dark mode (was 2.5:1)
+   - toast "Undo" readable in dark mode (was 1.6:1)
+   - every tappable control gets at least a 44px tap area
+   ===================================================================== */
+:root{--on-neg:#FFFFFF;--toast-action:var(--interest)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--on-neg:#1A0904;--toast-action:#8F5C05}}
+:root[data-theme="dark"]{--on-neg:#1A0904;--toast-action:#8F5C05}
+.swipe-del,.x.trash.armed{color:var(--on-neg)}
+.toast button{color:var(--toast-action)}
+
+button,a,[role="button"],input,select,label{touch-action:manipulation}
+.menu-btn,.eye-btn{width:44px;height:44px}
+.arrows button{width:44px;height:44px}
+/* invisible tap area: keeps the compact look, grows the touch target to 44px */
+.btn.sm,.chip,button.pill,.greet .name,.link,.seg button{position:relative}
+.btn.sm::after,.chip::after,button.pill::after,.greet .name::after,.link::after,.seg button::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;min-height:100%;transform:translateY(-50%)}
 </style>
 </head>
 <body>
@@ -1386,7 +1405,7 @@ dialog.vt-open,dialog.vt-open::backdrop{animation:none!important}
     <button class="d-item" data-dr="cats"><span data-icon="tag"></span>Categories</button>
     <button class="d-item" data-dr="tpls"><span data-icon="spark"></span>Templates</button>
     <button class="d-item" data-dr="fplan"><span data-icon="star"></span>Financial plan</button>
-    <button class="d-item" data-review><span data-icon="chart"></span>Monthly review</button>
+    <button class="d-item" data-review><span data-icon="book"></span>Monthly review</button>
     <button class="d-item" data-balcheck><span data-icon="sync"></span>Check balances</button>
     <button class="d-item" data-dr="subs"><span data-icon="tv"></span>Subscriptions</button>
     <button class="d-item" data-dr="recs"><span data-icon="clock"></span>Scheduled</button>
