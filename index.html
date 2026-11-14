@@ -1282,6 +1282,13 @@ button,a,[role="button"],input,select,label{touch-action:manipulation}
 /* invisible tap area: keeps the compact look, grows the touch target to 44px */
 .btn.sm,.chip,button.pill,.greet .name,.link,.seg button{position:relative}
 .btn.sm::after,.chip::after,button.pill::after,.greet .name::after,.link::after,.seg button::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;min-height:100%;transform:translateY(-50%)}
+/* compact "not set up yet" row: one quiet button instead of a big card with a primary CTA */
+.setup-row{gap:var(--s-3)}
+.setup-row .t,.setup-row .s{display:block}
+.setup-row .s{white-space:normal}
+.setup-ic{width:40px;height:40px;border-radius:12px;flex:none;display:grid;place-items:center;color:var(--brand);background:color-mix(in oklch,var(--brand) 11%,var(--surface))}
+.setup-ic svg{width:20px;height:20px}
+.setup-row .btn{flex:none}
 </style>
 </head>
 <body>
@@ -1356,9 +1363,9 @@ button,a,[role="button"],input,select,label{touch-action:manipulation}
     <div class="section"><div class="section-h"><h2>Cards and PayLater</h2></div><div id="cards-sum"></div></div>
     <div class="section"><div class="section-h"><h2>Lent and borrowed</h2></div><div id="loans-sum"></div></div>
     <div class="section"><div class="section-h"><h2>Interest earned</h2></div><div id="int-sum"></div></div>
-    <div class="section"><div class="section-h"><h2>Where you’ll be</h2><button class="link" data-fplan>Edit plan</button></div>
+    <div class="section"><div class="section-h"><h2>Where you’ll be</h2><button class="link" data-fplan>Edit forecast</button></div>
       <div class="tbl-wrap"><table id="proj"></table></div>
-      <p class="note">Uses your financial plan: monthly amounts, interest rates, and the returns you expect from investments. Tap Edit plan to change them.</p></div>
+      <p class="note">Uses your financial plan: monthly amounts, interest rates, and the returns you expect from investments. Tap Edit forecast to change them.</p></div>
   </section>
   <!-- PLAN -->
   <section id="v-plan" hidden aria-label="Plan">
@@ -1401,16 +1408,17 @@ button,a,[role="button"],input,select,label{touch-action:manipulation}
     <button class="d-item" data-go="plan"><span data-icon="target"></span>Plan</button>
     <button class="d-item" data-go="summary"><span data-icon="chart"></span>Monthly summary</button>
   </nav>
-  <nav aria-label="Tools">
-    <button class="d-item" data-dr="cats"><span data-icon="tag"></span>Categories</button>
-    <button class="d-item" data-dr="tpls"><span data-icon="spark"></span>Templates</button>
-    <button class="d-item" data-dr="fplan"><span data-icon="star"></span>Financial plan</button>
-    <button class="d-item" data-review><span data-icon="book"></span>Monthly review</button>
-    <button class="d-item" data-balcheck><span data-icon="sync"></span>Check balances</button>
+  <nav aria-label="Plan and track">
+    <button class="d-item" data-dr="budgets"><span data-icon="piggy"></span>Budgets</button>
     <button class="d-item" data-dr="subs"><span data-icon="tv"></span>Subscriptions</button>
     <button class="d-item" data-dr="recs"><span data-icon="clock"></span>Scheduled</button>
-    <button class="d-item" data-dr="budgets"><span data-icon="piggy"></span>Budgets</button>
-    <button class="d-item" data-dr="plan"><span data-icon="receipt"></span>Monthly plan</button>
+    <button class="d-item" data-dr="fplan"><span data-icon="star"></span>Financial plan</button>
+    <button class="d-item" data-review><span data-icon="book"></span>Monthly review</button>
+  </nav>
+  <nav aria-label="Manage">
+    <button class="d-item" data-balcheck><span data-icon="sync"></span>Check balances</button>
+    <button class="d-item" data-dr="cats"><span data-icon="tag"></span>Categories</button>
+    <button class="d-item" data-dr="tpls"><span data-icon="spark"></span>Templates</button>
     <button class="d-item" data-dr="dash"><span data-icon="sliders"></span>Customize dashboard</button>
   </nav>
   <nav aria-label="Quick settings">
@@ -2147,6 +2155,7 @@ const GROUPS = ["Cash and e-wallets","Savings","Investments","Cards and PayLater
 const isDebt = a => !!KIND[a.kind]?.debt;
 const isCredit = a => a.kind==="credit" || a.kind==="paylater";
 const earns = a => ["savings","mp2","td"].includes(a.kind);
+const setupRow = (ic, t, sub, btn) => `<div class="list"><div class="row setup-row"><span class="setup-ic" aria-hidden="true">${icon(ic)}</span><span class="body"><span class="t">${t}</span><span class="s">${sub}</span></span>${btn}</div></div>`;
 const avatar = a => `<span class="avatar" style="--c:${a.color}">${icon(KIND[a.kind].icon)}</span>`;
 
 const PRESETS = [
@@ -3518,7 +3527,7 @@ function budgetSummaryHtml(b){
 }
 TILE.budgets = function(){
   const b = budgetData();
-  if (!b.cats.length && !b.hasOverall) return tileH("Budgets") + `<div class="empty">Set a monthly budget for categories like Food or Shopping and Pitaka tracks it for you.<div class="btns"><button class="btn primary" data-budget-edit>Set budgets</button></div></div>`;
+  if (!b.cats.length && !b.hasOverall) return tileH("Budgets") + setupRow("piggy", "Set monthly budgets", "Limits for Food, Shopping and more", `<button class="btn sm" data-budget-edit>Set up</button>`);
   return tileH("Budgets", `<button class="link" data-budgets>All budgets</button>`) + budgetSummaryHtml(b) + (b.cats.length ? `<div class="list" style="margin-top:var(--s-2)">${b.cats.slice(0,3).map(x=>budgetRow(x,b.isCur,b.daysLeft)).join("")}</div>` : "");
 };
 function openBudgets(){
@@ -4670,7 +4679,7 @@ DASH_TILES.push({id:"subs", name:"Subscriptions", desc:"Monthly total and your n
 TILE_INSIGHT.subs = "subs";
 TILE.subs = function(){
   const subs = subsList();
-  if (!subs.length) return tileH("Subscriptions") + `<div class="empty" style="padding:var(--s-4)">Add Netflix, Spotify and others so they’re deducted automatically.<div class="btns"><button class="btn primary" data-dr2="subs-add">Add a subscription</button></div></div>`;
+  if (!subs.length) return tileH("Subscriptions") + setupRow("tv", "Track subscriptions", "Netflix, Spotify and others, deducted automatically", `<button class="btn sm" data-dr2="subs-add">Add</button>`);
   return tileH("Subscriptions") + subsSummaryHtml(6);
 };
 const _openInsight13 = openInsight;
