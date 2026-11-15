@@ -1254,6 +1254,36 @@ button,a,[role="button"],input,select,label{touch-action:manipulation}
 .setup-ic{width:40px;height:40px;border-radius:12px;flex:none;display:grid;place-items:center;color:var(--brand);background:color-mix(in oklch,var(--brand) 11%,var(--surface))}
 .setup-ic svg{width:20px;height:20px}
 .setup-row .btn{flex:none}
+
+/* ---- no text spilling out of its box (narrow phones, big amounts, large text) ---- */
+/* money never breaks across lines (a lone "−" used to wrap away from its number) */
+.amt,.kpi .v,.stat .v,.detail-bal{white-space:nowrap}
+.detail-bal{font-size:min(2.6rem,11.5vw)}
+.alloc-head{flex-wrap:wrap}
+.alloc-head .pill{flex:none}
+.pl-item .body{min-width:0}
+.kind-pill{display:inline-block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom}
+/* stat strips: if a number doesn't fit, JS adds .stack and the first stat takes its own row */
+.stat,.dr-stats>div{min-width:0}
+.stat .v{overflow:hidden}
+.stat-strip.stack{grid-template-columns:1fr 1fr}
+.stat-strip.stack .stat:first-child{grid-column:1/-1;border-bottom:1px solid var(--line)}
+.stat-strip.stack .stat:nth-child(2){border-left:0}
+.stat-strip.stack-all{grid-template-columns:1fr}
+.stat-strip.stack-all .stat{border-left:0!important;border-bottom:0}
+.stat-strip.stack-all .stat+.stat{border-top:1px solid var(--line)}
+.dr-stats.stack{grid-template-columns:1fr 1fr}
+.dr-stats.stack>div:first-child{grid-column:1/-1}
+/* big summary figures shrink a little in narrow cards instead of overflowing */
+.kpis{container-type:inline-size}
+.kpi .v{font-size:min(var(--fs-xl),6.6cqi)}
+/* list rows: names get two lines before they're cut off */
+.row .t{white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
+/* category trends: the change label stays inside its column; the sparkline yields on small screens */
+.list{container-type:inline-size}
+.row .delta{display:block;overflow:hidden;text-overflow:ellipsis}
+@container (max-width:400px){.row .spark{width:60px}}
+@container (max-width:340px){.row .spark{display:none}}
 </style>
 </head>
 <body>
@@ -6536,6 +6566,20 @@ applyPrefs(); processRecurring(); render(); setSync("On this device", "ok"); idb
 setTimeout(() => { const sp = document.getElementById("splash"); if (!sp) return; sp.classList.add("hide"); setTimeout(() => sp.remove(), 400); }, Math.max(0, 1100 - performance.now()));
 setInterval(() => { if (todayStr() !== (calc?.history.at(-1)?.[0])) { processRecurring(); render(); } }, 60000);
 bootSync();
+})();
+
+/* ---- fit stat strips: stack them when a number would be cut off ---- */
+(function fitStrips(){
+  const over = el => [...el.querySelectorAll(".v")].some(v => v.offsetParent && v.scrollWidth > v.clientWidth + 1);
+  const fit = () => { for (const s of document.querySelectorAll(".stat-strip, .dr-stats")){
+    s.classList.remove("stack","stack-all");
+    if (!s.offsetParent || !over(s)) continue;
+    s.classList.add("stack");
+    if (over(s) && s.classList.contains("stat-strip")) s.classList.add("stack-all");
+  } };
+  let q = 0; const later = () => { if (!q) q = requestAnimationFrame(() => { q = 0; fit(); }); };
+  new MutationObserver(later).observe(document.body, {childList:true, subtree:true, characterData:true});
+  addEventListener("resize", later); document.fonts?.ready.then(later); later();
 })();
 </script>
 </body>
