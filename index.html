@@ -1284,6 +1284,26 @@ button,a,[role="button"],input,select,label{touch-action:manipulation}
 .row .delta{display:block;overflow:hidden;text-overflow:ellipsis}
 @container (max-width:400px){.row .spark{width:60px}}
 @container (max-width:340px){.row .spark{display:none}}
+
+/* ---- data tables on narrow phones: each row becomes a small card with labelled values ----
+   (labels come from the column headers; JS copies them onto each cell as data-label) */
+.tbl-wrap{container-type:inline-size}
+@container (max-width:520px){
+  .tbl-wrap table,.tbl-wrap tbody,.tbl-wrap tr,.tbl-wrap td{display:block}
+  .tbl-wrap thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .tbl-wrap tr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px 10px;padding:12px 14px}
+  .tbl-wrap tr+tr{border-top:1px solid var(--line)}
+  .tbl-wrap tr+tr td{border-top:0}
+  .tbl-wrap td{padding:0;text-align:left;min-width:0;overflow:hidden;text-overflow:ellipsis}
+  .tbl-wrap td:first-child{grid-column:1/-1;font-weight:600;white-space:normal}
+  .tbl-wrap td:not(:first-child)::before{content:attr(data-label);display:block;font-size:.72rem;font-weight:600;color:var(--text-2)}
+  .tbl-wrap .total-row{background:var(--surface-2)}
+}
+/* two values per row on phones; em-based so large text also gets two */
+@container (max-width:27em){.tbl-wrap tr{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* full table on wider screens: let the account name wrap so the numbers fit without sideways scrolling */
+.tbl-wrap td:first-child{white-space:normal;min-width:7.5em}
+.tbl-wrap th,.tbl-wrap td{padding-left:10px;padding-right:10px}
 </style>
 </head>
 <body>
@@ -6580,6 +6600,21 @@ bootSync();
   let q = 0; const later = () => { if (!q) q = requestAnimationFrame(() => { q = 0; fit(); }); };
   new MutationObserver(later).observe(document.body, {childList:true, subtree:true, characterData:true});
   addEventListener("resize", later); document.fonts?.ready.then(later); later();
+})();
+
+/* ---- label table cells with their column header (used by the narrow-phone card layout) ---- */
+(function labelTables(){
+  const run = () => { for (const t of document.querySelectorAll(".tbl-wrap table")){
+    const heads = [...t.querySelectorAll("thead th")].map(th => th.textContent.trim());
+    if (!heads.length) continue;
+    t.setAttribute("role","table");
+    t.querySelectorAll("thead, tbody").forEach(g => g.setAttribute("role","rowgroup"));
+    t.querySelectorAll("tr").forEach(tr => tr.setAttribute("role","row"));
+    t.querySelectorAll("th").forEach(th => th.setAttribute("role","columnheader"));
+    t.querySelectorAll("tbody tr").forEach(tr => [...tr.children].forEach((td,i) => { td.setAttribute("role","cell"); if (heads[i] && td.dataset.label !== heads[i]) td.dataset.label = heads[i]; }));
+  } };
+  let q = 0; const later = () => { if (!q) q = requestAnimationFrame(() => { q = 0; run(); }); };
+  new MutationObserver(later).observe(document.body, {childList:true, subtree:true}); later();
 })();
 </script>
 </body>
